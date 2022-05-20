@@ -1,0 +1,13 @@
+E:\Cecyt13Map\CapaNegocio\obj\Debug\CapaNegocio.csproj.AssemblyReference.cache
+E:\Cecyt13Map\CapaNegocio\obj\Debug\CapaNegocio.csproj.CoreCompileInputs.cache
+E:\Cecyt13Map\CapaNegocio\bin\Debug\CapaNegocio.dll
+E:\Cecyt13Map\CapaNegocio\bin\Debug\CapaNegocio.pdb
+E:\Cecyt13Map\CapaNegocio\bin\Debug\CapaDatos.dll
+E:\Cecyt13Map\CapaNegocio\bin\Debug\CapaEntidad.dll
+E:\Cecyt13Map\CapaNegocio\bin\Debug\Conexion.dll
+E:\Cecyt13Map\CapaNegocio\bin\Debug\CapaDatos.pdb
+E:\Cecyt13Map\CapaNegocio\bin\Debug\CapaEntidad.pdb
+E:\Cecyt13Map\CapaNegocio\bin\Debug\Conexion.pdb
+E:\Cecyt13Map\CapaNegocio\obj\Debug\CapaNegocio.csproj.CopyComplete
+E:\Cecyt13Map\CapaNegocio\obj\Debug\CapaNegocio.dll
+E:\Cecyt13Map\CapaNegocio\obj\Debug\CapaNegocio.pdb

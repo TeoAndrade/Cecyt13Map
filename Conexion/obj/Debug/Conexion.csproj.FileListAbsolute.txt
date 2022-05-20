@@ -1,0 +1,6 @@
+E:\Cecyt13Map\Conexion\bin\Debug\Conexion.dll
+E:\Cecyt13Map\Conexion\bin\Debug\Conexion.pdb
+E:\Cecyt13Map\Conexion\obj\Debug\Conexion.csproj.AssemblyReference.cache
+E:\Cecyt13Map\Conexion\obj\Debug\Conexion.csproj.CoreCompileInputs.cache
+E:\Cecyt13Map\Conexion\obj\Debug\Conexion.dll
+E:\Cecyt13Map\Conexion\obj\Debug\Conexion.pdb

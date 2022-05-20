@@ -1,0 +1,217 @@
+﻿<script src="~/Scripts/bootstrap.min.js"></script>
+@{
+    ViewBag.Title = "Edificios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+}
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item">Edificios</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Lista de edificios
+    </div>
+    <div class="card-body">
+        <div class="row d-flex flex-column">
+            <div class="col-12">
+                <button type="button" class="btn btn-success" style="margin-bottom:15px" onclick="AbirMobal(null)">Crear nuevo</button>
+            </div>
+            <hr style="margin-top:10px" />
+            <table id="Edificios" class="display cell-border table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark bg-gradient text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Edificio</h5>
+
+            </div>
+            <div class="modal-body ">
+                <input id="Id" type="hidden" value="0" />
+                <div class="row g-2">
+                    <div class="col-sm-12 mt-2">
+                        <label for="Nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="Nombre" autocomplete="off">
+                    </div>
+
+                </div>
+                <div class="row mt-2">
+                    <div class="col-sm-12">
+                        <div id="Error" class="alert alert-danger" role="alert">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        let tabladata;
+        let filaSelc;
+
+        tabladata = $("#Edificios").DataTable({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarEdificios", "Admin")',
+                type: 'GET',
+                dataType: 'json'
+            },
+            "columns": [
+                { "data": "Nom_Ubicacion" },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' + '<button type="button" class="btn btn-danger btn-sm ms-2 btn-eliminar"><i class="fas fa-trash"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width":"90px"
+                }
+            ],
+            "language": {
+                "url":"https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+            }
+        });
+
+        function AbirMobal(json) {
+            $("#Id").val(0);
+            $("#Nombre").val("");
+            $("#Error").hide();
+
+
+            if (json != null) {
+                $("#Id").val(json.Cve_Ubicacion);
+                $("#Nombre").val(json.Nom_Ubicacion);
+            }
+
+
+            $("#FormModal").modal("show");
+        }
+
+        $("#Edificios tbody").on("click", '.btn-editar', function () {
+             filaSelc= $(this).closest("tr");
+
+            let datos = tabladata.row(filaSelc).data();
+            AbirMobal(datos);
+        });
+        $("#Edificios tbody").on("click", '.btn-eliminar', function () {
+            var UsuarioSelec  = $(this).closest("tr");
+
+            let datos = tabladata.row(UsuarioSelec).data();
+            swal({
+                title: "¿Estas seguro?",
+                text: "¿Deseas eliminar la categoria?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-primary",
+                confirmButtonText: "Si",
+                cancelButtonText: "No",
+                closeOnConfirm: true
+            },
+            function()
+            {
+                jQuery.ajax({
+                    url:"@Url.Action("EliminarEdificio", "Admin")",
+                    type: "POST",
+                    data: JSON.stringify({ id: datos.Cve_Ubicacion }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (respuesta) {
+
+                        if (respuesta.res) {
+                            tabladata.row(UsuarioSelec).remove().draw();
+                        } else {
+                            swal("No se pudo eliminar", datos.men, "error");
+                        }
+                    },
+                    error: function (eror) {
+                        console.log(eror);
+                    }
+                });
+            })
+            console.log(datos);
+        });
+
+        function Guardar() {
+            let edificio = {
+                Cve_Ubicacion: $("#Id").val(),
+                Nom_Ubicacion: $("#Nombre").val()
+            }
+
+            jQuery.ajax({
+                url: "@Url.Action("GuardarEdificio", "Admin")",
+                type: "POST",
+                data: JSON.stringify({ obj: edificio}),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $(".modal-body").LoadingOverlay("hide");
+                    //Categoria nuevo
+                    if (edificio.Cve_Ubicacion == 0) {
+
+                        if (data.res != 0) {
+                            edificio.Cve_Ubicacion = data.res;
+                            tabladata.row.add(edificio).draw(false);
+                            $("#FormModal").modal("hide");
+                        } else {
+                            $("#Error").text(data.men);
+                            $("#Error").show();
+                        }
+
+                    }//Editar Categoria
+                    else {
+                        if (data.res) {
+                            tabladata.row(filaSelc).data(edificio).draw(false);
+                            filaSelc = null;
+                            $("#FormModal").modal("hide");
+                        }
+                        else {
+                            $("#Error").text(data.men);
+                            $("#Error").show();
+                        }
+                    }
+                },
+                error: function (error) {
+                    $("#Error").text(error.ajax);
+                    $(".modal-body").LoadingOverlay("hide")
+                },
+                beforeSend:function() {
+                    $(".modal-body").LoadingOverlay("show", {
+                        imageResizeFactor: 2,
+                        text: "Cargando...",
+                        size:14
+                    })
+                }
+
+            });
+
+
+
+
+        }
+    </script>
+}
+

@@ -1,0 +1,11 @@
+E:\Cecyt13Map\CapaDatos\bin\Debug\CapaDatos.dll
+E:\Cecyt13Map\CapaDatos\bin\Debug\CapaDatos.pdb
+E:\Cecyt13Map\CapaDatos\bin\Debug\CapaEntidad.dll
+E:\Cecyt13Map\CapaDatos\bin\Debug\Conexion.dll
+E:\Cecyt13Map\CapaDatos\bin\Debug\CapaEntidad.pdb
+E:\Cecyt13Map\CapaDatos\bin\Debug\Conexion.pdb
+E:\Cecyt13Map\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+E:\Cecyt13Map\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+E:\Cecyt13Map\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+E:\Cecyt13Map\CapaDatos\obj\Debug\CapaDatos.dll
+E:\Cecyt13Map\CapaDatos\obj\Debug\CapaDatos.pdb

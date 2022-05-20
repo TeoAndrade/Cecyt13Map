@@ -1,0 +1,220 @@
+﻿
+@{
+    ViewBag.Title = "Coordenadas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <style id="compiled-css" type="text/css">
+        .clickable {
+            border: 1px solid #333;
+            background: #eee;
+            height: 1000px;
+            width: 1000px;
+            margin: 15px;
+            position: absolute;
+        }
+
+        .display {
+            display: block;
+            height: 16px;
+            position: absolute;
+            text-align: center;
+            vertical-align: middle;
+            width: 100%;
+            top: 50%;
+            margin-top: -8px;
+        }
+
+        /* EOS */
+    </style>
+    <script src="/js/stringify.js?6195c42e41a20dce410088e201ec052f50b23043" charset="utf-8"></script>
+    <script>
+        const customConsole = (w) => {
+            const pushToConsole = (payload, type) => {
+                w.parent.postMessage({
+                    console: {
+                        payload: stringify(payload),
+                        type: type
+                    }
+                }, "*")
+            }
+
+            w.onerror = (message, url, line, column) => {
+                // the line needs to correspond with the editor panel
+                // unfortunately this number needs to be altered every time this view is changed
+                line = line - 70
+                if (line < 0) {
+                    pushToConsole(message, "error")
+                } else {
+                    pushToConsole(`[${line}:${column}] ${message}`, "error")
+                }
+            }
+
+            let console = (function (systemConsole) {
+                return {
+                    log: function () {
+                        let args = Array.from(arguments)
+                        pushToConsole(args, "log")
+                        systemConsole.log.apply(this, args)
+                    },
+                    info: function () {
+                        let args = Array.from(arguments)
+                        pushToConsole(args, "info")
+                        systemConsole.info.apply(this, args)
+                    },
+                    warn: function () {
+                        let args = Array.from(arguments)
+                        pushToConsole(args, "warn")
+                        systemConsole.warn.apply(this, args)
+                    },
+                    error: function () {
+                        let args = Array.from(arguments)
+                        pushToConsole(args, "error")
+                        systemConsole.error.apply(this, args)
+                    },
+                    system: function (arg) {
+                        pushToConsole(arg, "system")
+                    },
+                    clear: function () {
+                        systemConsole.clear.apply(this, {})
+                    },
+                    time: function (label) {
+                        pushToConsole(label, "log")
+                        systemConsole.time.apply(this, label)
+                    },
+                    assert: function (arg) {
+                        let args = Array.from(arguments)
+                        pushToConsole(args, "log")
+                        systemConsole.assert.apply(this, args)
+                    },
+                    dir: function (object) {
+                        pushToConsole(object, "log")
+                        systemConsole.dir.apply(this, object)
+                    }
+                }
+            }(window.console))
+
+            window.console = console
+
+            console.system("Running fiddle")
+        }
+
+        if (window.parent) {
+            customConsole(window)
+        }
+    </script>
+}
+
+<div>
+    <span class='display'></span>
+    <img src="~/Content/img/Mapa oficial.png" onclick="coordenadas()" onmouseover="mostrar()" onmousemove="mover()" onmouseout="ocultar()" id="recuadro">
+</div>
+<div id="ayuda" style="visibility: hidden; position: absolute; background: yellow; font: 10px / 10px verdana; color: black; border: 1px solid black; text-align: justify; padding: 10px; top: 1081px; left: 1080px;">x = 754<br>y = 171</div>
+
+@section scripts{
+    <script lang="JavaScript">
+        var ns4 = (document.layers) ? true : false
+        var ie4 = (document.all) ? true : false
+        var ns6 = (document.getElementById && !document.all) ? true : false;
+        var coorX, coorY, iniX, iniY;
+
+        if (ns6) document.addEventListener("mousemove", mouseMove, true)
+        if (ns4) {
+            document.captureEvents(Event.MOUSEMOVE);
+            document.mousemove = mouseMove;
+        }
+
+        function mouseMove(e) {
+            if (ns4 || ns6) {
+                coorX = e.pageX;
+                coorY = e.pageY;
+            }
+            if (ie4) {
+                coorX = event.x;
+                coorY = event.y;
+            }
+            return true;
+        }
+
+        function ini() {
+            if (ie4) document.body.onmousemove = mouseMove;
+            iniX = document.getElementById("recuadro").offsetLeft;
+            iniY = document.getElementById("recuadro").offsetTop;
+        }
+
+        function coordenadas() {
+            alert("Pinchó las siguientes coordenadas:\nx:" + coorX + "\ny: " + coorY + "\niniX = " + iniX + "\niniY = " +
+                iniY);
+        }
+
+        function mostrar() {
+            document.getElementById("ayuda").style.top = coorY + 10;
+            document.getElementById("ayuda").style.left = coorX + 10;
+            document.getElementById("ayuda").style.visibility = "visible";
+            document.getElementById("ayuda").innerHTML = "x = " + coorX + "<br>y = " + coorY;
+        }
+
+        function ocultar() {
+            document.getElementById("ayuda").style.visibility = "hidden";
+        }
+
+        function mover() {
+            document.getElementById("ayuda").style.top = coorY + 10;
+            document.getElementById("ayuda").style.left = coorX + 10;
+            document.getElementById("ayuda").style.visibility = "visible";
+            document.getElementById("ayuda").innerHTML = "x = " + coorX + "<br>y = " + coorY;
+        }
+    </script>
+
+    <script type="text/javascript">
+        //<![CDATA[
+
+
+        $('.clickable').bind('click', function (ev) {
+            var $div = $(ev.target);
+            var $display = $div.find('.display');
+
+            var offset = $div.offset();
+            var x = ev.clientX - offset.left;
+            var y = ev.clientY - offset.top;
+
+            $display.text('x: ' + x + ', y: ' + y);
+        });
+
+
+        //]]>
+    </script>
+
+    <script>
+        // tell the embed parent frame the height of the content
+        if (window.parent && window.parent.parent) {
+            window.parent.parent.postMessage(["resultsFrame", {
+                height: document.body.getBoundingClientRect().height,
+                slug: "ZZEk8"
+            }], "*")
+        }
+
+        // always overwrite window.name, in case users try to set it manually
+        window.name = "result"
+    </script>
+
+    <script>
+        let allLines = []
+
+        window.addEventListener("message", (message) => {
+            if (message.data.console) {
+                let insert = document.querySelector("#insert")
+                allLines.push(message.data.console.payload)
+                insert.innerHTML = allLines.join(";\r")
+
+                let result = eval.call(null, message.data.console.payload)
+                if (result !== undefined) {
+                    console.log(result)
+                }
+            }
+        })
+    </script>
+}
+

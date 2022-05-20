@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    @RenderSection("styles", required: false)
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <nav class="nav">
+        <a href="@Url.Action("Mapa","Home")" class="menu-elemento active">Inicio</a>
+        <a href="@Url.Action("Contact","Home")" class="menu-elemento">Contacto</a>
+        <a href="@Url.Action("Login","Menu")" class="menu-elemento">Inicio de sesion</a>
+    </nav>
+    <div>
+        <img src="~/Content/img/Logo2.png" alt="Logo de la marca" class="Logo">
+    </div>
+    @RenderBody()
+    
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

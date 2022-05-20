@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Cecyt13MapModel1StoreContainer" CdmEntityContainer="Cecyt13MapEntities1">
+    <EntitySetMapping Name="Escuela">
+      <EntityTypeMapping TypeName="Cecyt13MapModel1.Escuela">
+        <MappingFragment StoreEntitySet="Escuela">
+          <ScalarProperty Name="Cve_Escuela" ColumnName="Cve_Escuela" />
+          <ScalarProperty Name="Nom_Escuela" ColumnName="Nom_Escuela" />
+          <ScalarProperty Name="Piso" ColumnName="Piso" />
+          <ScalarProperty Name="Id_Ubicacion" ColumnName="Id_Ubicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,114 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CambiarClave</title>
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+
+            <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+                            <div class="d-flex justify-content-center py-2">
+                                <a href="" class="logo d-flex align-items-center w-auto">
+                                    <img style="max-height: 120px;box-shadow:5px 5px 10px #808080" src="~/Content/img/Logo2.png" alt="">
+                                </a>
+                            </div><!-- End Logo -->
+
+                            <div class="card mb-3">
+
+                                <div class="card-body">
+
+                                    <div class="pt-2 pb-2">
+                                        <h5 class="card-title text-center pb-0 fs-2">Cambia tu contraseña</h5>
+                                        <p class="text-center small">Escribe tu contraseña actual y la nueva</p>
+                                    </div>
+
+                                    <form class="row g-3 needs-validation" novalidate action="@Url.Action("CambiarClave","Acceso")" method="post">
+
+                                        <input type="hidden" class="form-control" value="@TempData["idAdmin"]" name="idAdmin" />
+
+                                        <div class="col-12">
+                                            <label for="yourUsername" class="form-label">Contraseña actual</label>
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-plus-circle-fill"></i></span>
+                                                <input type="password" name="claveActual" class="form-control" required autocomplete="off" value="@ViewData["vclave"]">
+                                                <div class="invalid-feedback">Por favor introduce tu contraseña actual</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="yourPassword" class="form-label">Nueva contraseña</label>
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-key-fill"></i></span>
+                                                <input type="password" name="claveNueva" class="form-control" required>
+                                                <div class="invalid-feedback">Por favor introduce tu nueva contraseña</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="yourPassword" class="form-label">Repite la nueva contraseña</label>
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-key-fill"></i></span>
+                                                <input type="password" name="claveConfirmada" class="form-control" required>
+                                                <div class="invalid-feedback">Por favor introduce tu nuevamente la contraseña</div>
+                                            </div>
+                                        </div>
+                                        @{
+                                            if (ViewBag.Error != null)
+                                            {
+                                                <div class="col-12 mt-3">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        @ViewBag.Error
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+
+                                        <div class="col-12 mt-2">
+
+                                            <button class="btn btn-primary w-100" type="submit">Cambiar contraseña</button>
+                                        </div>
+                                        <div class="col-12 mt-2">
+
+                                            <div class="small"><a href="@Url.Action("Index","Acceso")">Regresar al anterior</a></div>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </main><!-- End #main -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+    <script src="~/Scripts/main.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+</body>
+</html>

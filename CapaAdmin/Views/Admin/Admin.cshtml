@@ -1,0 +1,250 @@
+﻿<script src="~/Scripts/bootstrap.min.js"></script>
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+}
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item">Administradores</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Lista de administradores
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-success" onclick="AbirMobal(null)">Crear nuevo</button>
+            </div>
+            <hr style="margin-top:10px" />
+            <table id="Administradores" class="display cell-border table table-bordered table-hover" style="width:100%">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark bg-gradient text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Adiministrador</h5>
+
+            </div>
+            <div class="modal-body ">
+                <input id="Id" type="hidden" value="0" />
+                <div class="row g-2">
+                    <div class="col-sm-6 mt-2">
+                        <label for="Nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="Nombre" autocomplete="off">
+                    </div>
+                    <div class="col-sm-6 mt-2">
+                        <label for="Apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="Apellido" autocomplete="off">
+                    </div>
+                    <div class="col-sm-6 mt-2">
+                        <label for="Correo" class="form-label">Correo</label>
+                        <input type="text" class="form-control" id="Correo" autocomplete="off">
+                    </div>
+
+                </div>
+                <div class="row mt-2">
+                    <div class="col-sm-12">
+                        <div id="Error" class="alert alert-danger" role="alert">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.buttons.js"></script>
+    <script src="~/Scripts/DataTables/buttons.html5.js"></script>
+    <script src="~/Scripts/DataTables/buttons.bootstrap4.js"></script>
+    <script src="~/Scripts/DataTables/buttons.print.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap4.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.fixedHeader.js"></script>
+
+
+    <script>
+        let tabladata;
+        let filaSelc;
+
+        tabladata = $("#Administradores").DataTable({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarAdmin", "Admin")',
+                type: 'GET',
+                dataType: 'json'
+            },
+            "columns": [
+                { "data": "Nombre" },
+                { "data": "Apellido" },
+                { "data": "Correo" },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' + '<button type="button" class="btn btn-danger btn-sm ms-2 btn-eliminar"><i class="fas fa-trash"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width":"90px"
+                }
+            ],
+            "language": {
+                "url":"https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+            }
+        });
+
+        function AbirMobal(json) {
+
+            $("#Id").val(0);
+            $("#Nombre").val("");
+            $("#Apellido").val("");
+            $("#Correo").val("");
+            $("#Error").hide();
+
+
+            if (json != null) {
+                $("#Id").val(json.Cve_Admin);
+                $("#Nombre").val(json.Nombre);
+                $("#Apellido").val(json.Apellido);
+                $("#Correo").val(json.Correo);
+            }
+
+
+            $("#FormModal").modal("show");
+        }
+
+        $("#Administradores tbody").on("click", '.btn-editar', function () {
+             filaSelc= $(this).closest("tr");
+
+            let datos = tabladata.row(filaSelc).data();
+            AbirMobal(datos);
+        });
+        $("#Administradores tbody").on("click", '.btn-eliminar', function () {
+            var UsuarioSelec  = $(this).closest("tr");
+
+            let datos = tabladata.row(UsuarioSelec).data();
+            swal({
+                title: "¿Estas seguro?",
+                text: "¿Deseas eliminar al administrador?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Si",
+                cancelButtonText: "No",
+                cancelButtonClass:"btn-primary",
+                closeOnConfirm: true
+            },
+                function () {
+                    debugger;
+                    jQuery.ajax({
+                        url: "@Url.Action("EliminarAdmin", "Admin")",
+                        type: "POST",
+                        data: JSON.stringify({ id: datos.Cve_Admin }),
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (respuesta) {
+
+                            if (respuesta.res) {
+                                tabladata.row(UsuarioSelec).remove().draw();
+                            } else {
+                                swal("No se pudo eliminar", datos.men, "error");
+                            }
+                        },
+                        error: function (eror) {
+                            console.log(eror);
+                        }
+                    });
+                });
+            console.log(datos);
+        });
+
+        function Guardar() {
+            debugger;
+            let admin = {
+                Cve_Admin: $("#Id").val(),
+                Nombre: $("#Nombre").val(),
+                Apellido: $("#Apellido").val(),
+                Correo: $("#Correo").val(),
+            }
+
+            jQuery.ajax({
+                url: "@Url.Action("GuardarAdmin", "Admin")",
+                type: "POST",
+                data: JSON.stringify({ obj: admin}),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $(".modal-body").LoadingOverlay("hide");
+                    //Admin nuevo
+                    if (admin.Cve_Admin == 0) {
+                        debugger;
+                        if (data.res != 0) {
+                            admin.Cve_Admin = data.res;
+                            tabladata.row.add(admin).draw(false);
+                            $("#FormModal").modal("hide");
+                        } else {
+                            $("#Error").text(data.men);
+                            $("#Error").show();
+                        }
+
+                    }//Admin Categoria
+                    else {
+                        if (data.res) {
+                            tabladata.row(filaSelc).data(admin).draw(false);
+                            filaSelc = null;
+                            $("#FormModal").modal("hide");
+                        }
+                        else {
+                            $("#Error").text(data.men);
+                            $("#Error").show();
+                        }
+                    }
+                },
+                error: function (error) {
+                    $("#Error").text(error.ajax);
+                    $(".modal-body").LoadingOverlay("hide")
+                },
+                beforeSend:function() {
+                    $(".modal-body").LoadingOverlay("show", {
+                        imageResizeFactor: 2,
+                        text: "Cargando...",
+                        size:14
+                    })
+                }
+
+            });
+
+
+
+
+        }
+    </script>
+}
+

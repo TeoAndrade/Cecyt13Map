@@ -1,0 +1,268 @@
+﻿<script src="~/Scripts/bootstrap.min.js"></script>
+@{
+    ViewBag.Title = "Salones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+}
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item">Salones</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Lista de salones
+    </div>
+    <div class="card-body">
+        <div class="row d-flex flex-column">
+            <div class="col-12">
+                <button type="button" class="btn btn-success" style="margin-bottom:15px" onclick="AbirMobal(null)">Crear nuevo</button>
+            </div>
+            <hr style="margin-top:10px" />
+            <table id="Salones" class="display cell-border table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Piso</th>
+                        <th scope="col">Edificio</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark bg-gradient text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Salon</h5>
+
+            </div>
+            <div class="modal-body ">
+                <input id="Id" type="hidden" value="0" />
+                <div class="row g-2">
+                    <div class="col-sm-12 mt-2">
+                        <label for="Nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="Nombre" autocomplete="off">
+                    </div>
+
+                </div>
+                <div class="row g-2">
+                    <div class="col-sm-12 mt-2">
+                        <label for="Piso" class="form-label">Piso</label>
+                        <input type="text" class="form-control" id="Piso" autocomplete="off">
+                    </div>
+
+                </div>
+                <div class="row g-2">
+                    <div class="col-sm-12 mt-2">
+                        <label class="form-label">Edificio</label>
+                        <select id="cboedificio" class="form-select">
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row mt-2">
+                    <div class="col-sm-12">
+                        <div id="Error" class="alert alert-danger" role="alert">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        let tabladata;
+        let filaSelc;
+
+        tabladata = $("#Salones").DataTable({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarEscuela", "Admin")',
+                type: 'GET',
+                dataType: 'json'
+            },
+            "columns": [
+                { "data": "Nombre" },
+                { "data": "Piso" },
+                {
+                    "data": "IDUbicacion", "render": function (valor) {
+                        return valor.Nom_Ubicacion;
+                    }
+                },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' + '<button type="button" class="btn btn-danger btn-sm ms-2 btn-eliminar"><i class="fas fa-trash"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width":"90px"
+                }
+            ],
+            "language": {
+                "url":"https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+            }
+        });
+
+        jQuery.ajax({
+            url: "@Url.Action("ListarEdificios", "Admin")",
+            type: "GET",
+            data: null,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data);
+                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#cboedificio");
+
+                $.each(data.data, function (index, value) {
+                    $("<option>").attr({ "value": value.Cve_Ubicacion }).text(value.Nom_Ubicacion).appendTo("#cboedificio");
+                })
+            },
+            error: function (eror) {
+                console.log(eror);
+            }
+        });
+
+        function AbirMobal(json) {
+            $("#Id").val(0);
+            $("#Nombre").val("");
+            $("#Piso").val("");
+            $("#cboedificio").val($("#cboedificio option:first").val());
+            $("#Error").hide();
+
+
+            if (json != null) {
+                $("#Id").val(json.CveEscuela);
+                $("#Nombre").val(json.Nombre);
+                $("#Piso").val(json.Piso);
+                $("#cboedificio").val(json.IDUbicacion.Cve_Ubicacion);
+            }
+
+
+            $("#FormModal").modal("show");
+        }
+
+        $("#Salones tbody").on("click", '.btn-editar', function () {
+             filaSelc= $(this).closest("tr");
+
+            let datos = tabladata.row(filaSelc).data();
+            AbirMobal(datos);
+        });
+        $("#Salones tbody").on("click", '.btn-eliminar', function () {
+            var UsuarioSelec  = $(this).closest("tr");
+
+            let datos = tabladata.row(UsuarioSelec).data();
+            swal({
+                title: "¿Estas seguro?",
+                text: "¿Deseas eliminar el salon?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-primary",
+                confirmButtonText: "Si",
+                cancelButtonText: "No",
+                closeOnConfirm: true
+            },
+            function()
+            {
+                jQuery.ajax({
+                    url:"@Url.Action("EliminarEscuela", "Admin")",
+                    type: "POST",
+                    data: JSON.stringify({ id: datos.CveEscuela }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (respuesta) {
+
+                        if (respuesta.res) {
+                            tabladata.row(UsuarioSelec).remove().draw();
+                        } else {
+                            swal("No se pudo eliminar", datos.men, "error");
+                        }
+                    },
+                    error: function (eror) {
+                        console.log(eror);
+                    }
+                });
+            })
+            console.log(datos);
+        });
+
+        function Guardar() {
+            let salon = {
+                CveEscuela: $("#Id").val(),
+                Nombre: $("#Nombre").val(),
+                Piso: $("#Piso").val(),
+                IDUbicacion: {
+                    Cve_Ubicacion: $("#cboedificio option:selected").val(),
+                    Nom_Ubicacion: $("#cboedificio option:selected").text()
+                }
+            }
+
+            jQuery.ajax({
+                url: "@Url.Action("GuardarEscuela", "Admin")",
+                type: "POST",
+                data: JSON.stringify({ obj: salon}),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $(".modal-body").LoadingOverlay("hide");
+                    //Categoria nuevo
+                    if (salon.CveEscuela == 0) {
+
+                        if (data.res != 0) {
+                            salon.CveEscuela = data.res;
+                            tabladata.row.add(salon).draw(false);
+                            $("#FormModal").modal("hide");
+                        } else {
+                            $("#Error").text(data.men);
+                            $("#Error").show();
+                        }
+
+                    }//Editar Categoria
+                    else {
+                        if (data.res) {
+                            tabladata.row(filaSelc).data(salon).draw(false);
+                            filaSelc = null;
+                            $("#FormModal").modal("hide");
+                        }
+                        else {
+                            $("#Error").text(data.men);
+                            $("#Error").show();
+                        }
+                    }
+                },
+                error: function (error) {
+                    $("#Error").text(error.ajax);
+                    $(".modal-body").LoadingOverlay("hide")
+                },
+                beforeSend:function() {
+                    $(".modal-body").LoadingOverlay("show", {
+                        imageResizeFactor: 2,
+                        text: "Cargando...",
+                        size:14
+                    })
+                }
+
+            });
+
+
+
+
+        }
+    </script>
+}
+

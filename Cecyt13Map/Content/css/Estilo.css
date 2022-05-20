@@ -1,0 +1,325 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #fff;
+    color: black;
+    font-family: 'Roboto';
+}
+
+.nav {
+    background: #921919;
+    width: 100%;
+    height: 153px;
+    margin: 0px;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    flex-flow: row nowrap;
+}
+
+.Logo {
+    position: absolute;
+    width: 340px;
+    height: 151px;
+    left: 29px;
+    top: 53px;
+    background: url(Logo2.png);
+}
+
+.menu-elemento {
+    color: #fff;
+    /* height: 100%; */
+    text-decoration: none;
+    margin: 0 20px;
+    /* flex: 1 1 auto; */
+    padding: 50px 25px;
+    align-self: center;
+    height: 100% auto;
+    font-size: 20px;
+}
+
+.menu-elemento:hover {
+    background: #681212;
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-elemento.active {
+    background: #681212;
+}
+
+.section {
+    margin: 100px 200px;
+    border: 5px solid #921919;
+    background: rgba(196, 196, 196, 0.28);
+    border-radius: 80px;
+    display: flex;
+    justify-items: flex-start;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.redes {
+    padding: 20px 0px;
+    margin: 20px 10px;
+    /* background: wheat; */
+    flex: 1 0 10%;
+    align-self: center;
+    font-size: 40px;
+}
+
+@media(max-width:810px) {
+    .nav {
+        width: 100%;
+        height: 153px;
+        margin: 0px;
+        display: flex;
+        align-items: stretch;
+        justify-content: flex-start;
+    }
+    .menu-elemento {
+        /* height: 100%; */
+        text-decoration: none;
+        margin: 0 5px;
+        display: flex;
+        padding: 0 2px;
+        height: 100% auto;
+        font-size: 30px;
+        text-align: center;
+        align-items: center;
+    }
+    .menu-elemento:hover {
+        background: #681212;
+    }
+    .Logo {
+        position: absolute;
+        width: 204px;
+        height: 98px;
+        left: 0px;
+        top: 125px;
+        background: url(Logo2.png);
+    }
+    .section {
+        margin: 100px 30px;
+        max-width: max-content;
+        background: rgba(196, 196, 196, 0.28);
+        border: 5px solid #921919;
+        border-radius: 80px;
+        display: flex;
+        justify-items: flex-start;
+        align-items: flex-start;
+        flex: 1 0 auto;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .redes {
+        padding: 20px 0;
+        margin: 20px 10px 20px 10px;
+        /* background: wheat; */
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+}
+
+
+/* Barra de busqueda */
+
+.searchbar {
+    margin-bottom: auto;
+    margin-top: 20px;
+    height: 40px;
+    background-color: #fff;
+    border: 5px solid #921919;
+    border-radius: 30px;
+    display: flex;
+    padding: 5px 2px;
+}
+
+.search_input {
+    color: black;
+    border: 0;
+    outline: 0;
+    background: white;
+    width: 0;
+    font-size: 15px;
+    caret-color: transparent;
+    line-height: 20px;
+    transition: width 0.5s linear;
+}
+
+.searchbar:hover>.search_input {
+    padding: 0 10px;
+    width: 250px;
+    caret-color: darkred;
+    transition: width 0.5s linear;
+}
+
+.searchbar:hover>.search_icon {
+    background: transparent;
+    color: #681212;
+}
+
+.search_icon {
+    height: 40px;
+    width: 40px;
+    float: right;
+    flex: 1 1 10px;
+    justify-content: center;
+    align-items: flex-end;
+    border-radius: 50%;
+    color: darkred;
+    text-decoration: none;
+}
+
+@media(max-width:1120px) {
+    .section {
+        max-width: max-content;
+        display: flex;
+        justify-content: center;
+        align-content: flex-start;
+        align-items: flex-start;
+        flex: 1 0 auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .redes {
+        /* margin: 20px 10px 20px 5px; */
+        flex: 1 1 40%;
+    }
+    .menu-elemento:hover {
+        background: #681212;
+    }
+    .nav {
+        display: flex;
+    }
+    .menu-elemento {
+        padding: 15px;
+    }
+}
+
+
+/* Mapa */
+
+.map {
+    /* transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg); */
+    height: 1230px;
+    white-space: nowrap;
+    align-self: auto;
+    flex: 1 0 20%;
+    /* margin: 30px 220px; */
+}
+
+.center-content {
+    display: flex;
+}
+
+
+/* .center-map {
+    margin: auto 30px;
+} */
+
+
+/* botones */
+
+.container-button {
+    display: flex;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex: 0 1 10%;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.action {
+    color: black;
+    margin: 5px;
+    align-self: auto;
+    width: 40px;
+    justify-content: flex-end;
+    height: 50px;
+}
+
+.action:hover {
+    color: gray;
+}
+
+
+/* Inicio sesion */
+
+.brand_logo_container {
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    top: -65px;
+    margin: 5px;
+    border-radius: 50%;
+    background: #60a3bc;
+    padding: 10px;
+    text-align: center;
+}
+
+.brand_logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.form_container {
+    margin: 30px;
+}
+
+.login_btn {
+    width: 100%;
+    background: #c0392b;
+    color: white;
+}
+
+.login_btn:focus {
+    box-shadow: none;
+    outline: 0px;
+}
+
+.login_container {
+    padding: 0 2rem;
+}
+
+.input-group-text {
+    margin: 10px 30px;
+    background: #681212 !important;
+    color: white !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+}
+
+.section2 {
+    margin: 100px 200px;
+    border: 5px solid #921919;
+    background: rgba(196, 196, 196, 0.28);
+    border-radius: 80px;
+    display: flex;
+    justify-items: flex-start;
+    flex-flow: column wrap;
+    align-items: flex-start;
+}
+
+.input_user,
+.input_pass {
+    margin: 10px 5px 10px 0px;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #c0392b !important;
+}
+
+.label {
+    margin: 5px;
+}
