@@ -11,6 +11,7 @@ namespace CapaAdmin.Controllers
     [Authorize]
     public class AdminController : Controller
     {
+        //Vista de la tabla de administradores
         public ActionResult Admin()
         {
             return View();
