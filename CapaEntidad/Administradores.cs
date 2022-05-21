@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace CapaEntidad
 {
     public class Administradores
+        // atributos de la clase ADMINISTRADORES, mismos que se mostraran en la tabla con el correspondiente nombre
     {
         public int Cve_Admin { get; set; }
         public string Nombre { get; set; }
