@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace CapaEntidad
 {
     public class Escuela
+        //Dentro de la clase CapaEntidad, se mostrara la tabla escuela con los datos correspondiente
     {
         public int CveEscuela { get; set; }
         public string Nombre { get; set; }
