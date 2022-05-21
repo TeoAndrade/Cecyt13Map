@@ -11,6 +11,8 @@ using CapaEntidad;
 namespace CapaNegocio
 {
     public class CN_Edificio
+        // En las clases CapaDatos, CapaEntidad, se mostraran la tabla Edificion en privado 
+        //La tabla Edificio mostrara un listado de ubicaciones  
     {
         private CD_Ubicacion edificio = new CD_Ubicacion();
 
@@ -38,6 +40,7 @@ namespace CapaNegocio
 
         }
         public bool Editar(Ubicacion obj, out string mensaje)
+            // Editar nombre de los edificios 
         {
             mensaje = string.Empty;
 
