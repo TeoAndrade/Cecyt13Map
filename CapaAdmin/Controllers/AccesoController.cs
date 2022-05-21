@@ -18,6 +18,7 @@ namespace CapaAdmin.Controllers
         {
             return View();
         }
+        //Metodo para cambiar la contraseña del usuario
         public ActionResult CambiarClave()
         {
             return View();
