@@ -13,6 +13,7 @@ namespace CapaDatos
     public class CD_Admin
     {
         public List<Administradores> Listar()
+            //Creamos nuevo listado en el apartado de Administradores
         {
             List<Administradores> lista = new List<Administradores>();
             try
@@ -48,6 +49,7 @@ namespace CapaDatos
             return lista;
         }
         public int Registrar(Administradores obj,out string mensaje)
+            // El nuevo Administrador debe insertar los datos correspondientes
         {
             int Res=0;
             mensaje=string.Empty;
@@ -129,6 +131,7 @@ namespace CapaDatos
             return res;
         }
         public bool CambiarClave(int id,string nuevaClave, out string mensaje)
+            //cambio de contraseña
         {
             bool res = false;
             mensaje = string.Empty;
@@ -153,6 +156,7 @@ namespace CapaDatos
             return res;
         }
         public bool Reestablecer(int id,string clave, out string mensaje)
+            //Reestablecer contraseña
         {
             bool res = false;
             mensaje = string.Empty;
