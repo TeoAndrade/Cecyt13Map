@@ -1,5 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    List<SelectListItem> esc = ViewBag.Escuela;
 }
 @section styles{
     <link href="~/Content/css/Estilo.css" rel="stylesheet" />
@@ -9,6 +10,8 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link href="~/Content/awesomplete.base.css" rel="stylesheet" />
+    <link href="~/Content/awesomplete.theme.css" rel="stylesheet" />
 }
 
 
@@ -17,7 +20,7 @@
 <div class="container h-100">
     <div class="d-flex justify-content-end h-100">
         <div class="searchbar">
-            <input class="search_input text-dark" type="text" name="" placeholder="Search..." id="txtBuscar">
+            <input class="search_input text-dark awesomplete" type="text" placeholder="Buscar..." id="txtBuscar" data-list="@esc" data-minChars="1">
             <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
         </div>
     </div>
@@ -44,26 +47,7 @@
 
 
 @section scripts{
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-    
-    <script type="text/javascript" src="//jqueryui.com/wp-includes/js/comment-reply.min.js?ver=4.5.2"></script>
-    <script type="text/javascript" src="//jqueryui.com/wp-includes/js/wp-embed.min.js?ver=4.5.2"></script>
-    <script>
-    $(document).ready(function () {
-        $("#txtBuscar").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    url: "@Url.Action("Buscar", "Home")?buscar=" + request.term,
-                    dataType: "json",
-                    success: function (data) {
-                        response(data);
-                    }
-                });
-            }
 
-
-        });
-    });
-    </script>
+    <script src="~/Scripts/awesomplete.min.js"></script>
 }
 
