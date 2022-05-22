@@ -12,6 +12,7 @@ namespace CapaDatos
 {
     public class CD_Admin
     {
+        //Se es creando una lista de la clase Administradores con los datos recogidos de la base de datos
         public List<Administradores> Listar()
         {
             List<Administradores> lista = new List<Administradores>();
@@ -47,6 +48,8 @@ namespace CapaDatos
             }
             return lista;
         }
+        
+        //Se realiza el registro de un administrador solo si pasa las validaciones 
         public int Registrar(Administradores obj,out string mensaje)
         {
             int Res=0;
@@ -77,6 +80,8 @@ namespace CapaDatos
             }
             return Res;
         }
+        
+        //Se edita los datos del administrador y si son correctos se actualiza en la base de datos
         public bool Editar(Administradores obj, out string mensaje)
         {
             bool Res = false;
@@ -105,6 +110,8 @@ namespace CapaDatos
             }
             return Res;
         }
+        
+        //Se elimina el usuario seleccionado con su id y si existe se elimina, sino se envia un mensaje de error
         public bool Eliminar(int id,out string mensaje)
         {
             bool res=false;
@@ -128,6 +135,8 @@ namespace CapaDatos
             }
             return res;
         }
+        
+        //Se actualiza la clave del administrador por una dada por el administrador
         public bool CambiarClave(int id,string nuevaClave, out string mensaje)
         {
             bool res = false;
@@ -152,6 +161,8 @@ namespace CapaDatos
             }
             return res;
         }
+        
+        //Se cambia la contraseña del administrador por una creada por el sistema que posteriormente podra cambiar
         public bool Reestablecer(int id,string clave, out string mensaje)
         {
             bool res = false;
