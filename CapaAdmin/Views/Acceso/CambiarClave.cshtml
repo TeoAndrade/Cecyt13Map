@@ -18,8 +18,7 @@
 <body>
     <main>
         <div class="container">
-             <!-- Creamos contenedor-->
-
+      
             <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -40,9 +39,9 @@
                                         <h5 class="card-title text-center pb-0 fs-2">Cambia tu contraseña</h5>
                                         <p class="text-center small">Escribe tu contraseña actual y la nueva</p>
                                     </div>
-                                       <!--Validacion del proceso-->
+                                       <!--Metodo de CambiarClave -->
+                                      <!--Formulario, para poder insertar datos-->
                                     <form class="row g-3 needs-validation" novalidate action="@Url.Action("CambiarClave","Acceso")" method="post">
-                                            <!--Formulario, para poder insertar datos-->
                                         <input type="hidden" class="form-control" value="@TempData["idAdmin"]" name="idAdmin" />
 
                                         <div class="col-12">
