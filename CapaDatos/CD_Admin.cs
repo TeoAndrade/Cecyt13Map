@@ -49,7 +49,7 @@ namespace CapaDatos
             return lista;
         }
         public int Registrar(Administradores obj,out string mensaje)
-            // El nuevo Administrador debe insertar los datos correspondientes
+            // El nuevo Administrador debe insertar los datos previamente insertados
         {
             int Res=0;
             mensaje=string.Empty;
@@ -131,7 +131,7 @@ namespace CapaDatos
             return res;
         }
         public bool CambiarClave(int id,string nuevaClave, out string mensaje)
-            //cambio de contraseña
+            //en caso de que el usuario es nuevo o se le olvida la contraseñ, puede crearse  una nueva
         {
             bool res = false;
             mensaje = string.Empty;
@@ -156,7 +156,7 @@ namespace CapaDatos
             return res;
         }
         public bool Reestablecer(int id,string clave, out string mensaje)
-            //Reestablecer contraseña
+            //Reestablecer contraseña en donde funciona atravez del correo del usuario y la clave se genera por el sistema
         {
             bool res = false;
             mensaje = string.Empty;
