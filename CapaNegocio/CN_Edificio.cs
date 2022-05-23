@@ -12,7 +12,7 @@ namespace CapaNegocio
 {
     public class CN_Edificio
     {
-        // creamos metodo privado, vista solo en esta clase 
+        // creamos elemento privado, vista solo en esta clase 
         private CD_Ubicacion edificio = new CD_Ubicacion();
         
         //Se crea un metodo para poder acceder a lista creada
@@ -41,7 +41,7 @@ namespace CapaNegocio
         }
         //Se realiza la misma validacion 
         public bool Editar(Ubicacion obj, out string mensaje)
-            //Edita el nombre de los nombres de los edificios, en caso de que falle la validacion
+            //Edita el nombre de los edificios, en caso de que falle la validacion
         {
             mensaje = string.Empty;
 
