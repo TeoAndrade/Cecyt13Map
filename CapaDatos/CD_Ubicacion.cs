@@ -13,6 +13,7 @@ namespace CapaDatos
 {
     public class CD_Ubicacion
     {
+        //Se crea una lisda de los edificios de la escuela
         public List<Ubicacion> Listar()
         {
             List<Ubicacion> cat = new List<Ubicacion>();
@@ -45,6 +46,8 @@ namespace CapaDatos
 
             return cat;
         }
+        
+        //Se crea un nuevo edificio con el dato indicado previamente, solo si no exite uno con el mismo nombre
         public int Registrar(Ubicacion obj, out string Mensaje)
         {
             int IdGuardado = 0;
@@ -72,6 +75,8 @@ namespace CapaDatos
             }
             return IdGuardado;
         }
+        
+        //Se editan los datos del edificio seleccionado
         public bool Editar(Ubicacion obj, out string mensaje)
         {
             bool resultado = false;
@@ -100,6 +105,8 @@ namespace CapaDatos
             }
             return resultado;
         }
+        
+        //Se elimina el edificio seleccionado solo si no esta relacionado a un salon
         public bool Eliminar(int id, out string mensaje)
         {
             bool resultado = false;
