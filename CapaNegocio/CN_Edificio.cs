@@ -44,6 +44,7 @@ namespace CapaNegocio
             //Edita el nombre de los edificios, en caso de que falle la validacion
         {
             mensaje = string.Empty;
+            //En caso de que falle la validacion, mostrara un mensaje
 
             if (string.IsNullOrEmpty(obj.Nom_Ubicacion) || string.IsNullOrWhiteSpace(obj.Nom_Ubicacion))
             {
