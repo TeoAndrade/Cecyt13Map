@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Cecyt13Map.Permisos
 {
+    //Clase para poder validar que el usuario no entre a otros metodos sin haberse antes logueado
     public class ValidarSesionAtribute: ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
