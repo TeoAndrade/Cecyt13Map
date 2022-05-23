@@ -16,18 +16,26 @@ namespace CapaAdmin.Controllers
         {
             return View();
         }
+        
+        //Vista de la tabla de los salones
         public ActionResult Salones()
         {
             return View();
         }
+        
+        //Vista de la tabla de los edificios
         public ActionResult Edificios()
         {
             return View();
         }
+        
+        //Vista de una pagina que te mostrara las coordenadas dentro de la imagen
         public ActionResult Coordenadas()
         {
             return View();
         }
+        
+        //Metodo de tipo Json para que se muestren la lista de administradores
         public JsonResult ListarAdmin()
         {
             List<Administradores> usas = new List<Administradores>();
@@ -36,6 +44,7 @@ namespace CapaAdmin.Controllers
             return Json(new { data = usas }, JsonRequestBehavior.AllowGet);
         }
 
+        //Metodo para guardar un administrador con datos ingresados y que posteriormente se ilustran en la tabla
         [HttpPost]
         public JsonResult GuardarAdmin(Administradores obj)
         {
@@ -54,6 +63,7 @@ namespace CapaAdmin.Controllers
         }
         //Lucero28<3
 
+        //Metodo para poder eliminar el administrador indicado
         [HttpPost]
         public JsonResult EliminarAdmin(int id)
         {
@@ -64,6 +74,8 @@ namespace CapaAdmin.Controllers
 
             return Json(new { res = resultado, men = mensaje }, JsonRequestBehavior.AllowGet);
         }
+        
+        //Metodo de tipo Json para que se muestren la lista de edificios
         public JsonResult ListarEdificios()
         {
             List<Ubicacion> usas = new List<Ubicacion>();
@@ -72,6 +84,7 @@ namespace CapaAdmin.Controllers
             return Json(new { data = usas }, JsonRequestBehavior.AllowGet);
         }
 
+        //Metodo para guardar un edificio con datos ingresados y que posteriormente se ilustran en la tabla
         [HttpPost]
         public JsonResult GuardarEdificio(Ubicacion obj)
         {
@@ -89,6 +102,7 @@ namespace CapaAdmin.Controllers
             return Json(new { res = resultado, men = mensaje }, JsonRequestBehavior.AllowGet);
         }
 
+        //Metodo para poder eliminar el edificio indicado
         [HttpPost]
         public JsonResult EliminarEdificio(int id)
         {
@@ -99,6 +113,8 @@ namespace CapaAdmin.Controllers
 
             return Json(new { res = resultado, men = mensaje }, JsonRequestBehavior.AllowGet);
         }
+        
+        //Metodo de tipo Json para que se muestren la lista de salones
         public JsonResult ListarEscuela()
         {
             List<Escuela> usas = new List<Escuela>();
@@ -107,6 +123,7 @@ namespace CapaAdmin.Controllers
             return Json(new { data = usas }, JsonRequestBehavior.AllowGet);
         }
 
+         //Metodo para guardar un salon con datos ingresados y que posteriormente se ilustran en la tabla
         [HttpPost]
         public JsonResult GuardarEscuela(Escuela obj)
         {
@@ -124,6 +141,7 @@ namespace CapaAdmin.Controllers
             return Json(new { res = resultado, men = mensaje }, JsonRequestBehavior.AllowGet);
         }
 
+        //Metodo para poder eliminar el salon indicado
         [HttpPost]
         public JsonResult EliminarEscuela(int id)
         {
