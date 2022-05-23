@@ -10,12 +10,16 @@ namespace CapaNegocio
 {
     public class CN_Admin
     {
+        //Se crea un elemento de tipo privado para poder acceder a los metodos de la clase CD_Admin
         private CD_Admin admin = new CD_Admin();
-
+        
+        //Se crea un metodo para mandar a llamar de la clase CD_Admin la funcion Listar
         public List<Administradores> Listar()
         {
             return admin.Listar();
         }
+        
+        //Se realizan algunas validaciones de los datos ingresados por el administrador para evitar errores al guardar
         public int Registrar(Administradores obj, out string mensaje)
         {
             mensaje = string.Empty;
@@ -55,6 +59,8 @@ namespace CapaNegocio
                 return 0;
             }
         }
+        
+        //Se relizan las mismas validaciones para evitar errores a la hora de actualizar datos
         public bool Editar(Administradores obj, out string mensaje)
         {
             mensaje = string.Empty;
@@ -77,14 +83,20 @@ namespace CapaNegocio
             else
                 return false;
         }
+        
+        //Se hace el llamado de metodo Eliminar y se envian los datos requeridos por el mismo
         public bool Eliminar(int id, out string mensaje)
         {
             return admin.Eliminar(id, out mensaje);
         }
+        
+        //Se cambia la clave del administrador por una que el disigne
         public bool CambiarClave(int id, string nueva, out string mensaje)
         {
             return admin.CambiarClave(id, nueva, out mensaje);
         }
+        
+        //Se le envia un correo al administrador con la contraseña generada por el sistema que posteriormente la cambiara
         public bool Reestablecer(int id, string correo, out string mensaje)
         {
             mensaje = string.Empty;
