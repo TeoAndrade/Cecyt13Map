@@ -44,6 +44,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Edificio</h5>
 
             </div>
+            <!--Validacion de datos introducidos anteriormente-->
             <div class="modal-body ">
                 <input id="Id" type="hidden" value="0" />
                 <div class="row g-2">
@@ -53,6 +54,7 @@
                     </div>
 
                 </div>
+                <!--Alerta de error-->
                 <div class="row mt-2">
                     <div class="col-sm-12">
                         <div id="Error" class="alert alert-danger" role="alert">
@@ -95,7 +97,7 @@
                 "url":"https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
             }
         });
-
+<!--funcion de apertura de ventana emergente-->
         function AbirMobal(json) {
             $("#Id").val(0);
             $("#Nombre").val("");
@@ -119,7 +121,7 @@
         });
         $("#Edificios tbody").on("click", '.btn-eliminar', function () {
             var UsuarioSelec  = $(this).closest("tr");
-
+<!--Proceso de eliminacion de categorias-->
             let datos = tabladata.row(UsuarioSelec).data();
             swal({
                 title: "¿Estas seguro?",
@@ -133,6 +135,7 @@
             },
             function()
             {
+                <!--Eliminacion de edificio-->
                 jQuery.ajax({
                     url:"@Url.Action("EliminarEdificio", "Admin")",
                     type: "POST",
@@ -140,7 +143,7 @@
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
                     success: function (respuesta) {
-
+                        <!--mensaje  al no poder eliminarse algun edificio-->
                         if (respuesta.res) {
                             tabladata.row(UsuarioSelec).remove().draw();
                         } else {
@@ -154,13 +157,13 @@
             })
             console.log(datos);
         });
-
+<!-- Funcion de guardar -->
         function Guardar() {
             let edificio = {
                 Cve_Ubicacion: $("#Id").val(),
                 Nom_Ubicacion: $("#Nombre").val()
             }
-
+<!--Guardar cambio-->
             jQuery.ajax({
                 url: "@Url.Action("GuardarEdificio", "Admin")",
                 type: "POST",
