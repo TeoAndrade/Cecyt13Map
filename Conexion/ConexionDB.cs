@@ -9,6 +9,7 @@ namespace Conexion
 {
     public class ConexionDB
     {
+        //Se crea un elemento de tipo static para usar la cadena de conexion
         public static string cn = ConfigurationManager.ConnectionStrings["cadena"].ToString();
     }
 }
