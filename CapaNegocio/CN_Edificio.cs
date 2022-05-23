@@ -12,7 +12,7 @@ namespace CapaNegocio
 {
     public class CN_Edificio
     {
-        //Se crea un elemento de la clase CD_Ubicacion para hacer llamado a los metodos
+        // creamos elemento privado, vista solo en esta clase 
         private CD_Ubicacion edificio = new CD_Ubicacion();
         
         //Se crea un metodo para poder acceder a lista creada
@@ -39,11 +39,12 @@ namespace CapaNegocio
                 return 0;
             }
         }
-        
         //Se realiza la misma validacion 
         public bool Editar(Ubicacion obj, out string mensaje)
+            //Edita el nombre de los edificios, en caso de que falle la validacion
         {
             mensaje = string.Empty;
+            //En caso de que falle la validacion, mostrara un mensaje
 
             if (string.IsNullOrEmpty(obj.Nom_Ubicacion) || string.IsNullOrWhiteSpace(obj.Nom_Ubicacion))
             {
@@ -56,7 +57,6 @@ namespace CapaNegocio
             else
                 return false;
         }
-        
         //Se accede al metodo eliminar de la clase CD_Ubicacion
         public bool Eliminar(int id, out string mensaje)
         {
