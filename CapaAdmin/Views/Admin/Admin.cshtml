@@ -47,6 +47,7 @@
 
             </div>
             <div class="modal-body ">
+                <!--auntocompleta datos previamentes insertados-->
                 <input id="Id" type="hidden" value="0" />
                 <div class="row g-2">
                     <div class="col-sm-6 mt-2">
@@ -95,7 +96,7 @@
     <script>
         let tabladata;
         let filaSelc;
-
+             <!--Tabla de administradores registrados-->
         tabladata = $("#Administradores").DataTable({
             responsive: true,
             ordering: false,
@@ -149,6 +150,7 @@
         $("#Administradores tbody").on("click", '.btn-eliminar', function () {
             var UsuarioSelec  = $(this).closest("tr");
 
+            <!--proceso de eliminacion de administrador-->
             let datos = tabladata.row(UsuarioSelec).data();
             swal({
                 title: "¿Estas seguro?",
