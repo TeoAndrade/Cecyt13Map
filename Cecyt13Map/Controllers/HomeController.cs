@@ -17,6 +17,8 @@ namespace Cecyt13Map.Controllers
     {
         //Definicion de la cadena de conexion
         static string cadena = @"Data Source=DESKTOP-BC85JKD\SQL;Initial Catalog=Cecyt13Map;Integrated Security=True";
+        
+        //Metodo para poder visualizar la lista de edificios
         public ActionResult Index()
         {
             List<UbicacionViewModel> list = null;//cambiar el Cecyt13MapEntities por Cecyt13Map2Entities
@@ -105,10 +107,13 @@ namespace Cecyt13Map.Controllers
             return Json(busquedas,JsonRequestBehavior.AllowGet);
         }
 
+        //Metodo para las redes de la pagina web
         public ActionResult Contact()
         {
             return View();
         }
+        
+        //Metodo para mostrar una tabla de los salones que pertenecen a un edificio indicado
         public JsonResult Salones()
         {
             int edificio = 300;
