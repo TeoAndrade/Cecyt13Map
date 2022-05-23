@@ -13,21 +13,25 @@ namespace CapaAdmin.Controllers
 {
     public class AccesoController : Controller
     {
-        // GET: Acceso
+        //Metodo donde el administrador realiza el logeo
         public ActionResult Index()
         {
             return View();
         }
+        
         //Metodo para cambiar la contraseña del usuario
         public ActionResult CambiarClave()
         {
             return View();
         }
+        
+        //Metodo donde el administrador ingresara su correo para reestablecer su contraseña
         public ActionResult Reestablecer()
         {
             return View();
         }
 
+        //Metodo para una vez ingresados los datos se comprueba la existencia del administrador en la base de datos
         [HttpPost]
         public ActionResult Index(string correo, string clave)
         {
@@ -56,6 +60,8 @@ namespace CapaAdmin.Controllers
         }
         /*ivana2615
          dwalkerw_n927j@chyju.com*/
+         
+         //Metodo para cuando se ingresan los datos en dicha interfaz y hace que se pueda cambiar la clave por la que el administrador quiera
         [HttpPost]
         public ActionResult CambiarClave(string idAdmin, string claveActual, string claveNueva, string claveConfirmada)
         {
@@ -92,6 +98,8 @@ namespace CapaAdmin.Controllers
             }
 
         }
+        
+        //Metodo para cuando ingrese el correo y se le envie una contraseña generada al correo 
         [HttpPost]
         public ActionResult Reestablecer(string correo)
         {
@@ -117,6 +125,8 @@ namespace CapaAdmin.Controllers
             }
 
         }
+        
+        //Metodo para cerrar la sesion del Administrador
         public ActionResult CerrarSesion()
         {
             FormsAuthentication.SignOut();
