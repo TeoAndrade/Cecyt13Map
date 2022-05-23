@@ -5,6 +5,7 @@ using System.Web;
 
 namespace Cecyt13Map.Models
 {
+    //Propiedades de la clase usuario
     public class Usuario
     {
         public int Cve_Usuario { get; set; }
