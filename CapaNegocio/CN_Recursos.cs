@@ -11,11 +11,14 @@ namespace CapaNegocio
 {
     public class CN_Recursos
     {
+        //Metodo para generar una clave de 6 caracteres alfanumericos
         public static string GenerarClave()
         {
             string clave = Guid.NewGuid().ToString("N").Substring(0, 6);
             return clave;
         }
+        
+        //Se encripta el texto introducido 
         public static string Encriptar(string texto)
         {
             StringBuilder sb = new StringBuilder();
@@ -29,6 +32,8 @@ namespace CapaNegocio
             }
             return sb.ToString();
         }
+        
+        //Metodo para enviar al correo un mensaje y asunto
         public static bool EnviarCorreo(string correo, string asunto, string menseja)
         {
             bool resultado = false;
