@@ -7,6 +7,7 @@
 
 <html>
 <head>
+    <!--Configuracion de pantalla dependiendo de dispositipo-->
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <link href="~/Content/css/style.css" rel="stylesheet" />
@@ -19,7 +20,7 @@
 
     <main>
         <div class="container">
-
+                  <!--Registro de inicio de sesion-->
             <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -39,7 +40,7 @@
                                         <h5 class="card-title text-center pb-0 fs-2">Inicia sesion</h5>
                                         <p class="text-center small">Escribe tu correo y contraseña</p>
                                     </div>
-
+                                         <!--valicion de las acciones-->
                                     <form class="row g-3 needs-validation" novalidate action="@Url.Action("Index","Acceso")" method="post">
 
                                         <div class="col-12">
@@ -52,6 +53,7 @@
                                         </div>
 
                                         <div class="col-12">
+                                            <!--validacion de contraseña-->
                                             <label for="yourPassword" class="form-label">Contraseña</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-key-fill"></i></span>
