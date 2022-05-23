@@ -13,6 +13,7 @@ namespace CapaDatos
 {
     public class CD_Escuela
     {
+        //Es un metodo que elabora una lista de los salones con su piso y edificio. Realizando un inner join con la tabla Ubicacion
         public List<Escuela> Listar()
         {
             List<Escuela> cat = new List<Escuela>();
@@ -55,6 +56,8 @@ namespace CapaDatos
 
             return cat;
         }
+        
+        //Se registra un salon obteniendo un mensaje y resultado si es exitoso
         public int Registrar(Escuela obj, out string Mensaje)
         {
             int IdGuardado = 0;
@@ -84,6 +87,8 @@ namespace CapaDatos
             }
             return IdGuardado;
         }
+        
+        //Se editan los datos del salon anteriormente seleccionado
         public bool Editar(Escuela obj, out string mensaje)
         {
             bool resultado = false;
@@ -114,6 +119,8 @@ namespace CapaDatos
             }
             return resultado;
         }
+        
+        //Se elimina el salon previamente seleccionado
         public bool Eliminar(int id, out string mensaje)
         {
             bool resultado = false;
