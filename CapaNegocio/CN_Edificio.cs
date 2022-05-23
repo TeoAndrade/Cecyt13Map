@@ -13,6 +13,7 @@ namespace CapaNegocio
     public class CN_Edificio
     {
         //Se crea un elemento de la clase CD_Ubicacion para hacer llamado a los metodos
+        //Creamos metodo privado, vista solo en esta clase
         private CD_Ubicacion edificio = new CD_Ubicacion();
         
         //Se crea un metodo para poder acceder a lista creada
