@@ -19,12 +19,13 @@ namespace Cecyt13Map.Controllers
         static string cadena = @"Data Source=DESKTOP-BC85JKD\SQL;Initial Catalog=Cecyt13Map;Integrated Security=True";
 
 
-        // GET: Menu
+        //Metodo donde se loguea el usuario
         public ActionResult Login()
         {
             return View();
         }
-
+        
+        //Metodo donde se registra el usuario
         public ActionResult SignUp()
         {
             return View();
@@ -57,7 +58,8 @@ namespace Cecyt13Map.Controllers
                 return View();
             }
         }
-
+        
+        //Metodo para cunado el usuario ingrese los datos requeridos
         [HttpPost]
         public ActionResult SignUp(Usuario user)
         {
