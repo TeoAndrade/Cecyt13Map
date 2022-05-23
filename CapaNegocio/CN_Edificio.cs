@@ -12,12 +12,16 @@ namespace CapaNegocio
 {
     public class CN_Edificio
     {
+        //Se crea un elemento de la clase CD_Ubicacion para hacer llamado a los metodos
         private CD_Ubicacion edificio = new CD_Ubicacion();
-
+        
+        //Se crea un metodo para poder acceder a lista creada
         public List<Ubicacion> Listar()
         {
             return edificio.Listar();
         }
+        
+        //Se crea un salon solo si pasa las validaciones 
         public int Registrar(Ubicacion obj, out string Mensaje)
         {
             Mensaje = string.Empty;
@@ -34,9 +38,9 @@ namespace CapaNegocio
             {
                 return 0;
             }
-
-
         }
+        
+        //Se realiza la misma validacion 
         public bool Editar(Ubicacion obj, out string mensaje)
         {
             mensaje = string.Empty;
@@ -52,6 +56,8 @@ namespace CapaNegocio
             else
                 return false;
         }
+        
+        //Se accede al metodo eliminar de la clase CD_Ubicacion
         public bool Eliminar(int id, out string mensaje)
         {
             return edificio.Eliminar(id, out mensaje);
