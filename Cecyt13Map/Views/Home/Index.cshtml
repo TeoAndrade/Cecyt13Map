@@ -1,4 +1,5 @@
 ﻿@{
+//Creacion de un objeto de tipo list para poder mostrar los edificios 
     ViewBag.Title = "Home Page";
     List<SelectListItem> ubi = (List<SelectListItem>)ViewBag.Items;
     
@@ -36,6 +37,7 @@
         </div>
     </div>
 
+    <!-- Ruta hacia el edificio indicado -->
     <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
         <canvas id="miLienzo" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
     </article>
@@ -52,6 +54,7 @@
         coor.fillRect(355, 895, 50, 5);
         coor.fillRect(400, 880, 5, 10);
     </script>
+    <!-- Punto de inicio -->
     <script>
         var ruta = document.getElementById("miLienzo");
         var coor = ruta.getContext("2d");
@@ -59,12 +62,15 @@
         coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
         coor.fill();
     </script>
+    <!-- Punto de llegada -->
     <script>
         var ruta = document.getElementById("miLienzo");
         var fin = ruta.getContext("2d");
         fin.arc(400, 865, 10, 0, 2 * Math.PI, true);
         fin.fill();
     </script>
+    
+    <!--Tabla de los salones que contiene-->
     <div class="card mr-5 mt-3 mb-2 ml-5">
         <div class="card-header">
             Edificio Central
@@ -80,6 +86,8 @@
             </table>
         </div>
     </div>
+    
+    <!-- Imagenes del edificio -->
     <div class="d-flex flex-column">
         <h4 style="margin: 100px 200px 0px 200px;"><i>Edificio Central</i></h4>
         <hr style="margin: 5px 200px 0px 200px; border: 1px solid #921919;
@@ -139,7 +147,7 @@
     <script src="~/Scripts/DataTables/dataTables.bootstrap4.js"></script>
     <script src="~/Scripts/DataTables/dataTables.fixedHeader.js"></script>
 
-
+<!-- script para que se muestre la tabla de los salones-->
     <script>
 
         $(document).ready(function() {
