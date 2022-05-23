@@ -125,7 +125,7 @@
             document.captureEvents(Event.MOUSEMOVE);
             document.mousemove = mouseMove;
         }
-
+ <!--Funcion de desplazamiento del mouse en la pantalla-->
         function mouseMove(e) {
             if (ns4 || ns6) {
                 coorX = e.pageX;
@@ -137,7 +137,7 @@
             }
             return true;
         }
-
+   <!--Funcion de desplazamiento-->
         function ini() {
             if (ie4) document.body.onmousemove = mouseMove;
             iniX = document.getElementById("recuadro").offsetLeft;
@@ -148,14 +148,14 @@
             alert("Pinchó las siguientes coordenadas:\nx:" + coorX + "\ny: " + coorY + "\niniX = " + iniX + "\niniY = " +
                 iniY);
         }
-
+   <!--Funcion de mostrar-->
         function mostrar() {
             document.getElementById("ayuda").style.top = coorY + 10;
             document.getElementById("ayuda").style.left = coorX + 10;
             document.getElementById("ayuda").style.visibility = "visible";
             document.getElementById("ayuda").innerHTML = "x = " + coorX + "<br>y = " + coorY;
         }
-
+           <!--Funcion de ocultar-->
         function ocultar() {
             document.getElementById("ayuda").style.visibility = "hidden";
         }
@@ -170,7 +170,7 @@
 
     <script type="text/javascript">
         //<![CDATA[
-
+ <!--al dar click te lleva a tu objetivo-->
 
         $('.clickable').bind('click', function (ev) {
             var $div = $(ev.target);
@@ -188,6 +188,7 @@
     </script>
 
     <script>
+         <!--marco principal incrustado en altura del contenido-->
         // tell the embed parent frame the height of the content
         if (window.parent && window.parent.parent) {
             window.parent.parent.postMessage(["resultsFrame", {
@@ -195,7 +196,7 @@
                 slug: "ZZEk8"
             }], "*")
         }
-
+ <!--en caso de que el usuario intente sobreescribir-->
         // always overwrite window.name, in case users try to set it manually
         window.name = "result"
     </script>
