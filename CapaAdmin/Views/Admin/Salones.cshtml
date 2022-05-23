@@ -90,7 +90,7 @@
     <script>
         let tabladata;
         let filaSelc;
-
+<!--despliega lista de salones-->
         tabladata = $("#Salones").DataTable({
             responsive: true,
             ordering: false,
@@ -118,7 +118,7 @@
                 "url":"https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
             }
         });
-
+<!---->
         jQuery.ajax({
             url: "@Url.Action("ListarEdificios", "Admin")",
             type: "GET",
@@ -137,7 +137,7 @@
                 console.log(eror);
             }
         });
-
+<!--funcion de despliegue de una ventana emergente-->
         function AbirMobal(json) {
             $("#Id").val(0);
             $("#Nombre").val("");
@@ -156,7 +156,7 @@
 
             $("#FormModal").modal("show");
         }
-
+<!--proceso de editar datos de salones-->
         $("#Salones tbody").on("click", '.btn-editar', function () {
              filaSelc= $(this).closest("tr");
 
@@ -179,6 +179,7 @@
             },
             function()
             {
+                <!--proceso de eliminacion de escuela-->
                 jQuery.ajax({
                     url:"@Url.Action("EliminarEscuela", "Admin")",
                     type: "POST",
@@ -200,7 +201,7 @@
             })
             console.log(datos);
         });
-
+<!--funcion de guardar-->
         function Guardar() {
             let salon = {
                 CveEscuela: $("#Id").val(),
