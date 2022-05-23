@@ -12,12 +12,16 @@ namespace CapaNegocio
 {
     public class CN_Escuela
     {
+        //Se crea un elemento de la clase CD_Escuela para acceder a sus metodos
         private CD_Escuela objEscuela = new CD_Escuela();
-
+        
+        //Se accede a la lista de salones creada
         public List<Escuela> Listar()
         {
             return objEscuela.Listar();
         }
+        
+        //Se realizan las validaciones para registrar al salon
         public int Registrar(Escuela obj, out string Mensaje)
         {
             Mensaje = string.Empty;
@@ -43,9 +47,9 @@ namespace CapaNegocio
             {
                 return 0;
             }
-
-
         }
+        
+        //Se realizan las mismas validaciones y si las pasa lo actualiza
         public bool Editar(Escuela obj, out string mensaje)
         {
             mensaje = string.Empty;
@@ -69,6 +73,7 @@ namespace CapaNegocio
                 return false;
         }
 
+        //Se accede al metodo para poder eliminar el salon
         public bool Eliminar(int id, out string mensaje)
         {
             return objEscuela.Eliminar(id, out mensaje);
