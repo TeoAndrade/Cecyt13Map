@@ -26,6 +26,7 @@
         <div class="d-flex justify-content-center h-100">
             <div class="section2">
                 <div class="d-flex justify-content-start form_container">
+                    <!--formulario de registro-->
                     <form action="@Url.Action("SignUp","Menu")" method="post">
                         <div class="input-group mb-2">
                             <div class="input-group-append">
@@ -51,6 +52,7 @@
                             </div>
                             <input type="password" name="ConfirmarContra" class="form-control input_pass" placeholder="Confirmar contraseña">
                         </div>
+                        <!-- Mensaje de error-->
                         @if (ViewData["Mensaje"] != null)
                         {
                             <div class="alert alert-danger" role="alert">
