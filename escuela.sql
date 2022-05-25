@@ -49,7 +49,7 @@ CREATE PROCEDURE SP_Registrar(
     @Registrado BIT OUTPUT,--! Datos de salida
     @mensaje VARCHAR(100) OUTPUT
 )as
--- en caso de que el usuario se haya regstrado anteriormente
+-- en caso de que el usuario se haya registrado anteriormente
 BEGIN
     if(not exists(select*from Usuario where Correo=@correo))
     BEGIN
