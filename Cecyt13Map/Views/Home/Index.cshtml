@@ -1,7 +1,6 @@
 ﻿@{
 //Creacion de un objeto de tipo list para poder mostrar los edificios 
     ViewBag.Title = "Home Page";
-    List<SelectListItem> ubi = (List<SelectListItem>)ViewBag.Items;
     
     Layout = "~/Views/Shared/_Layout.cshtml";
     
@@ -27,16 +26,21 @@
             <div class="mt-3">
                 <div class="col-md-12">
                     <label>Seleccione el punto de partida</label>
-                    @Html.DropDownList("datos", ubi, "Entrada de la Escuela", new { @class = "form-control p-0", @id="Inicio"})
+                    <select id="Inicio" class="form-control p-0" onchange="Filtrar()">
+                        
+                    </select>
                 </div>
                 <div class="col-md-12">
                     <label>Seleccione el punto de llegada</label>
-                    @Html.DropDownList("datos", ubi, "Entrada de la Escuela", new { @class = "form-control p-0", @id="Llegada"})
+                    <select id="Llegada" class="form-control p-0" onchange="Filtrar()">
+                        
+                    </select>
                 </div>
             </div>
         </div>
     </div>
-
+    
+    
     <!--#region Entrada-->
     <!--#region Entrada a Sur-->
     <div id="EntradaSur">
@@ -68,7 +72,7 @@
             coor.arc(440, 1020, 10, 0, 2 * Math.PI, true);
             coor.fill();
         </script>
-    </div>
+    
     <!--#endregion-->
     <!--#region Entrada a Norte-->
     <div id="EntradaNorte">
@@ -708,6 +712,10 @@
     </div>
     <!--#endregion-->
     <!--#endregion-->
+    </div>
+    <div class="alert alert-danger" role="alert">
+        El punto de inicio y de llegada no pueden ser iguales
+    </div>
     <!--Tabla de los salones que contiene-->
     <div class="card mr-5 mt-3 mb-2 ml-5">
         <div class="card-header">
@@ -1030,59 +1038,79 @@
 
     </script>
     <script>
-        $("#Inicio").on("change", function () {
-            $("#EntradaSur").hide();
-            $("#EntradaNorte").hide();
-            $("#EntradaGobierno").hide();
-            $("#EntradaGestion").hide();
-            $("#EntradaBiblioteca").hide();
-            $("#EntradaCentral").hide();
-            $("#NorteSur").hide();
-            $("#NorteCentral").hide();
-            $("#NorteGestion").hide();
-            $("#NorteGobierno").hide();
-            $("#NorteBiblioteca").hide();
-            $("#SurCentral").hide();
-            $("#SurGobierno").hide();
-            $("#SurGestion").hide();
-            $("#SurBiblio").hide();
-            $("#CentralGestion").hide();
-            $("#CentralGobierno").hide();
-            $("#CentralBiblio").hide();
-            $("#GestionGob").hide();
-            $("#BibliotecaGestion").hide();
-            $("#Central").hide();
-            $("#Norte").hide();
-            $("#Sur").hide();
-            $("#Gestion").hide();
 
-        });
-        $("#Llegada").on("change", function () {
-            $("#EntradaSur").hide();
-            $("#EntradaNorte").hide();
-            $("#EntradaGobierno").hide();
-            $("#EntradaGestion").hide();
-            $("#EntradaBiblioteca").hide();
-            $("#EntradaCentral").hide();
-            $("#NorteSur").hide();
-            $("#NorteCentral").hide();
-            $("#NorteGestion").hide();
-            $("#NorteGobierno").hide();
-            $("#NorteBiblioteca").hide();
-            $("#SurCentral").hide();
-            $("#SurGobierno").hide();
-            $("#SurGestion").hide();
-            $("#SurBiblio").hide();
-            $("#CentralGestion").hide();
-            $("#CentralGobierno").hide();
-            $("#CentralBiblio").hide();
-            $("#GestionGob").hide();
-            $("#BibliotecaGestion").hide();
-            $("#Central").hide();
-            $("#Norte").hide();
-            $("#Sur").hide();
-            $("#Gestion").hide();
+        $(".alert").hide();
+        //$("#Inicio").on("change", function () {
+        //    $("#Rutas").hide();
+        //});
 
+        jQuery.ajax({
+            url: "@Url.Action("ListarUbicacion", "Home")",
+            type: "GET",
+            data: null,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data);
+                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#Inicio");
+                $("<option>").attr({ "value": "700" }).text("Entrada de la escuela").appendTo("#Inicio");
+                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#Llegad");
+                $("<option>").attr({ "value": "700" }).text("Entrada de la escuela").appendTo("#Llegada");
+
+                $.each(data.data, function (index, value) {
+                    $("<option>").attr({ "value": value.IdUbi }).text(value.NomUbi).appendTo("#Inicio");
+                    $("<option>").attr({ "value": value.IdUbi }).text(value.NomUbi).appendTo("#Llegada");
+                })
+            },
+            error: function (eror) {
+                console.log(eror);
+            }
         });
+
+
+
+        //$("#Llegada").on("change", function () {
+        //    $("#Rutas").hide();
+        //});
+        function Filtrar() {
+            let Ihicio = $("#Inicio").on("change");
+            let Final2 = $("#Llegada").on("change");
+            if (Ihicio || Final2) {
+                $("#EntradaSur").hide();
+                $("#EntradaNorte").hide();
+                $("#EntradaGobierno").hide();
+                $("#EntradaGestion").hide();
+                $("#EntradaBiblioteca").hide();
+                $("#EntradaCentral").hide();
+                $("#NorteSur").hide();
+                $("#NorteCentral").hide();
+                $("#NorteGestion").hide();
+                $("#NorteGobierno").hide();
+                $("#NorteBiblioteca").hide();
+                $("#SurCentral").hide();
+                $("#SurGobierno").hide();
+                $("#SurGestion").hide();
+                $("#SurBiblio").hide();
+                $("#CentralGestion").hide();
+                $("#CentralGobierno").hide();
+                $("#CentralBiblio").hide();
+                $("#GestionGob").hide();
+                $("#BibliotecaGestion").hide();
+                debugger;
+                let inicio = $("#Inicio").val();
+                let final = $("#Llegada").val();
+
+                if (final == inicio) {
+                    $(".alert").show();
+                }
+                else {
+                    if (final == 200 && inicio == 700) {
+                        $("#EntradaSur").show();
+                    }
+                }
+            }
+        }
+
+
     </script>
 }

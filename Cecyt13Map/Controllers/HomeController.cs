@@ -21,27 +21,6 @@ namespace Cecyt13Map.Controllers
         //Metodo para poder visualizar la lista de edificios
         public ActionResult Index()
         {
-            List<UbicacionViewModel> list = null;//cambiar el Cecyt13MapEntities por Cecyt13Map2Entities
-            using (Cecyt13MapEntities db =new Cecyt13MapEntities())
-            {
-                    list=(from d in db.Ubicacion
-                    select new UbicacionViewModel
-                    {
-                        IdUbi=d.Cve_Ubicacion,
-                        NomUbi=d.Nom_Ubicacion
-                    }).ToList();
-            }
-            List<SelectListItem> items = list.ConvertAll(d =>
-            {
-                return new SelectListItem()
-                {
-                    Text = d.NomUbi.ToString(),
-                    Value = d.IdUbi.ToString(),
-                    Selected = true
-                };
-            });
-            ViewBag.Items = items;
-
             return View();
         }
         public ActionResult Mapa()
@@ -76,6 +55,36 @@ namespace Cecyt13Map.Controllers
                 }
             }
             return Json(busquedas,JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult ListarUbicacion()
+        {
+            List<UbicacionViewModel> listaUbicacion = new List<UbicacionViewModel>();
+            try
+            {
+                using (var con = new SqlConnection(cadena))
+                {
+                    string sql = "select Cve_Ubicacion,Nom_Ubicacion from Ubicacion";
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd.CommandType = CommandType.Text;
+                    con.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            listaUbicacion.Add(new UbicacionViewModel()
+                            {
+                                IdUbi = Convert.ToInt32(reader["Cve_Ubicacion"]),
+                                NomUbi = reader["Nom_Ubicacion"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                listaUbicacion = new List<UbicacionViewModel>();
+            }
+            return Json(new {data=listaUbicacion}, JsonRequestBehavior.AllowGet);
         }
 
         //Metodo para las redes de la pagina web
