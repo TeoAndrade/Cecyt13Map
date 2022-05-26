@@ -96,7 +96,7 @@
     <script>
         let tabladata;
         let filaSelc;
-             <!--Tabla de administradores registrados-->
+             //Tabla de administradores registrados-->
         tabladata = $("#Administradores").DataTable({
             responsive: true,
             ordering: false,
@@ -150,7 +150,7 @@
         $("#Administradores tbody").on("click", '.btn-eliminar', function () {
             var UsuarioSelec  = $(this).closest("tr");
 
-            <!--proceso de eliminacion de administrador-->
+            //proceso de eliminacion de administrador-->
             let datos = tabladata.row(UsuarioSelec).data();
             swal({
                 title: "¿Estas seguro?",
@@ -186,7 +186,7 @@
                 });
             console.log(datos);
         });
-  <!--Funcion de guardar accion-->
+  //Funcion de guardar accion-->
         function Guardar() {
             debugger;
             let admin = {

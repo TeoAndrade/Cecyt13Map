@@ -46,36 +46,7 @@ namespace Cecyt13Map.Controllers
         }
         public ActionResult Mapa()
         {
-            List<Salones>esc=null;
-            using(BusquedaSalonEntities bus=new BusquedaSalonEntities())
-            {
-                Cecyt13MapEntities db = new Cecyt13MapEntities();
-                esc = (from e in bus.Escuela
-                       join u in db.Ubicacion 
-                       on e.Id_Ubicacion equals u.Cve_Ubicacion
-                     select new Salones
-                     {
-                         Cve_Salon=e.Cve_Escuela,
-                         Nom_salon=e.Nom_Escuela,
-                         Piso=e.Piso,
-                         IdUbi=new UbicacionViewModel
-                         {
-                             IdUbi=u.Cve_Ubicacion,
-                             NomUbi=u.Nom_Ubicacion
-                         }
-                     }).ToList();
-                     
-            }
-            List<SelectListItem> items = esc.ConvertAll(d =>
-            {
-                return new SelectListItem()
-                {
-                    Text = d.Nom_salon.ToString(),
-                    Value = d.Cve_Salon.ToString(),
-                    Selected = true
-                };
-            });
-            ViewBag.Escuela=items;
+            
             return View();
         }
 
