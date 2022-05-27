@@ -41,678 +41,8 @@
     </div>
     
     
-    <!--#region Entrada-->
-    <!--#region Entrada a Sur-->
-    <div id="EntradaSur">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo2" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo2");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = "#CCFF00";
-            coor.fillRect(172, 1012, 5, 50);
-            coor.fillRect(190, 1015, 50, 5);
-            coor.fillRect(250, 1015, 50, 5);
-            coor.fillRect(310, 1015, 50, 5);
-            coor.fillRect(370, 1015, 50, 5);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo2");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = "#00ffee";
-            coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo2");
-            var fin = ruta.getContext("2d");
-            coor.arc(440, 1020, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
     
-    <!--#endregion-->
-    <!--#region Entrada a Norte-->
-    <div id="EntradaNorte">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo3" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo3");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(172, 1012, 5, 50);
-            coor.fillRect(190, 1015, 50, 5);
-            coor.fillRect(250, 1015, 50, 5);
-            coor.fillRect(295, 955, 5, 50);
-            coor.fillRect(295, 895, 5, 50);
-            coor.fillRect(295, 835, 5, 50);
-            coor.fillRect(295, 785, 5, 40);
-            coor.fillRect(305, 785, 40, 5);
-            coor.fillRect(355, 785, 30, 5);
-            coor.fillRect(385, 755, 5, 30);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo3");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo3");
-            var fin = ruta.getContext("2d");
-            fin.arc(387, 740, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#region Entrada a Gobierno-->
-    <div id="EntradaGobierno">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo4" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo4");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(172, 1012, 5, 50);
-            coor.fillRect(172, 975, 5, 30);
-            coor.fillRect(132, 975, 30, 5)
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo4");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo4");
-            var fin = ruta.getContext("2d");
-            fin.arc(115, 980, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#region Entrada a Gestion-->
-    <div id="EntradaGestion">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo5" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo5");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(172, 1012, 5, 50);
-            coor.fillRect(185, 1010, 50, 5);
-            coor.fillRect(245, 1010, 50, 5);
-            coor.fillRect(305, 1010, 50, 5);
-            coor.fillRect(360, 1010, 5, 50);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo5");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo5");
-            var fin = ruta.getContext("2d");
-            fin.arc(365, 1080, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#region Entrada a Biblioteca-->
-    <div id="EntradaBiblioteca">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo6" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo6");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(172, 1015, 5, 50);
-            coor.fillRect(172, 1005, 50, 5);
-            coor.fillRect(230, 960, 5, 50);
-            coor.fillRect(230, 900, 5, 50);
-            coor.fillRect(230, 840, 5, 50);
-            coor.fillRect(230, 770, 5, 60);
-            coor.fillRect(170, 770, 50, 5);
-            coor.fillRect(110, 770, 50, 5);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo6");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo6");
-            var fin = ruta.getContext("2d");
-            fin.arc(119, 775, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!-- #region Rutas Entrada a Central-->
-    <!-- Ruta hacia el edificio indicado -->
-    <div id="EntradaCentral">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(172, 1012, 5, 50);
-            coor.fillRect(190, 1015, 50, 5);
-            coor.fillRect(250, 1015, 50, 5);
-            coor.fillRect(295, 955, 5, 50);
-            coor.fillRect(295, 895, 5, 50);
-            coor.fillRect(295, 895, 50, 5);
-            coor.fillRect(355, 895, 50, 5);
-            coor.fillRect(400, 880, 5, 10);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo");
-            var fin = ruta.getContext("2d");
-            fin.arc(400, 865, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!-- #endregion -->
-    <!--#endregion-->
-    <!--#region Norte-->
-    <!--#region Norte a Sur-->
-    <div id="NorteSur">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo7" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo7");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(382, 895, 5, 50);
-            coor.fillRect(382, 835, 5, 50);
-            coor.fillRect(382, 775, 5, 50);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo7");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(385, 965, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo7");
-            var fin = ruta.getContext("2d");
-            fin.arc(385, 750, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#region Norte a Central-->
-    <div id="NorteCentral">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo8" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo8");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(383, 785, 5, 50);
-            coor.fillRect(383, 745, 5, 30);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo8");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(385, 855, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo8");
-            var fin = ruta.getContext("2d");
-            fin.arc(385, 730, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#region Norte a Gestion-->
-    <div id="NorteGestion">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo9" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo9");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(383, 750, 5, 20);
-            coor.fillRect(383, 775, 5, 50);
-            coor.fillRect(383, 835, 5, 50);
-            coor.fillRect(383, 895, 5, 50);
-            coor.fillRect(383, 955, 5, 50);
-            coor.fillRect(383, 1015, 5, 50);
-            coor.fillRect(335, 1070, 50, 5);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo9");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(385, 735, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo9");
-            var fin = ruta.getContext("2d");
-            fin.arc(335, 1090, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#region Norte a Gobierno-->
-    <div id="NorteGobierno">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo10" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo10");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(383, 750, 5, 20);
-            coor.fillRect(383, 775, 5, 50);
-            coor.fillRect(383, 835, 5, 50);
-            coor.fillRect(383, 895, 5, 50);
-            coor.fillRect(383, 955, 5, 50);
-            coor.fillRect(335, 1015, 50, 5);
-            coor.fillRect(275, 1015, 50, 5);
-            coor.fillRect(215, 1015, 50, 5);
-            coor.fillRect(180, 1015, 25, 5);
-            coor.fillRect(180, 975, 5, 30);
-            coor.fillRect(150, 965, 30, 5);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo10");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(385, 735, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo10");
-            var fin = ruta.getContext("2d");
-            fin.arc(130, 965, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#region Norte a Biblioteca-->
-    <div id="NorteBiblioteca">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo11" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo11");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(170, 770, 50, 5);
-            coor.fillRect(110, 770, 50, 5);
-            coor.fillRect(230, 770, 50, 5);
-            coor.fillRect(290, 770, 50, 5);
-            coor.fillRect(350, 770, 30, 5);
-            coor.fillRect(380, 740, 5, 30);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo11");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(110, 770, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo11");
-            var fin = ruta.getContext("2d");
-            fin.arc(382, 730, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#endregion-->
-    <!--#region Sur-->
-    <!--#region Sur a Central-->
-    <div id="SurCentral">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo12" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo12");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(382, 895, 5, 50);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo12");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(385, 965, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo12");
-            var fin = ruta.getContext("2d");
-            fin.arc(385, 880, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#region Sur a Gobierno-->
-    <div id="SurGobierno">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo13" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo13");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(335, 1025, 50, 5);
-            coor.fillRect(275, 1025, 50, 5);
-            coor.fillRect(215, 1025, 50, 5);
-            coor.fillRect(205, 975, 5, 50);
-            coor.fillRect(155, 970, 50, 5);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo13");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(385, 1005, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo13");
-            var fin = ruta.getContext("2d");
-            fin.arc(135, 970, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#region Sur a Gestion-->
-    <div id="SurGestion">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo14" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo14");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(382, 1030, 5, 50);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo14");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(385, 1005, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo14");
-            var fin = ruta.getContext("2d");
-            fin.arc(385, 1100, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#region Sur a Biblioteca-->
-    <div id="SurBiblio">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo15" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo15");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(170, 770, 50, 5);
-            coor.fillRect(110, 770, 50, 5);
-            coor.fillRect(230, 770, 50, 5);
-            coor.fillRect(290, 770, 50, 5);
-            coor.fillRect(350, 770, 30, 5);
-            coor.fillRect(380, 780, 5, 50);
-            coor.fillRect(380, 840, 5, 50);
-            coor.fillRect(380, 900, 5, 50);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo15");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(110, 770, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo15");
-            var fin = ruta.getContext("2d");
-            fin.arc(385, 960, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#endregion-->
-    <!--#region Central-->
-    <!--#region Central a Gestion-->
-    <div id="CentralGestion">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo16" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo16");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(383, 895, 5, 50);
-            coor.fillRect(383, 955, 5, 50);
-            coor.fillRect(383, 1015, 5, 50);
-            coor.fillRect(335, 1070, 50, 5);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo16");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(385, 875, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo16");
-            var fin = ruta.getContext("2d");
-            fin.arc(335, 1090, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#region Central a Gobierno-->
-    <div id="CentralGobierno">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo17" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo17");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(383, 895, 5, 50);
-            coor.fillRect(383, 955, 5, 50);
-            coor.fillRect(335, 1015, 50, 5);
-            coor.fillRect(275, 1015, 50, 5);
-            coor.fillRect(215, 1015, 50, 5);
-            coor.fillRect(185, 1015, 20, 5);
-            coor.fillRect(185, 975, 5, 30);
-            coor.fillRect(145, 975, 30, 5);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo17");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(385, 875, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo17");
-            var fin = ruta.getContext("2d");
-            fin.arc(130, 977, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#region Central a Biblioteca-->
-    <div id="CentralBiblio">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo18" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo18");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(170, 770, 50, 5);
-            coor.fillRect(110, 770, 50, 5);
-            coor.fillRect(230, 770, 50, 5);
-            coor.fillRect(290, 770, 50, 5);
-            coor.fillRect(350, 770, 30, 5);
-            coor.fillRect(380, 780, 5, 50);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo18");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(110, 770, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo18");
-            var fin = ruta.getContext("2d");
-            fin.arc(385, 850, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#endregion-->
-    <!--#region Gestion-->
-    <!--#region Gestion a Gobierno-->
-    <div id="GestionGob">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo20" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo20");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(170, 770, 20, 5);
-            coor.fillRect(110, 770, 50, 5);
-            coor.fillRect(200, 770, 5, 50);
-            coor.fillRect(200, 830, 5, 50);
-            coor.fillRect(200, 890, 5, 50);
-            coor.fillRect(200, 950, 5, 20);
-            coor.fillRect(140, 970, 50, 5);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo20");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(110, 770, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo20");
-            var fin = ruta.getContext("2d");
-            fin.arc(140, 970, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#endregion-->
-    <!--#region Biblioteca-->
-    <!--#region Biblioteca a Gestion-->
-    <div id="BibliotecaGestion">
-        <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
-            <canvas id="miLienzo19" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
-        </article>
-        <script>
-            var ruta = document.getElementById("miLienzo19");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#CCFF00';
-            coor.fillRect(170, 770, 50, 5);
-            coor.fillRect(110, 770, 50, 5);
-            coor.fillRect(230, 770, 50, 5);
-            coor.fillRect(290, 770, 50, 5);
-            coor.fillRect(350, 770, 30, 5);
-            coor.fillRect(380, 780, 5, 50);
-            coor.fillRect(380, 840, 5, 50);
-            coor.fillRect(380, 900, 5, 50);
-            coor.fillRect(380, 960, 5, 50);
-            coor.fillRect(380, 1020, 5, 50);
-        </script>
-        <!-- Punto de inicio -->
-        <script>
-            var ruta = document.getElementById("miLienzo19");
-            var coor = ruta.getContext("2d");
-            coor.fillStyle = '#00ffee';
-            coor.arc(110, 770, 10, 0, 2 * Math.PI, true);
-            coor.fill();
-        </script>
-        <!-- Punto de llegada -->
-        <script>
-            var ruta = document.getElementById("miLienzo19");
-            var fin = ruta.getContext("2d");
-            fin.arc(365, 1095, 10, 0, 2 * Math.PI, true);
-            fin.fill();
-        </script>
-    </div>
-    <!--#endregion-->
-    <!--#endregion-->
-    </div>
+    
     <div class="alert alert-danger" role="alert">
         El punto de inicio y de llegada no pueden ser iguales
     </div>
@@ -1053,9 +383,9 @@
             success: function (data) {
                 console.log(data);
                 $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#Inicio");
-                $("<option>").attr({ "value": "700" }).text("Entrada de la escuela").appendTo("#Inicio");
+                $("<option>").attr({ "value": "50" }).text("Entrada de la escuela").appendTo("#Inicio");
                 $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#Llegad");
-                $("<option>").attr({ "value": "700" }).text("Entrada de la escuela").appendTo("#Llegada");
+                $("<option>").attr({ "value": "50" }).text("Entrada de la escuela").appendTo("#Llegada");
 
                 $.each(data.data, function (index, value) {
                     $("<option>").attr({ "value": value.IdUbi }).text(value.NomUbi).appendTo("#Inicio");
@@ -1067,35 +397,15 @@
             }
         });
 
+        
 
-
-        //$("#Llegada").on("change", function () {
-        //    $("#Rutas").hide();
-        //});
+        
         function Filtrar() {
-            let Ihicio = $("#Inicio").on("change");
-            let Final2 = $("#Llegada").on("change");
-            if (Ihicio || Final2) {
-                $("#EntradaSur").hide();
-                $("#EntradaNorte").hide();
-                $("#EntradaGobierno").hide();
-                $("#EntradaGestion").hide();
-                $("#EntradaBiblioteca").hide();
-                $("#EntradaCentral").hide();
-                $("#NorteSur").hide();
-                $("#NorteCentral").hide();
-                $("#NorteGestion").hide();
-                $("#NorteGobierno").hide();
-                $("#NorteBiblioteca").hide();
-                $("#SurCentral").hide();
-                $("#SurGobierno").hide();
-                $("#SurGestion").hide();
-                $("#SurBiblio").hide();
-                $("#CentralGestion").hide();
-                $("#CentralGobierno").hide();
-                $("#CentralBiblio").hide();
-                $("#GestionGob").hide();
-                $("#BibliotecaGestion").hide();
+            var ruta = document.getElementById("miLienzo");
+            var coor = ruta.getContext("2d");
+            var ini = ruta.getContext("2d");
+            ini.fillStyle = "#00ffee";
+            var fin = ruta.getContext("2d");
                 debugger;
                 let inicio = $("#Inicio").val();
                 let final = $("#Llegada").val();
@@ -1104,11 +414,228 @@
                     $(".alert").show();
                 }
                 else {
-                    if (final == 200 && inicio == 700) {
-                        $("#EntradaSur").show();
+                    if (inicio == 50) {
+                        ini.arc(175, 1075, 10, 0, 2 * Math.PI, true);
+                        ini.fill();
+                        if (final == 200) {
+                            coor.clearRect(0, 0, ruta.width, ruta.height);
+                            coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                            coor.fillRect(172, 1012, 5, 50);
+                            coor.fillRect(190, 1015, 50, 5);
+                            coor.fillRect(250, 1015, 50, 5);
+                            coor.fillRect(310, 1015, 50, 5);
+                            coor.fillRect(370, 1015, 50, 5);
+                            fin.arc(440, 1020, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false
+                        }
+                        else if (final == 100) {
+                            coor.clearRect(0, 0, ruta.width, ruta.height);
+                            coor.clearRect(387 - 10 - 1, 740 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                            coor.fillRect(172, 1012, 5, 50);
+                            coor.fillRect(190, 1015, 50, 5);
+                            coor.fillRect(250, 1015, 50, 5);
+                            coor.fillRect(295, 955, 5, 50);
+                            coor.fillRect(295, 895, 5, 50);
+                            coor.fillRect(295, 835, 5, 50);
+                            coor.fillRect(295, 785, 5, 40);
+                            coor.fillRect(305, 785, 40, 5);
+                            coor.fillRect(355, 785, 30, 5);
+                            coor.fillRect(385, 755, 5, 30);
+                            fin.arc(387, 740, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false
+                        }
+                        else if (final == 300) {
+                            coor.fillRect(172, 1012, 5, 50);
+                            coor.fillRect(190, 1015, 50, 5);
+                            coor.fillRect(250, 1015, 50, 5);
+                            coor.fillRect(295, 955, 5, 50);
+                            coor.fillRect(295, 895, 5, 50);
+                            coor.fillRect(295, 895, 50, 5);
+                            coor.fillRect(355, 895, 50, 5);
+                            coor.fillRect(400, 880, 5, 10);
+                            fin.arc(400, 865, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false
+                        }
+                        else if (final == 400) {
+                            coor.fillRect(172, 1012, 5, 50);
+                            coor.fillRect(185, 1010, 50, 5);
+                            coor.fillRect(245, 1010, 50, 5);
+                            coor.fillRect(305, 1010, 50, 5);
+                            coor.fillRect(360, 1010, 5, 50);
+                            fin.arc(365, 1080, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false
+                        }
+                        else if (final == 500) {
+                            coor.fillRect(172, 1015, 5, 50);
+                            coor.fillRect(172, 1005, 50, 5);
+                            coor.fillRect(230, 960, 5, 50);
+                            coor.fillRect(230, 900, 5, 50);
+                            coor.fillRect(230, 840, 5, 50);
+                            coor.fillRect(230, 770, 5, 60);
+                            coor.fillRect(170, 770, 50, 5);
+                            coor.fillRect(110, 770, 50, 5);
+                            fin.arc(119, 775, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false
+                        }
+                        else if (final == 600) {
+                            coor.fillRect(172, 1012, 5, 50);
+                            coor.fillRect(172, 975, 5, 30);
+                            coor.fillRect(132, 975, 30, 5);
+                            fin.arc(115, 980, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false;
+                        }
+                    }
+                    else if (inicio == 100) {
+                        coor.arc(385, 765, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+                        if (final == 200) {
+                            coor.clearRect(0, 0, ruta.width, ruta.height);
+                            coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                            coor.fillRect(172, 1012, 5, 50);
+                            coor.fillRect(190, 1015, 50, 5);
+                            coor.fillRect(250, 1015, 50, 5);
+                            coor.fillRect(310, 1015, 50, 5);
+                            coor.fillRect(370, 1015, 50, 5);
+                            fin.arc(385, 750, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false
+                        }
+                        else if (final == 50) {
+                            coor.clearRect(0, 0, ruta.width, ruta.height);
+                            
+                            coor.fillRect(172, 1012, 5, 50);
+                            coor.fillRect(190, 1015, 50, 5);
+                            coor.fillRect(250, 1015, 50, 5);
+                            coor.fillRect(295, 955, 5, 50);
+                            coor.fillRect(295, 895, 5, 50);
+                            coor.fillRect(295, 835, 5, 50);
+                            coor.fillRect(295, 785, 5, 40);
+                            coor.fillRect(305, 785, 40, 5);
+                            coor.fillRect(355, 785, 30, 5);
+                            coor.fillRect(385, 755, 5, 30);
+                            fin.arc(175, 1075, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false
+                        }
+                        else if (final == 300) {
+                            coor.fillRect(383, 785, 5, 50);
+                            coor.fillRect(383, 745, 5, 30);
+                            fin.arc(385, 730, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false
+                        }
+                        else if (final == 400) {
+                            coor.fillRect(383, 750, 5, 20);
+                            coor.fillRect(383, 775, 5, 50);
+                            coor.fillRect(383, 835, 5, 50);
+                            coor.fillRect(383, 895, 5, 50);
+                            coor.fillRect(383, 955, 5, 50);
+                            coor.fillRect(383, 1015, 5, 50);
+                            coor.fillRect(335, 1070, 50, 5);
+                            fin.arc(335, 1090, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false
+                        }
+                        else if (final == 500) {
+                            coor.fillRect(170, 770, 50, 5);
+                            coor.fillRect(110, 770, 50, 5);
+                            coor.fillRect(230, 770, 50, 5);
+                            coor.fillRect(290, 770, 50, 5);
+                            coor.fillRect(350, 770, 30, 5);
+                            coor.fillRect(380, 740, 5, 30);
+                            fin.arc(382, 730, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false
+                        }
+                        else if (final == 600) {
+                            coor.fillRect(383, 750, 5, 20);
+                            coor.fillRect(383, 775, 5, 50);
+                            coor.fillRect(383, 835, 5, 50);
+                            coor.fillRect(383, 895, 5, 50);
+                            coor.fillRect(383, 955, 5, 50);
+                            coor.fillRect(335, 1015, 50, 5);
+                            coor.fillRect(275, 1015, 50, 5);
+                            coor.fillRect(215, 1015, 50, 5);
+                            coor.fillRect(180, 1015, 25, 5);
+                            coor.fillRect(180, 975, 5, 30);
+                            coor.fillRect(150, 965, 30, 5);
+                            fin.arc(130, 965, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false;
+                        }
+                    }
+                    else if (inicio == 200) {
+                        coor.arc(385, 1005, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+                        if (final == 300) {
+                            coor.clearRect(0, 0, ruta.width, ruta.height);
+                            coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                            coor.fillRect(382, 895, 5, 50);
+                            fin.arc(385, 880, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false
+                        }
+                        else if (final == 50) {
+                            coor.clearRect(0, 0, ruta.width, ruta.height);
+
+                            coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                            coor.fillRect(172, 1012, 5, 50);
+                            coor.fillRect(190, 1015, 50, 5);
+                            coor.fillRect(250, 1015, 50, 5);
+                            coor.fillRect(310, 1015, 50, 5);
+                            fin.arc(175, 1075, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false
+                        }
+                        else if (final == 100) {
+                            coor.clearRect(0, 0, ruta.width, ruta.height);
+                            coor.fillRect(172, 1012, 5, 50);
+                            coor.fillRect(190, 1015, 50, 5);
+                            coor.fillRect(250, 1015, 50, 5);
+                            coor.fillRect(310, 1015, 50, 5);
+                            coor.fillRect(370, 1015, 50, 5);
+                            coor.arc(385, 765, 10, 0, 2 * Math.PI, true);
+                            coor.fill();
+                            return false
+                        }
+                        else if (final == 400) {
+                            coor.fillRect(382, 1030, 5, 50);
+                            fin.arc(335, 1090, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false
+                        }
+                        else if (final == 500) {
+                            coor.fillRect(170, 770, 50, 5);
+                            coor.fillRect(110, 770, 50, 5);
+                            coor.fillRect(230, 770, 50, 5);
+                            coor.fillRect(290, 770, 50, 5);
+                            coor.fillRect(350, 770, 30, 5);
+                            coor.fillRect(380, 780, 5, 50);
+                            coor.fillRect(380, 840, 5, 50);
+                            coor.fillRect(380, 900, 5, 50);
+                            fin.arc(385, 960, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false
+                        }
+                        else if (final == 600) {
+                            coor.fillRect(335, 1025, 50, 5);
+                            coor.fillRect(275, 1025, 50, 5);
+                            coor.fillRect(215, 1025, 50, 5);
+                            coor.fillRect(205, 975, 5, 50);
+                            coor.fillRect(155, 970, 50, 5);
+                            fin.arc(135, 970, 10, 0, 2 * Math.PI, true);
+                            fin.fill();
+                            return false;
+                        }
                     }
                 }
-            }
+            
         }
 
 
