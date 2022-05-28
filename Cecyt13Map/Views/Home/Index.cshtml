@@ -255,8 +255,652 @@
 <!-- script para que se muestre la tabla de los salones-->
     <script>
 
-        $(document).ready(function() {
+        $(".alert").hide();
+        //$("#Inicio").on("change", function () {
+        //    $("#Rutas").hide();
+        //});
 
+        jQuery.ajax({
+            url: "@Url.Action("ListarUbicacion", "Home")",
+            type: "GET",
+            data: null,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data);
+                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#Inicio");
+                $("<option>").attr({ "value": "50" }).text("Entrada de la escuela").appendTo("#Inicio");
+                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#Llegad");
+                $("<option>").attr({ "value": "50" }).text("Entrada de la escuela").appendTo("#Llegada");
+
+                $.each(data.data, function (index, value) {
+                    $("<option>").attr({ "value": value.IdUbi }).text(value.NomUbi).appendTo("#Inicio");
+                    $("<option>").attr({ "value": value.IdUbi }).text(value.NomUbi).appendTo("#Llegada");
+                })
+            },
+            error: function (eror) {
+                console.log(eror);
+            }
+        });
+
+        function Filtrar() {
+            var ruta = document.getElementById("miLienzo");
+            var coor = ruta.getContext("2d");
+            var ini = ruta.getContext("2d");
+            ini.fillStyle = "#00ffee";
+            var fin = ruta.getContext("2d");
+            let inicio = $("#Inicio").val();
+            let final = $("#Llegada").val();
+
+            if (final == inicio) {
+                $(".alert").show();
+            }
+            else {
+                $(".alert").hide();
+                //#region Entrada
+                if (inicio == 50) {
+                    ini.arc(175, 1075, 10, 0, 2 * Math.PI, true);
+                    ini.fill();
+                    if (final == 200) {
+                        //Sur
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                        coor.fillRect(172, 1012, 5, 50);
+                        coor.fillRect(190, 1015, 50, 5);
+                        coor.fillRect(250, 1015, 50, 5);
+                        coor.fillRect(310, 1015, 50, 5);
+                        coor.fillRect(370, 1015, 50, 5);
+                        coor.arc(440, 1020, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 100) {
+                        //Norte
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.clearRect(387 - 10 - 1, 740 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                        coor.fillRect(172, 1012, 5, 50);
+                        coor.fillRect(190, 1015, 50, 5);
+                        coor.fillRect(250, 1015, 50, 5);
+                        coor.fillRect(295, 955, 5, 50);
+                        coor.fillRect(295, 895, 5, 50);
+                        coor.fillRect(295, 835, 5, 50);
+                        coor.fillRect(295, 785, 5, 40);
+                        coor.fillRect(305, 785, 40, 5);
+                        coor.fillRect(355, 785, 30, 5);
+                        coor.fillRect(385, 755, 5, 30);
+                        coor.arc(387, 740, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 300) {
+                        //Central
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(172, 1012, 5, 50);
+                        coor.fillRect(190, 1015, 50, 5);
+                        coor.fillRect(250, 1015, 50, 5);
+                        coor.fillRect(295, 955, 5, 50);
+                        coor.fillRect(295, 895, 5, 50);
+                        coor.fillRect(295, 895, 50, 5);
+                        coor.fillRect(355, 895, 50, 5);
+                        coor.fillRect(400, 880, 5, 10);
+                        coor.arc(400, 865, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 400) {
+                        //Gestion
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(172, 1012, 5, 50);
+                        coor.fillRect(185, 1010, 50, 5);
+                        coor.fillRect(245, 1010, 50, 5);
+                        coor.fillRect(305, 1010, 50, 5);
+                        coor.fillRect(360, 1010, 5, 50);
+                        coor.arc(365, 1080, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 500) {
+                        //Biblioteca
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(172, 1015, 5, 50);
+                        coor.fillRect(172, 1005, 50, 5);
+                        coor.fillRect(230, 960, 5, 50);
+                        coor.fillRect(230, 900, 5, 50);
+                        coor.fillRect(230, 840, 5, 50);
+                        coor.fillRect(230, 770, 5, 60);
+                        coor.fillRect(170, 770, 50, 5);
+                        coor.fillRect(110, 770, 50, 5);
+                        coor.arc(119, 775, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 600) {
+                        //Gobierno
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(172, 1012, 5, 50);
+                        coor.fillRect(172, 975, 5, 30);
+                        coor.fillRect(132, 975, 30, 5);
+                        coor.arc(115, 980, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+                         ;
+                    }
+                    else {
+
+                    }
+                }
+                //#endregion
+                //#region Norte
+                else if (inicio == 100) {
+                    fin.arc(385, 750, 10, 0, 2 * Math.PI, true);
+                    fin.fill();
+                    if (final == 200) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                        coor.fillRect(382, 895, 5, 50);
+                        coor.fillRect(382, 835, 5, 50);
+                        coor.fillRect(382, 775, 5, 50);
+                        coor.arc(385, 965, 10, 0, 2 * Math.PI, true)
+                        coor.fill();
+
+                    }
+                    else if (final == 50) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+
+                        coor.fillRect(172, 1012, 5, 50);
+                        coor.fillRect(190, 1015, 50, 5);
+                        coor.fillRect(250, 1015, 50, 5);
+                        coor.fillRect(295, 955, 5, 50);
+                        coor.fillRect(295, 895, 5, 50);
+                        coor.fillRect(295, 835, 5, 50);
+                        coor.fillRect(295, 785, 5, 40);
+                        coor.fillRect(305, 785, 40, 5);
+                        coor.fillRect(355, 785, 30, 5);
+                        coor.fillRect(385, 755, 5, 30);
+                        coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 300) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(383, 785, 5, 50);
+                        coor.fillRect(383, 745, 5, 30);
+                        coor.arc(385, 830, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 400) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(383, 750, 5, 20);
+                        coor.fillRect(383, 775, 5, 50);
+                        coor.fillRect(383, 835, 5, 50);
+                        coor.fillRect(383, 895, 5, 50);
+                        coor.fillRect(383, 955, 5, 50);
+                        coor.fillRect(383, 1015, 5, 50);
+                        coor.fillRect(335, 1070, 50, 5);
+                        coor.arc(335, 1090, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 500) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(170, 770, 50, 5);
+                        coor.fillRect(110, 770, 50, 5);
+                        coor.fillRect(230, 770, 50, 5);
+                        coor.fillRect(290, 770, 50, 5);
+                        coor.fillRect(350, 770, 30, 5);
+                        coor.fillRect(380, 740, 5, 30);
+                        coor.arc(110, 770, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 600) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(383, 750, 5, 20);
+                        coor.fillRect(383, 775, 5, 50);
+                        coor.fillRect(383, 835, 5, 50);
+                        coor.fillRect(383, 895, 5, 50);
+                        coor.fillRect(383, 955, 5, 50);
+                        coor.fillRect(335, 1015, 50, 5);
+                        coor.fillRect(275, 1015, 50, 5);
+                        coor.fillRect(215, 1015, 50, 5);
+                        coor.fillRect(180, 1015, 25, 5);
+                        coor.fillRect(180, 975, 5, 30);
+                        coor.fillRect(150, 965, 30, 5);
+                        coor.arc(130, 965, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+                         ;
+                    }
+                    else {
+
+                    }
+                }
+                //#endregion
+                //#region Sur
+                else if (inicio == 200) {
+                    coor.arc(385, 985, 10, 0, 2 * Math.PI, true);
+                    coor.fill();
+                    if (final == 300) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                        coor.fillRect(382, 895, 5, 50);
+                        coor.arc(385, 880, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 50) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                        coor.fillRect(172, 1012, 5, 50);
+                        coor.fillRect(190, 1015, 50, 5);
+                        coor.fillRect(250, 1015, 50, 5);
+                        coor.fillRect(310, 1015, 50, 5);
+                        coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 100) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(382, 895, 5, 50);
+                        coor.fillRect(382, 835, 5, 50);
+                        coor.fillRect(382, 775, 5, 50);
+                        coor.arc(385, 745, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 400) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(382, 1030, 5, 50);
+                        coor.arc(385, 960, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 500) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(170, 770, 50, 5);
+                        coor.fillRect(110, 770, 50, 5);
+                        coor.fillRect(230, 770, 50, 5);
+                        coor.fillRect(290, 770, 50, 5);
+                        coor.fillRect(350, 770, 30, 5);
+                        coor.fillRect(380, 780, 5, 50);
+                        coor.fillRect(380, 840, 5, 50);
+                        coor.fillRect(380, 900, 5, 50);
+                        coor.arc(110, 770, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 600) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(335, 1025, 50, 5);
+                        coor.fillRect(275, 1025, 50, 5);
+                        coor.fillRect(215, 1025, 50, 5);
+                        coor.fillRect(205, 975, 5, 50);
+                        coor.fillRect(155, 970, 50, 5);
+                        coor.arc(135, 970, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+                         ;
+                    }
+                    else {
+
+                    }
+                }
+                //#endregion
+                //#region Central
+                else if (inicio == 300) {
+                    coor.arc(385, 880, 10, 0, 2 * Math.PI, true);
+                    coor.fill();
+                    if (final == 200) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                        coor.fillRect(383, 895, 5, 50);
+                        coor.arc(385, 965, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 50) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                        coor.fillRect(385, 915, 5, 50);
+                        coor.fillRect(385, 975, 5, 50);
+                        coor.fillRect(335, 1025, 50, 5);
+                        coor.fillRect(275, 1025, 50, 5);
+                        coor.fillRect(215, 1025, 50, 5);
+                        coor.fillRect(175, 1025, 30, 5);
+                        coor.fillRect(175, 1035, 5, 50);
+                        coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 100) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(383, 785, 5, 50);
+                        coor.fillRect(383, 745, 5, 30);
+                        coor.arc(385, 745, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 400) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(383, 895, 5, 50);
+                        coor.fillRect(383, 955, 5, 50);
+                        coor.fillRect(383, 1015, 5, 50);
+                        coor.fillRect(335, 1070, 50, 5);
+                        coor.arc(335, 1090, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 500) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(170, 770, 50, 5);
+                        coor.fillRect(110, 770, 50, 5);
+                        coor.fillRect(230, 770, 50, 5);
+                        coor.fillRect(290, 770, 50, 5);
+                        coor.fillRect(350, 770, 30, 5);
+                        coor.fillRect(380, 780, 5, 50);
+                        coor.arc(110, 770, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 600) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(383, 895, 5, 50);
+                        coor.fillRect(383, 955, 5, 50);
+                        coor.fillRect(335, 1015, 50, 5);
+                        coor.fillRect(275, 1015, 50, 5);
+                        coor.fillRect(215, 1015, 50, 5);
+                        coor.fillRect(185, 1015, 20, 5);
+                        coor.fillRect(185, 975, 5, 30);
+                        coor.fillRect(145, 975, 30, 5);
+                        coor.arc(135, 970, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+                         ;
+                    }
+                    else {
+
+                    }
+                }
+                //#endregion
+                //#region Gestion
+                else if (inicio == 400) {
+                    fin.arc(365, 1100, 10, 0, 2 * Math.PI, true);
+                    fin.fill();
+                    if (final == 200) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                        coor.fillRect(382, 1030, 5, 50);
+                        coor.arc(385, 965, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 50) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                        coor.fillRect(172, 1012, 5, 50);
+                        coor.fillRect(185, 1010, 50, 5);
+                        coor.fillRect(245, 1010, 50, 5);
+                        coor.fillRect(305, 1010, 50, 5);
+                        coor.fillRect(360, 1010, 5, 50);
+                        coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 100) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(383, 775, 5, 50);
+                        coor.fillRect(383, 835, 5, 50);
+                        coor.fillRect(383, 895, 5, 50);
+                        coor.fillRect(383, 955, 5, 50);
+                        coor.fillRect(383, 1015, 5, 50);
+                        coor.arc(385, 745, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 300) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(383, 895, 5, 50);
+                        coor.fillRect(383, 955, 5, 50);
+                        coor.fillRect(383, 1015, 5, 50);
+                        coor.arc(385, 875, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 500) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(170, 770, 50, 5);
+                        coor.fillRect(110, 770, 50, 5);
+                        coor.fillRect(230, 770, 50, 5);
+                        coor.fillRect(290, 770, 50, 5);
+                        coor.fillRect(350, 770, 30, 5);
+                        coor.fillRect(380, 780, 5, 50);
+                        coor.fillRect(380, 840, 5, 50);
+                        coor.fillRect(380, 900, 5, 50);
+                        coor.fillRect(380, 960, 5, 50);
+                        coor.fillRect(380, 1020, 5, 50);
+                        coor.arc(110, 770, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 600) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(380, 960, 5, 50);
+                        coor.fillRect(380, 1020, 5, 50);
+                        coor.fillRect(320, 960, 50, 5);
+                        coor.fillRect(260, 960, 50, 5);
+                        coor.fillRect(200, 960, 50, 5);
+                        coor.fillRect(140, 960, 50, 5);
+                        coor.arc(135, 970, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+                         ;
+                    }
+                    else {
+
+                    }
+                }
+                //#endregion
+                //#region Biblioteca
+                else if (inicio == 500) {
+                    fin.arc(119, 775, 10, 0, 2 * Math.PI, true);
+                    fin.fill();
+                    if (final == 200) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                        coor.fillRect(170, 770, 50, 5);
+                        coor.fillRect(110, 770, 50, 5);
+                        coor.fillRect(230, 770, 50, 5);
+                        coor.fillRect(290, 770, 50, 5);
+                        coor.fillRect(350, 770, 30, 5);
+                        coor.fillRect(380, 780, 5, 50);
+                        coor.fillRect(380, 840, 5, 50);
+                        coor.fillRect(380, 900, 5, 50);
+                        coor.arc(385, 965, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 50) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                        coor.fillRect(172, 1015, 5, 50);
+                        coor.fillRect(172, 1005, 50, 5);
+                        coor.fillRect(230, 960, 5, 50);
+                        coor.fillRect(230, 900, 5, 50);
+                        coor.fillRect(230, 840, 5, 50);
+                        coor.fillRect(230, 770, 5, 60);
+                        coor.fillRect(170, 770, 50, 5);
+                        coor.fillRect(110, 770, 50, 5);
+                        coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 100) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(170, 770, 50, 5);
+                        coor.fillRect(110, 770, 50, 5);
+                        coor.fillRect(230, 770, 50, 5);
+                        coor.fillRect(290, 770, 50, 5);
+                        coor.fillRect(350, 770, 30, 5);
+                        coor.fillRect(380, 740, 5, 30);
+                        coor.arc(385, 745, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 300) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(170, 770, 50, 5);
+                        coor.fillRect(110, 770, 50, 5);
+                        coor.fillRect(230, 770, 50, 5);
+                        coor.fillRect(290, 770, 50, 5);
+                        coor.fillRect(350, 770, 30, 5);
+                        coor.fillRect(380, 780, 5, 50);
+                        coor.arc(385, 875, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 400) {
+                        coor.fillRect(170, 770, 50, 5);
+                        coor.fillRect(110, 770, 50, 5);
+                        coor.fillRect(230, 770, 50, 5);
+                        coor.fillRect(290, 770, 50, 5);
+                        coor.fillRect(350, 770, 30, 5);
+                        coor.fillRect(380, 780, 5, 50);
+                        coor.fillRect(380, 840, 5, 50);
+                        coor.fillRect(380, 900, 5, 50);
+                        coor.fillRect(380, 960, 5, 50);
+                        coor.fillRect(380, 1020, 5, 50);
+                        coor.arc(365, 1095, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 600) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(119, 775, 5, 50);
+                        coor.fillRect(119, 835, 5, 50);
+                        coor.fillRect(119, 895, 5, 50);
+                        coor.arc(135, 970, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+                         ;
+                    }
+                    else {
+
+                    }
+                }
+                //#endregion
+                //#region Gobierno
+                else if (inicio == 600) {
+                    coor.arc(135, 970, 10, 0, 2 * Math.PI, true);
+                    coor.fill();
+                    if (final == 200) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                        coor.fillRect(135, 970, 50, 5);
+                        coor.fillRect(195, 970, 50, 5);
+                        coor.fillRect(255, 970, 50, 5);
+                        coor.fillRect(315, 970, 50, 5);
+                        coor.arc(385, 965, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 50) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
+                        coor.fillRect(135, 970, 50, 5);
+                        coor.fillRect(180, 980, 5, 50);
+                        coor.fillRect(180, 1040, 5, 20);
+                        coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 100) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(135, 970, 50, 5);
+                        coor.fillRect(195, 970, 50, 5);
+                        coor.fillRect(255, 970, 50, 5);
+                        coor.fillRect(315, 970, 50, 5);
+                        coor.fillRect(385, 920, 5, 50);
+                        coor.fillRect(385, 860, 5, 50);
+                        coor.fillRect(385, 800, 5, 50);
+                        coor.fillRect(385, 740, 5, 50);
+                        coor.arc(385, 745, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 300) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(135, 970, 50, 5);
+                        coor.fillRect(195, 970, 50, 5);
+                        coor.fillRect(255, 970, 50, 5);
+                        coor.fillRect(315, 970, 50, 5);
+                        coor.fillRect(385, 920, 5, 50);
+                        coor.fillRect(385, 860, 5, 30);
+                        coor.arc(385, 875, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 400) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(135, 970, 50, 5);
+                        coor.fillRect(195, 970, 50, 5);
+                        coor.fillRect(255, 970, 50, 5);
+                        coor.fillRect(315, 970, 50, 5);
+                        coor.fillRect(385, 980, 5, 50);
+                        coor.fillRect(385, 1040, 5, 30);
+                        coor.arc(365, 1095, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+
+                    }
+                    else if (final == 500) {
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        coor.fillRect(119, 775, 5, 50);
+                        coor.fillRect(119, 835, 5, 50);
+                        coor.fillRect(119, 895, 5, 50);
+                        coor.arc(119, 775, 10, 0, 2 * Math.PI, true);
+                        coor.fill();
+                         ;
+                    }
+                    else {
+
+                    }
+                }
+                //#endregion
+                else {
+
+                }
+                //#region Imagenes
+                $("#Norte").hide();
+                $("#Sur").hide();
+                $("#Central").hide();
+                $("#Gestion").hide();
+                debugger;
+                switch (final) {
+                    case "100":
+                        $("#Norte").show();
+                        break;
+                    case "200":
+                        $("#Sur").show();
+                        break;
+                    case "300":
+                        $("#Central").show();
+                        break;
+                    case "400":
+                        $("#Gestion").show();
+                        break;
+                    case "500":
+                        $("#Biblioteca").show();
+                        break;
+                    case "600":
+                        $("#Gobierno").show();
+                        break;
+                    default:
+                        console.log("No hay datos");
+                        break;
+                }
+                //#endregion
+                Tabla(final);
+            }
+
+
+        }
+        function Tabla(edificio) {
+            
+            debugger;
             $('#example thead tr').clone(true).addClass('filters').appendTo('#example thead');
 
 
@@ -264,9 +908,11 @@
                 //_______________PRIMERO____________
                 "ajax": {
                     "url": '@Url.Action("Salones", "Home")',
-                    "type": "GET",
+                    "type": "POST",
+                    "data": {edificios:edificio},
                     "datatype": "json"
                 },
+                "destroy": true,
                 "columns": [
                     { "data": "Nom_Escuela" },
                     { "data": "Piso" }
@@ -363,655 +1009,7 @@
 
 
 
-        } );
-
-    </script>
-    <script>
-
-        $(".alert").hide();
-        //$("#Inicio").on("change", function () {
-        //    $("#Rutas").hide();
-        //});
-
-        jQuery.ajax({
-            url: "@Url.Action("ListarUbicacion", "Home")",
-            type: "GET",
-            data: null,
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                console.log(data);
-                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#Inicio");
-                $("<option>").attr({ "value": "50" }).text("Entrada de la escuela").appendTo("#Inicio");
-                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#Llegad");
-                $("<option>").attr({ "value": "50" }).text("Entrada de la escuela").appendTo("#Llegada");
-
-                $.each(data.data, function (index, value) {
-                    $("<option>").attr({ "value": value.IdUbi }).text(value.NomUbi).appendTo("#Inicio");
-                    $("<option>").attr({ "value": value.IdUbi }).text(value.NomUbi).appendTo("#Llegada");
-                })
-            },
-            error: function (eror) {
-                console.log(eror);
-            }
-        });
-
         
-
-        
-        function Filtrar() {
-            var ruta = document.getElementById("miLienzo");
-            var coor = ruta.getContext("2d");
-            var ini = ruta.getContext("2d");
-            ini.fillStyle = "#00ffee";
-            var fin = ruta.getContext("2d");
-            let inicio = $("#Inicio").val();
-            let final = $("#Llegada").val();
-
-            if (final == inicio) {
-                $(".alert").show();
-            }
-            else {
-                $(".alert").hide();
-                //#region Entrada
-                if (inicio == 50) {
-                    ini.arc(175, 1075, 10, 0, 2 * Math.PI, true);
-                    ini.fill();
-                    if (final == 200) {
-                        //Sur
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
-                        coor.fillRect(172, 1012, 5, 50);
-                        coor.fillRect(190, 1015, 50, 5);
-                        coor.fillRect(250, 1015, 50, 5);
-                        coor.fillRect(310, 1015, 50, 5);
-                        coor.fillRect(370, 1015, 50, 5);
-                        coor.arc(440, 1020, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                        
-                    }
-                    else if (final == 100) {
-                        //Norte
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.clearRect(387 - 10 - 1, 740 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
-                        coor.fillRect(172, 1012, 5, 50);
-                        coor.fillRect(190, 1015, 50, 5);
-                        coor.fillRect(250, 1015, 50, 5);
-                        coor.fillRect(295, 955, 5, 50);
-                        coor.fillRect(295, 895, 5, 50);
-                        coor.fillRect(295, 835, 5, 50);
-                        coor.fillRect(295, 785, 5, 40);
-                        coor.fillRect(305, 785, 40, 5);
-                        coor.fillRect(355, 785, 30, 5);
-                        coor.fillRect(385, 755, 5, 30);
-                        coor.arc(387, 740, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 300) {
-                        //Central
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(172, 1012, 5, 50);
-                        coor.fillRect(190, 1015, 50, 5);
-                        coor.fillRect(250, 1015, 50, 5);
-                        coor.fillRect(295, 955, 5, 50);
-                        coor.fillRect(295, 895, 5, 50);
-                        coor.fillRect(295, 895, 50, 5);
-                        coor.fillRect(355, 895, 50, 5);
-                        coor.fillRect(400, 880, 5, 10);
-                        coor.arc(400, 865, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 400) {
-                        //Gestion
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(172, 1012, 5, 50);
-                        coor.fillRect(185, 1010, 50, 5);
-                        coor.fillRect(245, 1010, 50, 5);
-                        coor.fillRect(305, 1010, 50, 5);
-                        coor.fillRect(360, 1010, 5, 50);
-                        coor.arc(365, 1080, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 500) {
-                        //Biblioteca
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(172, 1015, 5, 50);
-                        coor.fillRect(172, 1005, 50, 5);
-                        coor.fillRect(230, 960, 5, 50);
-                        coor.fillRect(230, 900, 5, 50);
-                        coor.fillRect(230, 840, 5, 50);
-                        coor.fillRect(230, 770, 5, 60);
-                        coor.fillRect(170, 770, 50, 5);
-                        coor.fillRect(110, 770, 50, 5);
-                        coor.arc(119, 775, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 600) {
-                        //Gobierno
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(172, 1012, 5, 50);
-                        coor.fillRect(172, 975, 5, 30);
-                        coor.fillRect(132, 975, 30, 5);
-                        coor.arc(115, 980, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         ;
-                    }
-                    else {
-
-                    }
-                }
-                //#endregion
-                //#region Norte
-                else if (inicio == 100) {
-                    fin.arc(385, 750, 10, 0, 2 * Math.PI, true);
-                    fin.fill();
-                    if (final == 200) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
-                        coor.fillRect(382, 895, 5, 50);
-                        coor.fillRect(382, 835, 5, 50);
-                        coor.fillRect(382, 775, 5, 50);
-                        coor.arc(385, 965, 10, 0, 2 * Math.PI, true)
-                        coor.fill();
-                         
-                    }
-                    else if (final == 50) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-
-                        coor.fillRect(172, 1012, 5, 50);
-                        coor.fillRect(190, 1015, 50, 5);
-                        coor.fillRect(250, 1015, 50, 5);
-                        coor.fillRect(295, 955, 5, 50);
-                        coor.fillRect(295, 895, 5, 50);
-                        coor.fillRect(295, 835, 5, 50);
-                        coor.fillRect(295, 785, 5, 40);
-                        coor.fillRect(305, 785, 40, 5);
-                        coor.fillRect(355, 785, 30, 5);
-                        coor.fillRect(385, 755, 5, 30);
-                        coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 300) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(383, 785, 5, 50);
-                        coor.fillRect(383, 745, 5, 30);
-                        coor.arc(385, 830, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 400) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(383, 750, 5, 20);
-                        coor.fillRect(383, 775, 5, 50);
-                        coor.fillRect(383, 835, 5, 50);
-                        coor.fillRect(383, 895, 5, 50);
-                        coor.fillRect(383, 955, 5, 50);
-                        coor.fillRect(383, 1015, 5, 50);
-                        coor.fillRect(335, 1070, 50, 5);
-                        coor.arc(335, 1090, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 500) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(170, 770, 50, 5);
-                        coor.fillRect(110, 770, 50, 5);
-                        coor.fillRect(230, 770, 50, 5);
-                        coor.fillRect(290, 770, 50, 5);
-                        coor.fillRect(350, 770, 30, 5);
-                        coor.fillRect(380, 740, 5, 30);
-                        coor.arc(110, 770, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 600) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(383, 750, 5, 20);
-                        coor.fillRect(383, 775, 5, 50);
-                        coor.fillRect(383, 835, 5, 50);
-                        coor.fillRect(383, 895, 5, 50);
-                        coor.fillRect(383, 955, 5, 50);
-                        coor.fillRect(335, 1015, 50, 5);
-                        coor.fillRect(275, 1015, 50, 5);
-                        coor.fillRect(215, 1015, 50, 5);
-                        coor.fillRect(180, 1015, 25, 5);
-                        coor.fillRect(180, 975, 5, 30);
-                        coor.fillRect(150, 965, 30, 5);
-                        coor.arc(130, 965, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         ;
-                    }
-                    else {
-
-                    }
-                }
-                //#endregion
-                //#region Sur
-                else if (inicio == 200) {
-                    coor.arc(385, 985, 10, 0, 2 * Math.PI, true);
-                    coor.fill();
-                    if (final == 300) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
-                        coor.fillRect(382, 895, 5, 50);
-                        coor.arc(385, 880, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 50) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
-                        coor.fillRect(172, 1012, 5, 50);
-                        coor.fillRect(190, 1015, 50, 5);
-                        coor.fillRect(250, 1015, 50, 5);
-                        coor.fillRect(310, 1015, 50, 5);
-                        coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 100) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(382, 895, 5, 50);
-                        coor.fillRect(382, 835, 5, 50);
-                        coor.fillRect(382, 775, 5, 50);
-                        coor.arc(385, 745, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 400) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(382, 1030, 5, 50);
-                        coor.arc(385, 960, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 500) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(170, 770, 50, 5);
-                        coor.fillRect(110, 770, 50, 5);
-                        coor.fillRect(230, 770, 50, 5);
-                        coor.fillRect(290, 770, 50, 5);
-                        coor.fillRect(350, 770, 30, 5);
-                        coor.fillRect(380, 780, 5, 50);
-                        coor.fillRect(380, 840, 5, 50);
-                        coor.fillRect(380, 900, 5, 50);
-                        coor.arc(110, 770, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 600) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(335, 1025, 50, 5);
-                        coor.fillRect(275, 1025, 50, 5);
-                        coor.fillRect(215, 1025, 50, 5);
-                        coor.fillRect(205, 975, 5, 50);
-                        coor.fillRect(155, 970, 50, 5);
-                        coor.arc(135, 970, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         ;
-                    }
-                    else {
-
-                    }
-                }
-                //#endregion
-                //#region Central
-                else if (inicio == 300) {
-                    coor.arc(385, 880, 10, 0, 2 * Math.PI, true);
-                    coor.fill();
-                    if (final == 200) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
-                        coor.fillRect(383, 895, 5, 50);
-                        coor.arc(385, 965, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 50) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
-                        coor.fillRect(385, 915, 5, 50);
-                        coor.fillRect(385, 975, 5, 50);
-                        coor.fillRect(335, 1025, 50, 5);
-                        coor.fillRect(275, 1025, 50, 5);
-                        coor.fillRect(215, 1025, 50, 5);
-                        coor.fillRect(175, 1025, 30, 5);
-                        coor.fillRect(175, 1035, 5, 50);
-                        coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 100) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(383, 785, 5, 50);
-                        coor.fillRect(383, 745, 5, 30);
-                        coor.arc(385, 745, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 400) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(383, 895, 5, 50);
-                        coor.fillRect(383, 955, 5, 50);
-                        coor.fillRect(383, 1015, 5, 50);
-                        coor.fillRect(335, 1070, 50, 5);
-                        coor.arc(335, 1090, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 500) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(170, 770, 50, 5);
-                        coor.fillRect(110, 770, 50, 5);
-                        coor.fillRect(230, 770, 50, 5);
-                        coor.fillRect(290, 770, 50, 5);
-                        coor.fillRect(350, 770, 30, 5);
-                        coor.fillRect(380, 780, 5, 50);
-                        coor.arc(110, 770, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 600) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(383, 895, 5, 50);
-                        coor.fillRect(383, 955, 5, 50);
-                        coor.fillRect(335, 1015, 50, 5);
-                        coor.fillRect(275, 1015, 50, 5);
-                        coor.fillRect(215, 1015, 50, 5);
-                        coor.fillRect(185, 1015, 20, 5);
-                        coor.fillRect(185, 975, 5, 30);
-                        coor.fillRect(145, 975, 30, 5);
-                        coor.arc(135, 970, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         ;
-                    }
-                    else {
-
-                    }
-                }
-                //#endregion
-                //#region Gestion
-                else if (inicio == 400) {
-                    fin.arc(365, 1100, 10, 0, 2 * Math.PI, true);
-                    fin.fill();
-                    if (final == 200) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
-                        coor.fillRect(382, 1030, 5, 50);
-                        coor.arc(385, 965, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 50) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
-                        coor.fillRect(172, 1012, 5, 50);
-                        coor.fillRect(185, 1010, 50, 5);
-                        coor.fillRect(245, 1010, 50, 5);
-                        coor.fillRect(305, 1010, 50, 5);
-                        coor.fillRect(360, 1010, 5, 50);
-                        coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 100) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(383, 775, 5, 50);
-                        coor.fillRect(383, 835, 5, 50);
-                        coor.fillRect(383, 895, 5, 50);
-                        coor.fillRect(383, 955, 5, 50);
-                        coor.fillRect(383, 1015, 5, 50);
-                        coor.arc(385, 745, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 300) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(383, 895, 5, 50);
-                        coor.fillRect(383, 955, 5, 50);
-                        coor.fillRect(383, 1015, 5, 50);
-                        coor.arc(385, 875, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 500) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(170, 770, 50, 5);
-                        coor.fillRect(110, 770, 50, 5);
-                        coor.fillRect(230, 770, 50, 5);
-                        coor.fillRect(290, 770, 50, 5);
-                        coor.fillRect(350, 770, 30, 5);
-                        coor.fillRect(380, 780, 5, 50);
-                        coor.fillRect(380, 840, 5, 50);
-                        coor.fillRect(380, 900, 5, 50);
-                        coor.fillRect(380, 960, 5, 50);
-                        coor.fillRect(380, 1020, 5, 50);
-                        coor.arc(110, 770, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 600) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(380, 960, 5, 50);
-                        coor.fillRect(380, 1020, 5, 50);
-                        coor.fillRect(320, 960, 50, 5);
-                        coor.fillRect(260, 960, 50, 5);
-                        coor.fillRect(200, 960, 50, 5);
-                        coor.fillRect(140, 960, 50, 5);
-                        coor.arc(135, 970, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         ;
-                    }
-                    else {
-
-                    }
-                }
-                //#endregion
-                //#region Biblioteca
-                else if (inicio == 500) {
-                    fin.arc(119, 775, 10, 0, 2 * Math.PI, true);
-                    fin.fill();
-                    if (final == 200) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
-                        coor.fillRect(170, 770, 50, 5);
-                        coor.fillRect(110, 770, 50, 5);
-                        coor.fillRect(230, 770, 50, 5);
-                        coor.fillRect(290, 770, 50, 5);
-                        coor.fillRect(350, 770, 30, 5);
-                        coor.fillRect(380, 780, 5, 50);
-                        coor.fillRect(380, 840, 5, 50);
-                        coor.fillRect(380, 900, 5, 50);
-                        coor.arc(385, 965, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 50) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
-                        coor.fillRect(172, 1015, 5, 50);
-                        coor.fillRect(172, 1005, 50, 5);
-                        coor.fillRect(230, 960, 5, 50);
-                        coor.fillRect(230, 900, 5, 50);
-                        coor.fillRect(230, 840, 5, 50);
-                        coor.fillRect(230, 770, 5, 60);
-                        coor.fillRect(170, 770, 50, 5);
-                        coor.fillRect(110, 770, 50, 5);
-                        coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 100) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(170, 770, 50, 5);
-                        coor.fillRect(110, 770, 50, 5);
-                        coor.fillRect(230, 770, 50, 5);
-                        coor.fillRect(290, 770, 50, 5);
-                        coor.fillRect(350, 770, 30, 5);
-                        coor.fillRect(380, 740, 5, 30);
-                        coor.arc(385, 745, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 300) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(170, 770, 50, 5);
-                        coor.fillRect(110, 770, 50, 5);
-                        coor.fillRect(230, 770, 50, 5);
-                        coor.fillRect(290, 770, 50, 5);
-                        coor.fillRect(350, 770, 30, 5);
-                        coor.fillRect(380, 780, 5, 50);
-                        coor.arc(385, 875, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 400) {
-                        coor.fillRect(170, 770, 50, 5);
-                        coor.fillRect(110, 770, 50, 5);
-                        coor.fillRect(230, 770, 50, 5);
-                        coor.fillRect(290, 770, 50, 5);
-                        coor.fillRect(350, 770, 30, 5);
-                        coor.fillRect(380, 780, 5, 50);
-                        coor.fillRect(380, 840, 5, 50);
-                        coor.fillRect(380, 900, 5, 50);
-                        coor.fillRect(380, 960, 5, 50);
-                        coor.fillRect(380, 1020, 5, 50);
-                        coor.arc(365, 1095, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 600) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(119, 775, 5, 50);
-                        coor.fillRect(119, 835, 5, 50);
-                        coor.fillRect(119, 895, 5, 50);
-                        coor.arc(135, 970, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         ;
-                    }
-                    else {
-
-                    }
-                }
-                //#endregion
-                //#region Gobierno
-                else if (inicio == 600) {
-                    coor.arc(135, 970, 10, 0, 2 * Math.PI, true);
-                    coor.fill();
-                    if (final == 200) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
-                        coor.fillRect(135, 970, 50, 5);
-                        coor.fillRect(195, 970, 50, 5);
-                        coor.fillRect(255, 970, 50, 5);
-                        coor.fillRect(315, 970, 50, 5);
-                        coor.arc(385, 965, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 50) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
-                        coor.fillRect(135, 970, 50, 5);
-                        coor.fillRect(180, 980, 5, 50);
-                        coor.fillRect(180, 1040, 5, 20);
-                        coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 100) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(135, 970, 50, 5);
-                        coor.fillRect(195, 970, 50, 5);
-                        coor.fillRect(255, 970, 50, 5);
-                        coor.fillRect(315, 970, 50, 5);
-                        coor.fillRect(385, 920, 5, 50);
-                        coor.fillRect(385, 860, 5, 50);
-                        coor.fillRect(385, 800, 5, 50);
-                        coor.fillRect(385, 740, 5, 50);
-                        coor.arc(385, 745, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 300) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(135, 970, 50, 5);
-                        coor.fillRect(195, 970, 50, 5);
-                        coor.fillRect(255, 970, 50, 5);
-                        coor.fillRect(315, 970, 50, 5);
-                        coor.fillRect(385, 920, 5, 50);
-                        coor.fillRect(385, 860, 5, 30);
-                        coor.arc(385, 875, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 400) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(135, 970, 50, 5);
-                        coor.fillRect(195, 970, 50, 5);
-                        coor.fillRect(255, 970, 50, 5);
-                        coor.fillRect(315, 970, 50, 5);
-                        coor.fillRect(385, 980, 5, 50);
-                        coor.fillRect(385, 1040, 5, 30);
-                        coor.arc(365, 1095, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         
-                    }
-                    else if (final == 500) {
-                        coor.clearRect(0, 0, ruta.width, ruta.height);
-                        coor.fillRect(119, 775, 5, 50);
-                        coor.fillRect(119, 835, 5, 50);
-                        coor.fillRect(119, 895, 5, 50);
-                        coor.arc(119, 775, 10, 0, 2 * Math.PI, true);
-                        coor.fill();
-                         ;
-                    }
-                    else {
-
-                    }
-                }
-                //#endregion
-                else {
-
-                }
-                //#region Imagenes
-                $("#Norte").hide();
-                $("#Sur").hide();
-                $("#Central").hide();
-                $("#Gestion").hide();
-                debugger;
-                switch (final) {
-                    case "100":
-                        $("#Norte").show();
-                        break;
-                    case "200":
-                        $("#Sur").show();
-                        break;
-                    case "300":
-                        $("#Central").show();
-                        break;
-                    case "400":
-                        $("#Gestion").show();
-                        break;
-                    case "500":
-                        $("#Biblioteca").show();
-                        break;
-                    case "600":
-                        $("#Gobierno").show();
-                        break;
-                    default:
-                        console.log("No hay datos");
-                        break;
-                }
-                //#endregion
-            }
-            
-            
         }
 
 

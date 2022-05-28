@@ -94,31 +94,39 @@ namespace Cecyt13Map.Controllers
         }
         
         //Metodo para mostrar una tabla de los salones que pertenecen a un edificio indicado
-        public JsonResult Salones()
+        public JsonResult Salones(string edificios)
         {
-            int edificio = 300;
+            int edificiovalor = Convert.ToInt32(edificios);
             List<Escuela> lista = new List<Escuela>();
-            using (var conexion = new SqlConnection(cadena))
+            try
             {
-                
-                conexion.Open();
-                var cmd = new SqlCommand("sp_Lista_Salones", conexion);
-                cmd.Parameters.AddWithValue("@EdificioID", edificio);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                using (var dr = cmd.ExecuteReader())
+                using (var conexion = new SqlConnection(cadena))
                 {
-                    while (dr.Read())
+
+                    conexion.Open();
+                    var cmd = new SqlCommand("sp_Lista_Salones", conexion);
+                    cmd.Parameters.AddWithValue("@EdificioID", edificiovalor);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    using (var dr = cmd.ExecuteReader())
                     {
-                        lista.Add(new Escuela()
+                        while (dr.Read())
                         {
-                            Nom_Escuela = dr["Nom_Escuela"].ToString(),
-                            Piso = dr["Piso"].ToString(),
-                        });
+                            lista.Add(new Escuela()
+                            {
+                                Nom_Escuela = dr["Nom_Escuela"].ToString(),
+                                Piso = dr["Piso"].ToString(),
+                            });
+                        }
                     }
+
                 }
-                return Json(new {data=lista}, JsonRequestBehavior.AllowGet);
             }
+            catch
+            {
+                lista = new List<Escuela>();
+            }
+            return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
     }
 }
