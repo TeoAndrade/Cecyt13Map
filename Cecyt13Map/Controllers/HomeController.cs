@@ -128,5 +128,30 @@ namespace Cecyt13Map.Controllers
             }
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult CoincidenciasSalones()
+        {
+            List<string> salones=new List<string>();
+            try
+            {
+                using(var conexion = new SqlConnection(cadena))
+                {
+                    var cmd = new SqlCommand("select Nom_Escuela from Escuela", conexion);
+                    cmd.CommandType=CommandType.Text;
+                    conexion.Open();
+                    using (var dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            salones.Add(dr["Nom_Escuela"].ToString());
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                salones = new List<string>();
+            }
+            return Json(salones,JsonRequestBehavior.AllowGet);
+        }
     }
 }

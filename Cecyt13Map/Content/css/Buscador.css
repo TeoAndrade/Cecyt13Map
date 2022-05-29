@@ -1,0 +1,38 @@
+﻿.buscador {
+    width: 75vmin;
+    height: 100%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 40%;
+    padding: 40px 0;
+}
+
+ul.list {
+    list-style: none;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 0 0 5px 5px;
+}
+
+.list-items {
+    padding: 10px 5px;
+}
+.searchbar:hover > .search_icon {
+    background: transparent;
+    color: #681212;
+}
+.search_input {
+    color: black;
+    border: 0;
+    outline: 0;
+    background: white;
+    width: 0;
+    font-size: 15px;
+    caret-color: transparent;
+    line-height: 20px;
+}
+
+    .list-items:hover {
+        background-color: #dddddd;
+    }

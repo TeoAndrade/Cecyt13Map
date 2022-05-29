@@ -50,7 +50,7 @@ namespace Cecyt13Map.Controllers
             if (user.Cve_Usuario != 0)
             {
                 Session["usuario"] = user;
-                return RedirectToAction("Mapa", "Home");
+                return RedirectToAction("Index", "Home");
             }
             else
             {

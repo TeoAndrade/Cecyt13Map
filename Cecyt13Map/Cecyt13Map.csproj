@@ -198,6 +198,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\Buscador.css" />
     <Content Include="Content\css\Estilo.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
@@ -552,7 +553,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Menu\Login.cshtml" />
     <Content Include="Views\Menu\SignUp.cshtml" />
-    <Content Include="Views\Home\Mapa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
