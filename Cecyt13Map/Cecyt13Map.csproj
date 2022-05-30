@@ -167,6 +167,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Escuela.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Recursos.cs" />
     <Compile Include="Models\Ubicacion.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -572,6 +573,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
+      <Project>{bc6872da-cbde-403f-b62d-088d8c245c88}</Project>
+      <Name>CapaNegocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

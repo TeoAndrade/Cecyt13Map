@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using CapaNegocio;
 using System.Web.Mvc;
 
 namespace Cecyt13Map.Controllers
@@ -29,6 +30,40 @@ namespace Cecyt13Map.Controllers
         public ActionResult SignUp()
         {
             return View();
+        }
+        public ActionResult CambiarContraseña()
+        {
+            return View();
+        }
+
+        private Recursos recur=new Recursos();
+        [HttpPost]
+        public ActionResult CambiarContraseña(string correo)
+        {
+            Usuario usuario = new Usuario();
+            usuario=recur.Listar().Where(u=>u.Correo==correo).FirstOrDefault();
+            if (usuario == null)
+            {
+                ViewBag.Error = "Usuario no encontrado";
+                return View();
+            }
+            else
+            {
+                string codigo = CN_Recursos.GenerarClave();
+                string asunto = "Cambio de contrseña";
+                string mensaje = "<p>Su nueva contraseña es:!clave¡</p>";
+                mensaje = mensaje.Replace("!clave¡", codigo);
+                bool res = CN_Recursos.EnviarCorreo(correo, asunto, mensaje);
+                if (res)
+                {
+                    ViewBag.Error = null;
+                }
+                else
+                {
+                    ViewBag.Error = "No se pudo enviar el correo";
+                }
+                return RedirectToAction("Reestablecer","Menu");
+            }
         }
 
         
