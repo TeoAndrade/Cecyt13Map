@@ -11,3 +11,16 @@ E:\Cecyt13Map\CapaNegocio\bin\Debug\Conexion.pdb
 E:\Cecyt13Map\CapaNegocio\obj\Debug\CapaNegocio.csproj.CopyComplete
 E:\Cecyt13Map\CapaNegocio\obj\Debug\CapaNegocio.dll
 E:\Cecyt13Map\CapaNegocio\obj\Debug\CapaNegocio.pdb
+C:\Users\monic\source\repos\Cecyt13Map\CapaNegocio\bin\Debug\CapaNegocio.dll
+C:\Users\monic\source\repos\Cecyt13Map\CapaNegocio\bin\Debug\CapaNegocio.pdb
+C:\Users\monic\source\repos\Cecyt13Map\CapaNegocio\bin\Debug\CapaDatos.dll
+C:\Users\monic\source\repos\Cecyt13Map\CapaNegocio\bin\Debug\CapaEntidad.dll
+C:\Users\monic\source\repos\Cecyt13Map\CapaNegocio\bin\Debug\Conexion.dll
+C:\Users\monic\source\repos\Cecyt13Map\CapaNegocio\bin\Debug\CapaDatos.pdb
+C:\Users\monic\source\repos\Cecyt13Map\CapaNegocio\bin\Debug\CapaEntidad.pdb
+C:\Users\monic\source\repos\Cecyt13Map\CapaNegocio\bin\Debug\Conexion.pdb
+C:\Users\monic\source\repos\Cecyt13Map\CapaNegocio\obj\Debug\CapaNegocio.csproj.AssemblyReference.cache
+C:\Users\monic\source\repos\Cecyt13Map\CapaNegocio\obj\Debug\CapaNegocio.csproj.CoreCompileInputs.cache
+C:\Users\monic\source\repos\Cecyt13Map\CapaNegocio\obj\Debug\CapaNegocio.csproj.CopyComplete
+C:\Users\monic\source\repos\Cecyt13Map\CapaNegocio\obj\Debug\CapaNegocio.dll
+C:\Users\monic\source\repos\Cecyt13Map\CapaNegocio\obj\Debug\CapaNegocio.pdb

@@ -135,14 +135,14 @@ namespace Cecyt13Map.Controllers
             {
                 using(var conexion = new SqlConnection(cadena))
                 {
-                    var cmd = new SqlCommand("select Nom_Escuela from Escuela", conexion);
+                    var cmd = new SqlCommand("select Nom_Escuela+'-'+Nom_Ubicacion as Coincidencias from Escuela inner join Ubicacion on Escuela.Id_Ubicacion=Ubicacion.Cve_Ubicacion", conexion);
                     cmd.CommandType=CommandType.Text;
                     conexion.Open();
                     using (var dr = cmd.ExecuteReader())
                     {
                         while (dr.Read())
                         {
-                            salones.Add(dr["Nom_Escuela"].ToString());
+                            salones.Add(dr["Coincidencias"].ToString());
                         }
                     }
                 }

@@ -351,14 +351,16 @@
             let final = $("#Llegada").val();
 
             if (final == inicio) {
+                coor.clearRect(0, 0, ruta.width, ruta.height);
                 $(".alert").show();
             }
             else {
                 $(".alert").hide();
+                debugger;
                 //#region Entrada
                 if (inicio == 50) {
-                    ini.arc(175, 1075, 10, 0, 2 * Math.PI, true);
-                    ini.fill();
+                    coor.arc(175, 1075, 10, 0, 2 * Math.PI, true);
+                    coor.fill();
                     if (final == 200) {
                         //Sur
                         coor.clearRect(0, 0, ruta.width, ruta.height);
@@ -449,8 +451,9 @@
                 //#endregion
                 //#region Norte
                 else if (inicio == 100) {
-                    fin.arc(385, 750, 10, 0, 2 * Math.PI, true);
-                    fin.fill();
+                    coor.arc(385, 750, 10, 0, 2 * Math.PI, true);
+                    coor.fill();
+                    coor.clearRect(0, 0, ruta.width, ruta.height);
                     if (final == 200) {
                         coor.clearRect(0, 0, ruta.width, ruta.height);
                         coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
@@ -459,7 +462,6 @@
                         coor.fillRect(382, 775, 5, 50);
                         coor.arc(385, 965, 10, 0, 2 * Math.PI, true)
                         coor.fill();
-
                     }
                     else if (final == 50) {
                         coor.clearRect(0, 0, ruta.width, ruta.height);
@@ -679,8 +681,8 @@
                 //#endregion
                 //#region Gestion
                 else if (inicio == 400) {
-                    fin.arc(365, 1100, 10, 0, 2 * Math.PI, true);
-                    fin.fill();
+                    coor.arc(365, 1100, 10, 0, 2 * Math.PI, true);
+                    coor.fill();
                     if (final == 200) {
                         coor.clearRect(0, 0, ruta.width, ruta.height);
                         coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
@@ -756,8 +758,8 @@
                 //#endregion
                 //#region Biblioteca
                 else if (inicio == 500) {
-                    fin.arc(119, 775, 10, 0, 2 * Math.PI, true);
-                    fin.fill();
+                    coor.arc(119, 775, 10, 0, 2 * Math.PI, true);
+                    coor.fill();
                     if (final == 200) {
                         coor.clearRect(0, 0, ruta.width, ruta.height);
                         coor.clearRect(440 - 10 - 1, 1020 - 10 - 1, 10 * 2 + 2, 10 * 2 + 2);
@@ -926,7 +928,6 @@
                 $("#Sur").hide();
                 $("#Central").hide();
                 $("#Gestion").hide();
-                debugger;
                 switch (final) {
                     case "100":
                         $("#Norte").show();
@@ -957,9 +958,6 @@
 
         }
         function Tabla(edificio) {
-
-
-            $('#example thead tr').clone(true).addClass('filters').appendTo('#example thead');
 
 
             $('#example').DataTable({

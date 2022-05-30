@@ -4,3 +4,9 @@ E:\Cecyt13Map\Conexion\obj\Debug\Conexion.csproj.AssemblyReference.cache
 E:\Cecyt13Map\Conexion\obj\Debug\Conexion.csproj.CoreCompileInputs.cache
 E:\Cecyt13Map\Conexion\obj\Debug\Conexion.dll
 E:\Cecyt13Map\Conexion\obj\Debug\Conexion.pdb
+C:\Users\monic\source\repos\Cecyt13Map\Conexion\bin\Debug\Conexion.dll
+C:\Users\monic\source\repos\Cecyt13Map\Conexion\bin\Debug\Conexion.pdb
+C:\Users\monic\source\repos\Cecyt13Map\Conexion\obj\Debug\Conexion.csproj.AssemblyReference.cache
+C:\Users\monic\source\repos\Cecyt13Map\Conexion\obj\Debug\Conexion.csproj.CoreCompileInputs.cache
+C:\Users\monic\source\repos\Cecyt13Map\Conexion\obj\Debug\Conexion.dll
+C:\Users\monic\source\repos\Cecyt13Map\Conexion\obj\Debug\Conexion.pdb

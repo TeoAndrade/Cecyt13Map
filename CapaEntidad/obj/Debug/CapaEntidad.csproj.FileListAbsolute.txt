@@ -4,3 +4,9 @@ E:\Cecyt13Map\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
 E:\Cecyt13Map\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
 E:\Cecyt13Map\CapaEntidad\obj\Debug\CapaEntidad.dll
 E:\Cecyt13Map\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\monic\source\repos\Cecyt13Map\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\monic\source\repos\Cecyt13Map\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\monic\source\repos\Cecyt13Map\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\monic\source\repos\Cecyt13Map\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\monic\source\repos\Cecyt13Map\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\monic\source\repos\Cecyt13Map\CapaEntidad\obj\Debug\CapaEntidad.pdb

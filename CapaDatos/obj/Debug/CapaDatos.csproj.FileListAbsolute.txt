@@ -9,3 +9,14 @@ E:\Cecyt13Map\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
 E:\Cecyt13Map\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
 E:\Cecyt13Map\CapaDatos\obj\Debug\CapaDatos.dll
 E:\Cecyt13Map\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\monic\source\repos\Cecyt13Map\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\monic\source\repos\Cecyt13Map\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\monic\source\repos\Cecyt13Map\CapaDatos\bin\Debug\CapaEntidad.dll
+C:\Users\monic\source\repos\Cecyt13Map\CapaDatos\bin\Debug\Conexion.dll
+C:\Users\monic\source\repos\Cecyt13Map\CapaDatos\bin\Debug\CapaEntidad.pdb
+C:\Users\monic\source\repos\Cecyt13Map\CapaDatos\bin\Debug\Conexion.pdb
+C:\Users\monic\source\repos\Cecyt13Map\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\monic\source\repos\Cecyt13Map\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\monic\source\repos\Cecyt13Map\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+C:\Users\monic\source\repos\Cecyt13Map\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\monic\source\repos\Cecyt13Map\CapaDatos\obj\Debug\CapaDatos.pdb
