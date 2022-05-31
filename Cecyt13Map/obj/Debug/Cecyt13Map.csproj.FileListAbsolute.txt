@@ -358,3 +358,11 @@ C:\Users\monic\Source\Repos\Cecyt13Map\Cecyt13Map\obj\Debug\Cecyt13Map.csproj.Co
 C:\Users\monic\Source\Repos\Cecyt13Map\Cecyt13Map\obj\Debug\Cecyt13Map.csproj.CopyComplete
 C:\Users\monic\Source\Repos\Cecyt13Map\Cecyt13Map\obj\Debug\Cecyt13Map.dll
 C:\Users\monic\Source\Repos\Cecyt13Map\Cecyt13Map\obj\Debug\Cecyt13Map.pdb
+C:\Users\monic\source\repos\Cecyt13Map\Cecyt13Map\bin\CapaNegocio.dll
+C:\Users\monic\source\repos\Cecyt13Map\Cecyt13Map\bin\CapaDatos.dll
+C:\Users\monic\source\repos\Cecyt13Map\Cecyt13Map\bin\CapaEntidad.dll
+C:\Users\monic\source\repos\Cecyt13Map\Cecyt13Map\bin\Conexion.dll
+C:\Users\monic\source\repos\Cecyt13Map\Cecyt13Map\bin\CapaNegocio.pdb
+C:\Users\monic\source\repos\Cecyt13Map\Cecyt13Map\bin\CapaDatos.pdb
+C:\Users\monic\source\repos\Cecyt13Map\Cecyt13Map\bin\CapaEntidad.pdb
+C:\Users\monic\source\repos\Cecyt13Map\Cecyt13Map\bin\Conexion.pdb

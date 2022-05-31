@@ -554,6 +554,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Menu\Login.cshtml" />
     <Content Include="Views\Menu\SignUp.cshtml" />
+    <Content Include="Views\Menu\CambiarContraseña.cshtml" />
+    <Content Include="Views\Menu\Reestablecer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

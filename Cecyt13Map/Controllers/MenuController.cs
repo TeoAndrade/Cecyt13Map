@@ -36,7 +36,13 @@ namespace Cecyt13Map.Controllers
             return View();
         }
 
+        public ActionResult Reestablecer()
+        {
+            return View();
+        }
+
         private Recursos recur=new Recursos();
+        
         [HttpPost]
         public ActionResult CambiarContraseña(string correo)
         {
@@ -49,10 +55,11 @@ namespace Cecyt13Map.Controllers
             }
             else
             {
-                string codigo = CN_Recursos.GenerarClave();
+                TempData["Correo"]=usuario.Cve_Usuario;
+                TempData["clave"] = CN_Recursos.GenerarClave();
                 string asunto = "Cambio de contrseña";
-                string mensaje = "<p>Su nueva contraseña es:!clave¡</p>";
-                mensaje = mensaje.Replace("!clave¡", codigo);
+                string mensaje = "<p>Su codigo es:!clave¡</p>";
+                mensaje = mensaje.Replace("!clave¡", TempData["clave"].ToString());
                 bool res = CN_Recursos.EnviarCorreo(correo, asunto, mensaje);
                 if (res)
                 {
@@ -63,6 +70,47 @@ namespace Cecyt13Map.Controllers
                     ViewBag.Error = "No se pudo enviar el correo";
                 }
                 return RedirectToAction("Reestablecer","Menu");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Reestablecer(string clave,string nuevacontra,string confirmar,string id)
+        {
+            if (clave == TempData["clave"].ToString() && nuevacontra==confirmar)
+            {
+                try
+                {
+                    using(SqlConnection conn = new SqlConnection(cadena))
+                    {
+                        string encriptar=CN_Recursos.Encriptar(nuevacontra);
+                        SqlCommand cmd = new SqlCommand("ActualizarContraseña",conn);
+                        cmd.Parameters.AddWithValue("Id", int.Parse(id));
+                        cmd.Parameters.AddWithValue("Nueva", encriptar);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        conn.Open();
+                        bool res=Convert.ToBoolean( cmd.ExecuteNonQuery());
+                        if (res)
+                        {
+                            ViewBag.Error = null;
+                            return RedirectToAction("Login", "Menu");
+                        }
+                        else
+                        {
+                            ViewBag.Error = "No se pudo actualizar la contraseña";
+                            return View();
+                        }
+                    }
+                }
+                catch
+                {
+                    ViewBag.Error = "Hubo algun prblema interno";
+                    return View();
+                }
+            }
+            else
+            {
+                ViewBag.Error = "No coincide alguno de los datos";
+                return View();
             }
         }
 

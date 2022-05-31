@@ -16,7 +16,7 @@ namespace Cecyt13Map
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Menu", action = "Login", id = UrlParameter.Optional }
             );
         }
     }
