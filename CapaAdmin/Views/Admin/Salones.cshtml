@@ -48,35 +48,37 @@
             </div>
             <div class="modal-body ">
                 <input id="Id" type="hidden" value="0" />
-                <div class="row g-2">
-                    <div class="col-sm-12 mt-2">
-                        <label for="Nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="Nombre" autocomplete="off">
+                <form id="Salones">
+                    <div class="row g-2">
+                        <div class="col-sm-12 mt-2">
+                            <label for="Nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="Nombre" autocomplete="off" name="Nombre">
+                        </div>
+
                     </div>
+                    <div class="row g-2">
+                        <div class="col-sm-12 mt-2">
+                            <label for="Piso" class="form-label">Piso</label>
+                            <input type="text" class="form-control" id="Piso" autocomplete="off" name="Piso">
+                        </div>
 
-                </div>
-                <div class="row g-2">
-                    <div class="col-sm-12 mt-2">
-                        <label for="Piso" class="form-label">Piso</label>
-                        <input type="text" class="form-control" id="Piso" autocomplete="off">
                     </div>
+                    <div class="row g-2">
+                        <div class="col-sm-12 mt-2">
+                            <label class="form-label">Edificio</label>
+                            <select id="cboedificio" class="form-select">
+                            </select>
+                        </div>
 
-                </div>
-                <div class="row g-2">
-                    <div class="col-sm-12 mt-2">
-                        <label class="form-label">Edificio</label>
-                        <select id="cboedificio" class="form-select">
-                        </select>
                     </div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <div id="Error" class="alert alert-danger" role="alert">
 
-                </div>
-                <div class="row mt-2">
-                    <div class="col-sm-12">
-                        <div id="Error" class="alert alert-danger" role="alert">
-
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -136,7 +138,28 @@
                 console.log(eror);
             }
         });
-//funcion de despliegue de una ventana emergente-->
+
+        $(document).ready(function () {
+            $("#Error").hide();
+        })
+        $("#Salones").validate({
+            rules: {
+                Nombre: {
+                    required: true
+                },
+                Piso: {
+                    required: true
+                },
+            },
+            messages: {
+                Nombre: '-El campo nombre es obligatorio',
+                Piso: '-El campo piso es obligatorio',
+            },
+            errorElement: 'div',
+            errorLabelContainer: '#Error'
+        })
+
+        //funcion de despliegue de una ventana emergente-->
         function AbirMobal(json) {
             $("#Id").val(0);
             $("#Nombre").val("");

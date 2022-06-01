@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="~/Content/css/Estilo.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    
 </head>
 <body>
     <nav class="nav">
@@ -27,25 +28,28 @@
             <div class="section2">
                 <div class="d-flex justify-content-start form_container">
                     <!--Formulario del login-->
-                    <form action="@Url.Action("Login","Menu")" method="post">
+                    <form action="@Url.Action("Login","Menu")" method="post" id="Login">
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                             </div>
-                            <input type="email" name="Correo" class="form-control input_user" value="" placeholder="Correo">
+                            <input type="email" name="Correo" class="form-control input_user" value="" placeholder="Correo" id="Correo">
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" name="Contraseña" class="form-control input_pass" value="" placeholder="Contraseña">
+                            <input type="password" name="Contraseña" class="form-control input_pass" value="" placeholder="Contraseña" id="Contraseña">
                         </div>
                         @if (ViewData["Mensaje"] != null)
                         {
-                            <div class="alert alert-danger" role="alert">
+                            <div class="alert alert-danger" role="alert" id="alerta">
                                 @ViewData["Mensaje"]
                             </div>
                         }
+                        <div class="alert alert-danger" role="alert" id="Error">
+                            Se deben llenar los siguientes campos
+                        </div>
                         <div class="d-flex justify-content-center mt-3 login_container">
                             <button type="submit" name="button" class="btn login_btn">Iniciar sesion</button>
                         </div>
@@ -65,5 +69,30 @@
             </div>
         </div>
     </div>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#alerta").hide();
+            $("#Error").hide();
+        })
+        $("#Login").validate({
+            rules: {
+                Correo: {
+                    required: true,
+                    email: true
+                },
+                Contraseña: {
+                    required: true,
+                }
+            },
+            messages: {
+                Correo: '-El campo correo es obligatorio',
+                Contraseña:'-El campo contraseña es obligatorio'
+            },
+            errorElement: 'div',
+            errorLabelContainer:'#Error'
+        })
+    </script>
 </body>
 </html>

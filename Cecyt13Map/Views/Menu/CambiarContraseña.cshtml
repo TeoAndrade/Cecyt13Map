@@ -27,7 +27,7 @@
             <div class="section2">
                 <div class="d-flex justify-content-start form_container">
                     <!--Formulario del login-->
-                    <form action="@Url.Action("CambiarContraseña","Menu")" method="post">
+                    <form action="@Url.Action("CambiarContraseña","Menu")" method="post" id="CambiarContraseña">
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
@@ -36,10 +36,13 @@
                         </div>
                         @if (ViewBag.Error != null)
                         {
-                            <div class="alert alert-danger" role="alert">
+                            <div class="alert alert-danger" role="alert" id="alerta">
                                 @ViewBag.Error
                             </div>
                         }
+                        <div class="alert alert-danger" role="alert" id="Error">
+                            Se deben llenar los siguientes campos
+                        </div>
                         <div class="d-flex justify-content-center mt-3 login_container">
                             <button type="submit" name="button" class="btn login_btn">Enviar código</button>
                         </div>
@@ -50,10 +53,29 @@
                         </div>
                     </form>
                 </div>
-
-
             </div>
         </div>
     </div>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#alerta").hide();
+            $("#Error").hide();
+        })
+        $("#CambiarContraseña").validate({
+            rules: {
+                correo: {
+                    required: true,
+                    email:true
+                },
+            },
+            messages: {
+                correo: '-El campo correo es obligatorio'
+            },
+            errorElement: 'div',
+            errorLabelContainer:'#Error'
+        })
+    </script>
 </body>
 </html>

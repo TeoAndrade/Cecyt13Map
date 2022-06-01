@@ -27,7 +27,7 @@
             <div class="section2">
                 <div class="d-flex justify-content-start form_container">
                     <!--formulario de registro-->
-                    <form action="@Url.Action("SignUp","Menu")" method="post">
+                    <form action="@Url.Action("SignUp","Menu")" method="post" id="SignUp">
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -55,19 +55,52 @@
                         <!-- Mensaje de error-->
                         @if (ViewData["Mensaje"] != null)
                         {
-                            <div class="alert alert-danger" role="alert">
+                            <div class="alert alert-danger" role="alert" id="alerta">
                                 @ViewData["Mensaje"]
                             </div>
                         }
+                        <div class="alert alert-danger" role="alert" id="Error">
+                            Se deben llenar los siguientes campos
+                        </div>
                         <div class="d-flex justify-content-center mt-3 login_container">
                             <button type="submit" name="button" class="btn login_btn">Registrarse</button>
                         </div>
                     </form>
                 </div>
-
-
             </div>
         </div>
     </div>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#alerta").hide();
+            $("#Error").hide();
+        })
+        $("#SignUp").validate({
+            rules: {
+                Nom_Usuario: {
+                    required: true
+                },
+                Correo: {
+                    required: true,
+                },
+                Contraseña: {
+                    required: true,
+                },
+                ConfirmarContra: {
+                    required: true,
+                },
+            },
+            messages: {
+                Correo: '-El campo correo es obligatorio',
+                Nom_Usuario: '-El campo nombre es obligatorio',
+                ConfirmarContra: '-El campo confirmar contraseña es obligatorio',
+                Contraseña:'-El campo contraseña es obligatorio'
+            },
+            errorElement: 'div',
+            errorLabelContainer:'#Error'
+        })
+    </script>
 </body>
 </html>

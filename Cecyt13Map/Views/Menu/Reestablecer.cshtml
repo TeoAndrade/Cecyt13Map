@@ -27,7 +27,7 @@
             <div class="section2">
                 <div class="d-flex justify-content-start form_container">
                     <!--Formulario del login-->
-                    <form action="@Url.Action("Reestablecer","Menu")" method="post">
+                    <form action="@Url.Action("Reestablecer","Menu")" method="post" id="Reestablecer">
                         <div class="input-group mb-2">
                             <input type="hidden" name="id" value="@TempData["Correo"]">
                             <div class="input-group-append">
@@ -49,10 +49,13 @@
                         </div>
                         @if (ViewBag.Error != null)
                         {
-                            <div class="alert alert-danger" role="alert">
+                            <div class="alert alert-danger" role="alert" id="alerta">
                                 @ViewBag.Error
                             </div>
                         }
+                        <div class="alert alert-danger" role="alert" id="Error">
+                            Se deben llenar los siguientes campos
+                        </div>
                         <div class="d-flex justify-content-center mt-3 login_container">
                             <button type="submit" name="button" class="btn login_btn">Actualizar</button>
                         </div>
@@ -71,5 +74,33 @@
             </div>
         </div>
     </div>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#alerta").hide();
+            $("#Error").hide();
+        })
+        $("#Reestablecer").validate({
+            rules: {
+                clave: {
+                    required: true
+                },
+                nuevacontra: {
+                    required: true,
+                },
+                confirmar: {
+                    required: true,
+                },
+            },
+            messages: {
+                clave: '-El campo clave es obligatorio',
+                nuevacontra: '-El campo nueva contraseña es obligatorio',
+                confirmar: '-El campo confirmar contraseña es obligatorio'
+            },
+            errorElement: 'div',
+            errorLabelContainer:'#Error'
+        })
+    </script>
 </body>
 </html>

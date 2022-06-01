@@ -19,7 +19,7 @@
 
     <main>
         <div class="container">
-                  <!--Registro de inicio de sesion-->
+            <!--Registro de inicio de sesion-->
             <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -39,7 +39,7 @@
                                         <h5 class="card-title text-center pb-0 fs-2">Inicia sesion</h5>
                                         <p class="text-center small">Escribe tu correo y contraseña</p>
                                     </div>
-                                    <form class="row g-3 needs-validation" novalidate action="@Url.Action("Index","Acceso")" method="post">
+                                    <form class="row g-3 needs-validation" novalidate action="@Url.Action("Index","Acceso")" method="post" id="Index">
 
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">Correo</label>
@@ -62,13 +62,15 @@
                                             if (ViewBag.Error != null)
                                             {
                                                 <div class="col-12 mt-3">
-                                                    <div class="alert alert-danger" role="alert">
+                                                    <div class="alert alert-danger" role="alert" id="alerta">
                                                         @ViewBag.Error
                                                     </div>
                                                 </div>
                                             }
                                         }
-
+                                        <div class="alert alert-danger" role="alert" id="Error">
+                                            Se deben llenar los siguientes campos
+                                        </div>
                                         <div class="col-12">
                                             <a href="@Url.Action("Reestablecer","Acceso")" class="small">¿Has olvidado tu contraseña?</a>
                                             <button class="btn btn-primary w-100" type="submit">Iniciar Sesion</button>
@@ -99,6 +101,29 @@
     <script src="~/Scripts/main.js"></script>
     <script src="~/Scripts/jquery-3.4.1.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#alerta").hide();
+            $("#Error").hide();
+        })
+        $("#Index").validate({
+            rules: {
+                correo: {
+                    required: true,
+                    email:true
+                },
+                clave: {
+                    required: true,
+                },
+            },
+            messages: {
+                correo: '-El campo correo es obligatorio',
+                clave: '-El campo clave es obligatorio'
+            },
+            errorElement: 'div',
+            errorLabelContainer: '#Error'
+        })
+    </script>
 </body>
 </html>
 

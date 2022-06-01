@@ -119,25 +119,42 @@ namespace Cecyt13Map.Controllers
         [HttpPost]
         public ActionResult Login(Usuario user)
         {
-            user.Contraseña=ConvertirSha256(user.Contraseña);
-            using(SqlConnection con=new SqlConnection(cadena))
+            try
             {
-                SqlCommand cmd = new SqlCommand("SP_Login", con);
-                cmd.Parameters.AddWithValue("@correo", user.Correo);
-                cmd.Parameters.AddWithValue("@contra", user.Contraseña);
-                cmd.CommandType = CommandType.StoredProcedure;
-                con.Open();
-                user.Cve_Usuario = Convert.ToInt32(cmd.ExecuteScalar().ToString());
-                con.Close();
+                user.Contraseña = ConvertirSha256(user.Contraseña);
+                using (SqlConnection con = new SqlConnection(cadena))
+                {
+                    SqlCommand cmd = new SqlCommand("SP_Login", con);
+                    cmd.Parameters.AddWithValue("@correo", user.Correo);
+                    cmd.Parameters.AddWithValue("@contra", user.Contraseña);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    con.Open();
+                    user.Cve_Usuario = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                    con.Close();
+                }
+                if (user.Cve_Usuario != 0)
+                {
+                    Session["usuario"] = user;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewData["Mensaje"] = "Usuario no encontrado";
+                    return View();
+                }
             }
-            if (user.Cve_Usuario != 0)
+            catch
             {
-                Session["usuario"] = user;
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                ViewData["Mensaje"] = "Usuario no encontrado";
+                if(string.IsNullOrWhiteSpace(user.Contraseña) || string.IsNullOrEmpty(user.Contraseña))
+                {
+                    ViewData["Mensaje"] = "Introduce tu contraseña";
+                    return View();
+                }
+                else if(string.IsNullOrWhiteSpace(user.Correo) || string.IsNullOrEmpty(user.Correo))
+                {
+                    ViewData["Mensaje"] = "Introduce tu correo";
+                    return View();
+                }
                 return View();
             }
         }

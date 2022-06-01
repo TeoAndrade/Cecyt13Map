@@ -18,7 +18,7 @@
 <body>
     <main>
         <div class="container">
-             <!--Registro para inicio de sesion-->
+            <!--Registro para inicio de sesion-->
             <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -39,12 +39,12 @@
                                         <p class="text-center small">Escribe tu contraseña actual y la nueva</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate action="@Url.Action("Reestablecer","Acceso")" method="post">
+                                    <form class="row g-3 needs-validation" novalidate action="@Url.Action("Reestablecer","Acceso")" method="post" id="Reestablecer">
 
 
 
                                         <div class="col-12">
-                                             <!--Proceso para el inicio de sesion-->
+                                            <!--Proceso para el inicio de sesion-->
                                             <label for="yourUsername" class="form-label">Correo</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-envelope-fill"></i></span>
@@ -58,13 +58,15 @@
                                             if (ViewBag.Error != null)
                                             {
                                                 <div class="col-12 mt-3">
-                                                    <div class="alert alert-danger" role="alert">
+                                                    <div class="alert alert-danger" role="alert" id="alerta">
                                                         @ViewBag.Error
                                                     </div>
                                                 </div>
                                             }
                                         }
-
+                                        <div class="alert alert-danger" role="alert" id="Error">
+                                            Se deben llenar los siguientes campos
+                                        </div>
                                         <div class="col-12 mt-2">
                                             <button class="btn btn-primary w-100" type="submit">Reestablecer contraseña</button>
                                         </div>
@@ -95,5 +97,26 @@
     <script src="~/Scripts/main.js"></script>
     <script src="~/Scripts/jquery-3.4.1.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#alerta").hide();
+            $("#Error").hide();
+        })
+        $("#Reestablecer").validate({
+            rules: {
+                correo: {
+                    required: true,
+                    email: true
+                },
+                
+            },
+            messages: {
+                correo: '-El campo correo es obligatorio'
+                
+            },
+            errorElement: 'div',
+            errorLabelContainer: '#Error'
+        })
+    </script>
 </body>
 </html>

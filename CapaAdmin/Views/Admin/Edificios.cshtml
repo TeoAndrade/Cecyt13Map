@@ -46,13 +46,14 @@
             </div>
             <div class="modal-body ">
                 <input id="Id" type="hidden" value="0" />
-                <div class="row g-2">
-                    <div class="col-sm-12 mt-2">
-                        <label for="Nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="Nombre" autocomplete="off">
+                <form id="Edificios">
+                    <div class="row g-2">
+                        <div class="col-sm-12 mt-2">
+                            <label for="Nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="Nombre" autocomplete="off" name="Nombre">
+                        </div>
                     </div>
-
-                </div>
+                </form>
                 <!--Alerta de error-->
                 <div class="row mt-2">
                     <div class="col-sm-12">
@@ -96,7 +97,24 @@
                 "url":"https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
             }
         });
-//funcion de apertura de ventana emergente-->
+
+        $(document).ready(function () {
+            $("#Error").hide();
+        })
+        $("#Edificios").validate({
+            rules: {
+                Nombre: {
+                    required: true
+                },
+            },
+            messages: {
+                Nombre: '-El campo nombre es obligatorio'
+            },
+            errorElement: 'div',
+            errorLabelContainer: '#Error'
+        })
+
+        //funcion de apertura de ventana emergente-->
         function AbirMobal(json) {
             $("#Id").val(0);
             $("#Nombre").val("");

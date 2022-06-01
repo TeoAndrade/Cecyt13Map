@@ -18,7 +18,7 @@
 <body>
     <main>
         <div class="container">
-      
+
             <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -35,13 +35,13 @@
                                 <div class="card-body">
 
                                     <div class="pt-2 pb-2">
-                                         <!--Opcion de cambio de contraseña-->
+                                        <!--Opcion de cambio de contraseña-->
                                         <h5 class="card-title text-center pb-0 fs-2">Cambia tu contraseña</h5>
                                         <p class="text-center small">Escribe tu contraseña actual y la nueva</p>
                                     </div>
-                                       <!--Metodo de CambiarClave -->
-                                      <!--Formulario, para poder insertar datos-->
-                                    <form class="row g-3 needs-validation" novalidate action="@Url.Action("CambiarClave","Acceso")" method="post">
+                                    <!--Metodo de CambiarClave -->
+                                    <!--Formulario, para poder insertar datos-->
+                                    <form class="row g-3 needs-validation" novalidate action="@Url.Action("CambiarClave","Acceso")" method="post" id="CambiarClave">
                                         <input type="hidden" class="form-control" value="@TempData["idAdmin"]" name="idAdmin" />
 
                                         <div class="col-12">
@@ -79,7 +79,9 @@
                                                 </div>
                                             }
                                         }
-
+                                        <div class="alert alert-danger" role="alert" id="Error">
+                                            Se deben llenar los siguientes campos
+                                        </div>
                                         <div class="col-12 mt-2">
 
                                             <button class="btn btn-primary w-100" type="submit">Cambiar contraseña</button>
@@ -111,5 +113,31 @@
     <script src="~/Scripts/main.js"></script>
     <script src="~/Scripts/jquery-3.4.1.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#alerta").hide();
+            $("#Error").hide();
+        })
+        $("#CambiarClave").validate({
+            rules: {
+                claveActual: {
+                    required: true
+                },
+                claveNueva: {
+                    required: true
+                },
+                claveConfirmada: {
+                    required:true
+                },
+            },
+            messages: {
+                claveActual: '-El campo contraseña actual es obligatorio',
+                claveNueva: '-El campo nueva contraseña es obligatorio',
+                claveConfirmada: '-El campo nueva contraseña es obligatorio'
+            },
+            errorElement: 'div',
+            errorLabelContainer: '#Error'
+        })
+    </script>
 </body>
 </html>

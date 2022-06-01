@@ -49,25 +49,27 @@
             <div class="modal-body ">
                 <!--auntocompleta datos privados, que no se muestran en pantalla, pero fueron previamentes insertados-->
                 <input id="Id" type="hidden" value="0" />
-                <div class="row g-2">
-                    <div class="col-sm-6 mt-2">
-                        <label for="Nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="Nombre" autocomplete="off">
-                    </div>
-                    <div class="col-sm-6 mt-2">
-                        <label for="Apellido" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" id="Apellido" autocomplete="off">
-                    </div>
-                    <div class="col-sm-6 mt-2">
-                        <label for="Correo" class="form-label">Correo</label>
-                        <input type="text" class="form-control" id="Correo" autocomplete="off">
-                    </div>
+                <form id="Admin">
+                    <div class="row g-2">
+                        <div class="col-sm-6 mt-2">
+                            <label for="Nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="Nombre" autocomplete="off" name="Nombre">
+                        </div>
+                        <div class="col-sm-6 mt-2">
+                            <label for="Apellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="Apellido" autocomplete="off" name="Apellido">
+                        </div>
+                        <div class="col-sm-6 mt-2">
+                            <label for="Correo" class="form-label">Correo</label>
+                            <input type="text" class="form-control" id="Correo" autocomplete="off" name="Correo">
+                        </div>
 
-                </div>
+                    </div>
+                </form>
                 <div class="row mt-2">
                     <div class="col-sm-12">
                         <div id="Error" class="alert alert-danger" role="alert">
-
+                            
                         </div>
                     </div>
                 </div>
@@ -120,6 +122,35 @@
                 "url":"https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
             }
         });
+
+        
+        $(document).ready(function () {
+            $("#Error").hide();
+        })
+        $("#CambiarClave").validate({
+            rules: {
+                Nombre: {
+                    required: true
+                },
+                Apellido: {
+                    required: true
+                },
+                Correo: {
+                    required: true,
+                    email:true
+                },
+            },
+            messages: {
+                Nombre: '-El campo nombre es obligatorio',
+                Correo: '-El campo correo es obligatorio',
+                Apellido: '-El campo apellido es obligatorio'
+            },
+            errorElement: 'div',
+            errorLabelContainer: '#Error'
+        })
+    
+
+
 
         function AbirMobal(json) {
 
