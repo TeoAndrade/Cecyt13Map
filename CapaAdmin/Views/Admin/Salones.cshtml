@@ -46,9 +46,9 @@
                 <h5 class="modal-title" id="exampleModalLabel">Salon</h5>
 
             </div>
-            <div class="modal-body ">
-                <input id="Id" type="hidden" value="0" />
-                <form id="Salones">
+            <form id="Salones">
+                <div class="modal-body ">
+                    <input id="Id" type="hidden" value="0" />
                     <div class="row g-2">
                         <div class="col-sm-12 mt-2">
                             <label for="Nombre" class="form-label">Nombre</label>
@@ -78,12 +78,12 @@
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -92,7 +92,7 @@
     <script>
         let tabladata;
         let filaSelc;
-//despliega lista de salones-->
+        //despliega lista de salones-->
         tabladata = $("#Salones").DataTable({
             responsive: true,
             ordering: false,
@@ -178,7 +178,7 @@
 
             $("#FormModal").modal("show");
         }
-//proceso de editar datos de salones-->
+        //proceso de editar datos de salones-->
         $("#Salones tbody").on("click", '.btn-editar', function () {
              filaSelc= $(this).closest("tr");
 
