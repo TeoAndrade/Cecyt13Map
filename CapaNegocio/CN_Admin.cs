@@ -26,14 +26,50 @@ namespace CapaNegocio
             if (string.IsNullOrEmpty(obj.Nombre) || string.IsNullOrWhiteSpace(obj.Nombre))
             {
                 mensaje = "El nombre del administrador no puede ser vacio";
+                if (string.IsNullOrEmpty(obj.Apellido) || string.IsNullOrWhiteSpace(obj.Apellido))
+                {
+                    mensaje = "El nombre y apellido del administrador no puedenser vacios";
+                    if(string.IsNullOrEmpty(obj.Correo) || string.IsNullOrWhiteSpace(obj.Correo))
+                    {
+                        mensaje = "El nombre, apellido y correo del administrador no puedenser vacios";
+                    }
+                }
+                else if(string.IsNullOrEmpty(obj.Correo) || string.IsNullOrWhiteSpace(obj.Correo))
+                {
+                    mensaje = "El nombre y correo del administrador no puedenser vacios";
+                }
             }
             else if (string.IsNullOrEmpty(obj.Apellido) || string.IsNullOrWhiteSpace(obj.Apellido))
             {
                 mensaje = "El apellido del administrador no puede ser vacio";
+                if (string.IsNullOrEmpty(obj.Nombre) || string.IsNullOrWhiteSpace(obj.Nombre))
+                {
+                    mensaje = "El nombre y apellido del administrador no puedenser vacios";
+                    if (string.IsNullOrEmpty(obj.Correo) || string.IsNullOrWhiteSpace(obj.Correo))
+                    {
+                        mensaje = "El nombre, apellido y correo del administrador no puedenser vacios";
+                    }
+                }
+                else if (string.IsNullOrEmpty(obj.Correo) || string.IsNullOrWhiteSpace(obj.Correo))
+                {
+                    mensaje = "El apellido y correo del administrador no puedenser vacios";
+                }
             }
             else if (string.IsNullOrEmpty(obj.Correo) || string.IsNullOrWhiteSpace(obj.Correo))
             {
                 mensaje = "El correo del administrador no puede ser vacio";
+                if (string.IsNullOrEmpty(obj.Apellido) || string.IsNullOrWhiteSpace(obj.Apellido))
+                {
+                    mensaje = "El correo y apellido del administrador no pueden ser vacios";
+                    if (string.IsNullOrEmpty(obj.Nombre) || string.IsNullOrWhiteSpace(obj.Nombre))
+                    {
+                        mensaje = "El nombre, apellido y correo del administrador no pueden ser vacios";
+                    }
+                }
+                else if (string.IsNullOrEmpty(obj.Nombre) || string.IsNullOrWhiteSpace(obj.Nombre))
+                {
+                    mensaje = "El nombre y correo del administrador no pueden ser vacios";
+                }
             }
             if (string.IsNullOrEmpty(mensaje))
             {
@@ -68,14 +104,50 @@ namespace CapaNegocio
             if (string.IsNullOrEmpty(obj.Nombre) || string.IsNullOrWhiteSpace(obj.Nombre))
             {
                 mensaje = "El nombre del administrador no puede ser vacio";
+                if (string.IsNullOrEmpty(obj.Apellido) || string.IsNullOrWhiteSpace(obj.Apellido))
+                {
+                    mensaje = "El nombre y apellido del administrador no puedenser vacios";
+                    if (string.IsNullOrEmpty(obj.Correo) || string.IsNullOrWhiteSpace(obj.Correo))
+                    {
+                        mensaje = "El nombre, apellido y correo del administrador no puedenser vacios";
+                    }
+                }
+                else if (string.IsNullOrEmpty(obj.Correo) || string.IsNullOrWhiteSpace(obj.Correo))
+                {
+                    mensaje = "El nombre y correo del administrador no puedenser vacios";
+                }
             }
             else if (string.IsNullOrEmpty(obj.Apellido) || string.IsNullOrWhiteSpace(obj.Apellido))
             {
                 mensaje = "El apellido del administrador no puede ser vacio";
+                if (string.IsNullOrEmpty(obj.Nombre) || string.IsNullOrWhiteSpace(obj.Nombre))
+                {
+                    mensaje = "El nombre y apellido del administrador no puedenser vacios";
+                    if (string.IsNullOrEmpty(obj.Correo) || string.IsNullOrWhiteSpace(obj.Correo))
+                    {
+                        mensaje = "El nombre, apellido y correo del administrador no puedenser vacios";
+                    }
+                }
+                else if (string.IsNullOrEmpty(obj.Correo) || string.IsNullOrWhiteSpace(obj.Correo))
+                {
+                    mensaje = "El apellido y correo del administrador no puedenser vacios";
+                }
             }
             else if (string.IsNullOrEmpty(obj.Correo) || string.IsNullOrWhiteSpace(obj.Correo))
             {
                 mensaje = "El correo del administrador no puede ser vacio";
+                if (string.IsNullOrEmpty(obj.Apellido) || string.IsNullOrWhiteSpace(obj.Apellido))
+                {
+                    mensaje = "El correo y apellido del administrador no puedenser vacios";
+                    if (string.IsNullOrEmpty(obj.Nombre) || string.IsNullOrWhiteSpace(obj.Correo))
+                    {
+                        mensaje = "El nombre, apellido y correo del administrador no puedenser vacios";
+                    }
+                }
+                else if (string.IsNullOrEmpty(obj.Nombre) || string.IsNullOrWhiteSpace(obj.Correo))
+                {
+                    mensaje = "El nombre y correo del administrador no puedenser vacios";
+                }
             }
 
             if (string.IsNullOrEmpty(mensaje))
