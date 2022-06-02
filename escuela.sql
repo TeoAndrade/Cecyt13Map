@@ -335,3 +335,14 @@ NombreAdmin varchar(50),
 Apellido varchar(50),
 Clave varchar(100),
 Reestablecer bit default 1);
+
+create PROCEDURE [dbo].[ActualizarContraseña]
+	-- Add the parameters for the stored procedure here
+	@Id int,
+	@Nueva varchar(max)
+AS
+BEGIN
+	update Usuario 
+	set Contraseña=@Nueva
+	where Cve_Usuario=@Id
+END
