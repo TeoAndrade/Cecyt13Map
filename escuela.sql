@@ -333,7 +333,8 @@ create table Administradores(
 CveAdmin int primary key identity (20,20),
 NombreAdmin varchar(50),
 Apellido varchar(50),
-Clave varchar(100),
+Correo varchar(100),
+Clave varchar(max),
 Reestablecer bit default 1);
 
 create PROCEDURE [dbo].[ActualizarContraseña]
@@ -346,3 +347,8 @@ BEGIN
 	set Contraseña=@Nueva
 	where Cve_Usuario=@Id
 END
+
+
+use Cecyt13Map 
+
+insert into Administradores(NombreAdmin,Apellido,Correo,Clave) values('Hector','Sandoval','ivantovar26.hist@gmail.com','55F2397C4B547449B6D200C105887021325D11930C2DEE49E8348EB71432917A')
