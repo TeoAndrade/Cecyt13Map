@@ -56,6 +56,8 @@ namespace Cecyt13Map.Controllers
             }
             return Json(busquedas,JsonRequestBehavior.AllowGet);
         }
+
+        //Metodo para mostrar lista de edificios 
         public JsonResult ListarUbicacion()
         {
             List<UbicacionViewModel> listaUbicacion = new List<UbicacionViewModel>();
@@ -128,6 +130,10 @@ namespace Cecyt13Map.Controllers
             }
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
+
+        //Metodo de accesibilidad de busqueda,
+        // desplegando una lista de salones que
+        // coincidan con el edificio que lo contiene
         public JsonResult CoincidenciasSalones()
         {
             List<string> salones=new List<string>();

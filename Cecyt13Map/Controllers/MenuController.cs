@@ -41,8 +41,11 @@ namespace Cecyt13Map.Controllers
             return View();
         }
 
+        // elemento privado de la clase recursos
         private Recursos recur=new Recursos();
-        
+
+        // metodo para cuando el usuario ingresa su correo para 
+        // recibir un codigo y si poder cambiar su contraseña
         [HttpPost]
         public ActionResult CambiarContraseña(string correo)
         {
@@ -73,6 +76,9 @@ namespace Cecyt13Map.Controllers
             }
         }
 
+        // introducir código recibido al correo,
+        // crear nueva contraseña y
+        //confirmar contraseña
         [HttpPost]
         public ActionResult Reestablecer(string clave,string nuevacontra,string confirmar,string id)
         {
@@ -82,7 +88,8 @@ namespace Cecyt13Map.Controllers
                 {
                     using(SqlConnection conn = new SqlConnection(cadena))
                     {
-                        string encriptar=CN_Recursos.Encriptar(nuevacontra);
+                        // almacena contraseña encriptada
+                        string encriptar =CN_Recursos.Encriptar(nuevacontra);
                         SqlCommand cmd = new SqlCommand("ActualizarContraseña",conn);
                         cmd.Parameters.AddWithValue("Id", int.Parse(id));
                         cmd.Parameters.AddWithValue("Nueva", encriptar);

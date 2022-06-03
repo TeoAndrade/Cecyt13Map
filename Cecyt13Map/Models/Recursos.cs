@@ -9,6 +9,7 @@ namespace Cecyt13Map.Models
 {
     public class Recursos
     {
+        // clase recursos, que ayuda a mostrar los listados 
         public List<Usuario> Listar()
         {
             List<Usuario> usuarios = new List<Usuario>();
