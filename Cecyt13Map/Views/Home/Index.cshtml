@@ -12,6 +12,7 @@
     <link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
     <link href="~/Content/DataTables/css/fixedHeader.dataTables.css" rel="stylesheet" />
     <link href="~/Content/css/Estilo.css" rel="stylesheet" />
+    <link href="~/Content/ekko-lightbox.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="~/Content/css/Buscador.css" rel="stylesheet" />
     <style>
@@ -55,8 +56,8 @@
         </div>
     </div>
 
-    <div class="alert alert-danger" role="alert">
-        El punto de inicio y de llegada no pueden ser iguales
+    <div class="alert alert-danger mt-2" role="alert">
+
     </div>
     <article class="card-body section d-flex justify-content-center align-middle" style="margin:20px 200px">
         <canvas id="miLienzo" width="642" height="1223" style="border: 1px solid #c3c3c3; background: url('../../Content/img/Mapa oficial (4).png'); background-size: 100%; "></canvas>
@@ -90,37 +91,37 @@
         <article class="card-body section d-flex justify-content-center align-middle" style="margin: 20px 200px 20px 200px;">
             <div class="d-flex flex-wrap">
                 <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
-                    <a href="~/Content/img/Edificio central.jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                    <a href="~/Content/img/Edificio central.jpg" class="fancylight popup-btn" data-toggle="lightbox" data-gallery="mixedgallery">
                         <img src="~/Content/img/Edificio central.jpg" alt=" " class="img-fluid rounded float-left ">
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
-                    <a href="~/Content/img/Edificio central2.jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                    <a href="~/Content/img/Edificio central2.jpg" class="fancylight popup-btn" data-toggle="lightbox" data-gallery="mixedgallery">
                         <img src="~/Content/img/Edificio central2.jpg" alt=" " class="img-fluid rounded float-left ">
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
-                    <a href="~/Content/img/Edificio central3.jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                    <a href="~/Content/img/Edificio central3.jpg" class="fancylight popup-btn" data-toggle="lightbox" data-gallery="mixedgallery">
                         <img src="~/Content/img/Edificio central3.jpg" alt=" " class="img-fluid rounded float-left ">
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
-                    <a href="~/Content/img/Edificio central (1).jpeg" class="fancylight popup-btn" data-fancybox-group="light">
+                    <a href="~/Content/img/Edificio central (1).jpeg" class="fancylight popup-btn" data-toggle="lightbox" data-gallery="mixedgallery">
                         <img src="~/Content/img/Edificio central (1).jpeg" alt=" " class="img-fluid rounded float-left ">
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
-                    <a href="~/Content/img/Edificio central (2).jpeg" class="fancylight popup-btn" data-fancybox-group="light">
+                    <a href="~/Content/img/Edificio central (2).jpeg" class="fancylight popup-btn" data-toggle="lightbox" data-gallery="mixedgallery">
                         <img src="~/Content/img/Edificio central (2).jpeg" alt=" " class="img-fluid rounded float-left ">
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
-                    <a href="~/Content/img/Edificio central (3).jpeg" class="fancylight popup-btn" data-fancybox-group="light">
+                    <a href="~/Content/img/Edificio central (3).jpeg" class="fancylight popup-btn" data-toggle="lightbox" data-gallery="mixedgallery">
                         <img src="~/Content/img/Edificio central (3).jpeg" alt=" " class="img-fluid rounded float-left ">
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
-                    <a href="~/Content/img/Edificio central.jpeg" class="fancylight popup-btn" data-fancybox-group="light">
+                    <a href="~/Content/img/Edificio central.jpeg" class="fancylight popup-btn" data-toggle="lightbox" data-gallery="mixedgallery">
                         <img src="~/Content/img/Edificio central.jpeg" alt=" " class="img-fluid rounded float-left ">
                     </a>
                 </div>
@@ -254,7 +255,95 @@
         </article>
     </div>
     <!--#endregion-->
+    <!--#region Biblioteca-->
+    <div id="Biblioteca">
+        <div class="d-flex flex-column">
+            <h4 style="margin: 100px 200px 0px 200px;"><i>Edificio Norponiente</i></h4>
+            <hr style="margin: 5px 200px 0px 200px; border: 1px solid #921919;
+        border-radius: 5px;">
+        </div>
+        <article class="card-body section d-flex justify-content-center align-middle" style="margin: 20px 200px 20px 200px;">
+            <div class="d-flex flex-wrap">
+                <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
+                    <a href="~/Content/img/Biblioteca (1).jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                        <img src="~/Content/img/Biblioteca (1).jpg" alt=" " class="img-fluid rounded float-left ">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
+                    <a href="~/Content/img/Biblioteca (2).jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                        <img src="~/Content/img/Biblioteca (2).jpg" alt=" " class="img-fluid rounded float-left ">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
+                    <a href="~/Content/img/Biblioteca (3).jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                        <img src="~/Content/img/Biblioteca (3).jpg" alt=" " class="img-fluid rounded float-left ">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
+                    <a href="~/Content/img/Biblioteca (4).jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                        <img src="~/Content/img/Biblioteca (4).jpg" alt=" " class="img-fluid rounded float-left ">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
+                    <a href="~/Content/img/Biblioteca (5).jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                        <img src="~/Content/img/Biblioteca (5).jpg" alt=" " class="img-fluid rounded float-left ">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
+                    <a href="~/Content/img/Biblioteca (6).jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                        <img src="~/Content/img/Biblioteca (6).jpg" alt=" " class="img-fluid rounded float-left ">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
+                    <a href="~/Content/img/Biblioteca (7).jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                        <img src="~/Content/img/Biblioteca (7).jpg" alt=" " class="img-fluid rounded float-left ">
+                    </a>
+                </div>
+            </div>
 
+        </article>
+    </div>
+    <!--#endregion-->
+    <!--#region Gobierno-->
+    <div id="Gobierno">
+        <div class="d-flex flex-column">
+            <h4 style="margin: 100px 200px 0px 200px;"><i>Edificio Poniente</i></h4>
+            <hr style="margin: 5px 200px 0px 200px; border: 1px solid #921919;
+        border-radius: 5px;">
+        </div>
+        <article class="card-body section d-flex justify-content-center align-middle" style="margin: 20px 200px 20px 200px;">
+            <div class="d-flex flex-wrap">
+                <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
+                    <a href="~/Content/img/Gobierno (1).jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                        <img src="~/Content/img/Gobierno (1).jpg" alt=" " class="img-fluid rounded float-left ">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
+                    <a href="~/Content/img/Gobierno (2).jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                        <img src="~/Content/img/Gobierno (2).jpg" alt=" " class="img-fluid rounded float-left ">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
+                    <a href="~/Content/img/Gobierno (3).jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                        <img src="~/Content/img/Gobierno (3).jpg" alt=" " class="img-fluid rounded float-left ">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
+                    <a href="~/Content/img/Gobierno (4).jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                        <img src="~/Content/img/Gobierno (4).jpg" alt=" " class="img-fluid rounded float-left ">
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 col-sm mt-3 ">
+                    <a href="~/Content/img/Gobierno (5).jpg" class="fancylight popup-btn" data-fancybox-group="light">
+                        <img src="~/Content/img/Gobierno (5).jpg" alt=" " class="img-fluid rounded float-left ">
+                    </a>
+                </div>
+
+            </div>
+
+        </article>
+    </div>
+    <!--#endregion-->
 </body>
 
 @section scripts{
@@ -268,6 +357,7 @@
     <script src="~/Scripts/DataTables/buttons.print.js"></script>
     <script src="~/Scripts/DataTables/dataTables.bootstrap4.js"></script>
     <script src="~/Scripts/DataTables/dataTables.fixedHeader.js"></script>
+    <script src="~/Scripts/ekko-lightbox.min.js"></script>
 
     <!-- script para que se muestre la tabla de los salones-->
     <script>
@@ -356,6 +446,7 @@
             if (final == inicio) {
                 coor.clearRect(0, 0, ruta.width, ruta.height);
                 $(".alert").show();
+                $(".alert").text('El punto de inicio y de llegada no pueden ser iguales');
             }
             else {
                 $(".alert").hide();
@@ -448,7 +539,9 @@
                          ;
                     }
                     else {
-
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        $(".alert").show();
+                        $(".alert").text('No hay datos disponibles');
                     }
                 }
                 //#endregion
@@ -534,7 +627,9 @@
                          ;
                     }
                     else {
-
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        $(".alert").show();
+                        $(".alert").text('No hay datos disponibles');
                     }
                 }
                 //#endregion
@@ -603,7 +698,9 @@
                          ;
                     }
                     else {
-
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        $(".alert").show();
+                        $(".alert").text('No hay datos disponibles');
                     }
                 }
                 //#endregion
@@ -678,7 +775,9 @@
                          ;
                     }
                     else {
-
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        $(".alert").show();
+                        $(".alert").text('No hay datos disponibles');
                     }
                 }
                 //#endregion
@@ -755,7 +854,9 @@
                          ;
                     }
                     else {
-
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        $(".alert").show();
+                        $(".alert").text('No hay datos disponibles');
                     }
                 }
                 //#endregion
@@ -842,7 +943,9 @@
                          ;
                     }
                     else {
-
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        $(".alert").show();
+                        $(".alert").text('No hay datos disponibles');
                     }
                 }
                 //#endregion
@@ -919,12 +1022,16 @@
                          ;
                     }
                     else {
-
+                        coor.clearRect(0, 0, ruta.width, ruta.height);
+                        $(".alert").show();
+                        $(".alert").text('No hay datos disponibles');
                     }
                 }
                 //#endregion
                 else {
-
+                    coor.clearRect(0, 0, ruta.width, ruta.height);
+                    $(".alert").show();
+                    $(".alert").text('No hay datos disponibles');
                 }
                 //#region Imagenes
                 $("#Norte").hide();
@@ -951,7 +1058,8 @@
                         $("#Gobierno").show();
                         break;
                     default:
-                        console.log("No hay datos");
+                        $(".alert").show();
+                        $(".alert").text('No hay datos disponibles');
                         break;
                 }
                 //#endregion
