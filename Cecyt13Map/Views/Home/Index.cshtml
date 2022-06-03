@@ -251,7 +251,6 @@
                 </div>
 
             </div>
-
         </article>
     </div>
     <!--#endregion-->
@@ -300,7 +299,6 @@
                     </a>
                 </div>
             </div>
-
         </article>
     </div>
     <!--#endregion-->
@@ -359,14 +357,13 @@
     <script src="~/Scripts/DataTables/dataTables.fixedHeader.js"></script>
     <script src="~/Scripts/ekko-lightbox.min.js"></script>
 
-    <!-- script para que se muestre la tabla de los salones-->
     <script>
 
         $(".alert").hide();
         //$("#Inicio").on("change", function () {
         //    $("#Rutas").hide();
         //});
-
+<!--desplejar los puntos de inicio y llegada-->
         jQuery.ajax({
             url: "@Url.Action("ListarUbicacion", "Home")",
             type: "GET",
@@ -377,7 +374,7 @@
                 console.log(data);
                 $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#Inicio");
                 $("<option>").attr({ "value": "50" }).text("Entrada de la escuela").appendTo("#Inicio");
-                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#Llegad");
+                $("<option>").attr({ "value": "0", "disabled": "true" }).text("Seleccionar").appendTo("#Llegada");
                 $("<option>").attr({ "value": "50" }).text("Entrada de la escuela").appendTo("#Llegada");
 
                 $.each(data.data, function (index, value) {
@@ -389,7 +386,7 @@
                 console.log(eror);
             }
         });
-
+<!-- mostrar salon o edificio que coincidan con lo buscado-->
         $(".search_input").on("click", function () {
             fetch("@Url.Action("CoincidenciasSalones","Home")")
                 .then(function (sal) {
@@ -421,11 +418,12 @@
                     });
                 })
         });
-
+<!--mostrar nombre -->
         function displayNames(value) {
             input.value = value;
             removeElements();
         }
+        <!--eliminar coincidencia de anteriores busqueda-->
         function removeElements() {
             let items = document.querySelectorAll(".list-items");
             items.forEach((item) => {
@@ -433,7 +431,7 @@
             });
         }
 
-
+<!--filtracion de rutas,imagenes y tablas del edificio de llegada-->
         function Filtrar() {
             var ruta = document.getElementById("miLienzo");
             var coor = ruta.getContext("2d");
@@ -1068,6 +1066,7 @@
 
 
         }
+        <!-- script para que se muestre la tabla de los salones-->
         function Tabla(edificio) {
 
 
