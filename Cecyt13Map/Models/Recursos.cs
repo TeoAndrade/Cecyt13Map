@@ -27,6 +27,7 @@ namespace Cecyt13Map.Models
                         {
                             usuarios.Add(new Usuario()
                             {
+                                //inicio de sesion del usuario
                                 Cve_Usuario = Convert.ToInt32(reader["Cve_Usuario"]),
                                 Nom_Usuario=reader["Nom_Usuario"].ToString(),
                                 Correo=reader["Correo"].ToString(),
